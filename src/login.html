@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bidnet | Login</title>
+    <link rel="stylesheet" href="../dist/output.css">
+</head>
+<body class="bg-neutral-100 text-secondary-400">
+    <form class="flex flex-col gap-8 p-4 max-w-[500px]" action="">
+        <h1 class="text-2xl font-bold">Login</h1>
+        <!-- Input Wrapper -->
+        <div class="input-wrapper flex flex-col gap-6">
+         <!-- New Input -->
+        <div class="flex flex-col gap-1">
+            <div class="relative h-11 w-full min-w-[200px]">
+              <input
+                 type="email"
+                class="peer h-full w-full border-b border-secondary-50 bg-transparent pt-4 pb-1.5 text-sm font-normal outline outline-0 transition-all placeholder-shown:border-secondary-50 focus:border-primary-100 focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
+                placeholder=" "
+              />
+              <label class="after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none text-[11px] font-normal leading-tight text-secondary-200 transition-all after:absolute after:-bottom-1.5 after:block after:w-full after:scale-x-0 after:border-b-1 after:border-primary-100 after:transition-transform after:duration-300 peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[4.25] peer-placeholder-shown:text-blue-gray-500 peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-primary-100 peer-focus:after:scale-x-100 peer-focus:after:border-primary-100 peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500">
+                Email
+              </label>
+            </div>
+            <div class="input-hint text-secondary-200">error msg here</div>
+          </div>
+            <!-- New Input -->
+          <div class="flex flex-col gap-1">
+            <div class="relative h-11 w-full min-w-[200px]">
+              <input
+                 type="password"
+                class="peer h-full w-full border-b border-secondary-50 bg-transparent pt-4 pb-1.5 text-sm font-normal outline outline-0 transition-all placeholder-shown:border-secondary-50 focus:border-primary-100 focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
+                placeholder=" "
+              />
+              <label class="after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none text-[11px] font-normal leading-tight text-secondary-200 transition-all after:absolute after:-bottom-1.5 after:block after:w-full after:scale-x-0 after:border-b-1 after:border-primary-100 after:transition-transform after:duration-300 peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[4.25] peer-placeholder-shown:text-blue-gray-500 peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-primary-100 peer-focus:after:scale-x-100 peer-focus:after:border-primary-100 peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500">
+                Password
+              </label>
+              
+            </div>
+            <div class="input-hint text-secondary-200">error msg here</div>
+          </div>
+          <input class="text-white text-sm font-bold bg-primary-400 p-4 hover:bg-primary-600 transition-all	cursor-pointer" type="submit" value="Login" name="" id="">
+        </div>
+    </form>
+</body>
+</html>
