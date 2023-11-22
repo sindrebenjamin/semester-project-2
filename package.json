@@ -1,0 +1,16 @@
+{
+  "name": "bidnet",
+  "version": "0.0.1",
+  "description": "Semester Project 2",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "watch": "npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch",
+    "build": "tailwindcss -i ./src/css/input.css -o ./dist/output.css"
+  },
+  "author": "Sindre Skoglund-Hansen",
+  "license": "ISC",
+  "dependencies": {
+    "tailwind": "^4.0.0"
+  }
+}
