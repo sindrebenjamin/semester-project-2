@@ -536,6 +536,10 @@ video {
   --tw-backdrop-sepia:  ;
 }
 
+.list-disc{
+  list-style-type: disc;
+}
+
 .text-xl{
   font-size: 1.25rem;
   line-height: 1.75rem;
