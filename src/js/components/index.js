@@ -33,3 +33,23 @@ document.onclick = (event) => {
 
 const logoutBtn = document.querySelector("#logout-btn");
 logoutBtn.onclick = () => logout();
+
+// Toggle searchbar visibility
+
+const searchForm = document.querySelector("#search-form");
+const searchBtn = document.querySelector("#search-btn");
+const searchBar = document.querySelector("#search");
+const nav = document.querySelector("nav");
+
+searchBtn.onclick = () => {
+  nav.classList.add("hidden");
+  searchForm.classList.remove("hidden");
+  searchBtn.classList.add("hidden");
+  searchBar.focus();
+};
+
+searchBar.onblur = () => {
+  nav.classList.remove("hidden");
+  searchForm.classList.add("hidden");
+  searchBtn.classList.remove("hidden");
+};
