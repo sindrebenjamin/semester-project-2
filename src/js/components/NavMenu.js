@@ -1,5 +1,5 @@
 export const NavMenu = (name, credits) => {
-  return `<div id="nav-menu" class="bg-white absolute right-0 w-[200px] shadow-md z-20">
+  return `<div id="nav-menu" class="hidden bg-white absolute top-[60px] right-0 w-[200px] shadow-md z-20">
 
   <div class="p-4">
   <p class="text-secondary-100 text-xs">Logged in as</p>

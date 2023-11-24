@@ -568,6 +568,26 @@ video {
   right: 0px;
 }
 
+.top-12{
+  top: 3rem;
+}
+
+.top-20{
+  top: 5rem;
+}
+
+.top-\[30px\]{
+  top: 30px;
+}
+
+.top-\[50px\]{
+  top: 50px;
+}
+
+.top-\[60px\]{
+  top: 60px;
+}
+
 .z-10{
   z-index: 10;
 }
