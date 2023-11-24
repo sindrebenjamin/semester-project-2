@@ -1,5 +1,4 @@
 import { login } from "../../api/auth/login.js";
-import { inputEmailListener } from "../forms/inputEmail.js";
 
 function loginListener(event) {
   event.preventDefault();
@@ -14,5 +13,3 @@ function loginListener(event) {
 
 const loginForm = document.querySelector("#login-form");
 loginForm.addEventListener("submit", loginListener);
-
-inputEmailListener();
