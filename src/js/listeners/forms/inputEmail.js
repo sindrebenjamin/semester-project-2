@@ -10,6 +10,7 @@ export const inputEmailListener = (def) => {
   const input = document.querySelector("#email");
   const label = document.querySelector("#email-label");
   const hint = document.querySelector("#email-hint");
+  const apiTest = regex.test(input.value);
   input.onblur = () => {
     const test = regex.test(input.value);
     setError(
@@ -21,4 +22,5 @@ export const inputEmailListener = (def) => {
       def
     );
   };
+  return apiTest;
 };
