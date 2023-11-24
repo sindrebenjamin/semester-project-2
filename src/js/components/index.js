@@ -12,9 +12,21 @@ document.body.prepend(headerElement);
 // Toggle NavMenu visibility
 
 const headerProfile = document.querySelector("#header-profile");
+const navMenu = document.querySelector("#nav-menu");
+
 headerProfile.onclick = () => {
-  const navMenu = document.querySelector("#nav-menu");
   navMenu.classList.toggle("hidden");
+  headerProfile.classList.toggle("opacity-50");
+};
+
+document.onclick = (event) => {
+  const isClickInsideMenu = navMenu.contains(event.target);
+  const isClickInsideAvatar = headerProfile.contains(event.target);
+
+  if (!isClickInsideMenu && !isClickInsideAvatar) {
+    navMenu.classList.add("hidden");
+    headerProfile.classList.remove("opacity-50");
+  }
 };
 
 // Logout

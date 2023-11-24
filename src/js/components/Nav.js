@@ -5,7 +5,8 @@ const profile = load("profile");
 
 export const Nav = () => {
   if (profile) {
-    return `<nav id="header-profile" class="relative w-[44px] h-[44px]">
+    return `<nav class="relative">
+    <div class=" w-[44px] h-[44px] hover:opacity-50 transition-all" id="header-profile">
     <img class="w-[44px] h-[44px] rounded-full object-cover" src="${
       profile.avatar
     }" alt="" />
@@ -26,7 +27,9 @@ export const Nav = () => {
         stroke-linejoin="round"
       />
     </svg>
+    </div>
     ${NavMenu(profile.name, profile.credits)}
+
   </nav> `;
   } else {
     return `
