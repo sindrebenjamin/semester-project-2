@@ -1,8 +1,12 @@
 import { checkMedia } from "../utils/checkMedia.js";
+import { dateToDays } from "../utils/dateToDays.js";
+import { currentBid } from "../utils/currentBid.js";
 
 export const Card = async (listing) => {
   const media = await checkMedia(listing.media[0]);
-  return `<a class="flex flex-col gap-4 w-[200px]" href="listing.html?id=${listing.id}">
+  const daysLeft = dateToDays(listing.endsAt);
+  const bid = currentBid(listing.bids);
+  return `<a class="hover:opacity-50 transition-all flex flex-col gap-4" href="listing.html?id=${listing.id}">
     <div class="h-40">
       <img
         class="object-cover w-full h-full"
@@ -11,12 +15,12 @@ export const Card = async (listing) => {
       />
     </div>
 
-    <h3 class="text-secondary-800 text-xl font-bold">Playstation 5</h3>
+    <h3 class="text-secondary-800 text-xl font-bold">${listing.title}</h3>
     <div>
       <p>Current bid</p>
-      <p class="font-bold">$334</p>
+      <p class="font-bold">$${bid}</p>
     </div>
-    <p class="text-secondary-100">Ends in 2 days</p>
+    <p class="text-secondary-100">${daysLeft}</p>
   </a>`;
 };
 
