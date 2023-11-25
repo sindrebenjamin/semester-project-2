@@ -6,7 +6,7 @@ const profile = load("profile");
 export const Nav = () => {
   if (profile) {
     return `<nav class="relative">
-    <div class=" w-[44px] h-[44px] hover:opacity-50 transition-all" id="header-profile">
+    <div class=" w-[44px] h-[44px] hover:opacity-50 transition-all cursor-pointer" id="header-profile">
     <img class="w-[44px] h-[44px] rounded-full object-cover" src="${
       profile.avatar
     }" alt="" />
