@@ -1,15 +1,15 @@
 import { load } from "../api/storage/load.js";
 import { NavMenu } from "./NavMenu.js";
+import { checkAvatar } from "../utils/checkAvatar.js";
 
 const profile = load("profile");
 
 export const Nav = () => {
   if (profile) {
+    const avatar = checkAvatar(profile.avatar);
     return `<nav class="relative">
     <div class=" w-[44px] h-[44px] hover:opacity-50 transition-all cursor-pointer" id="header-profile">
-    <img class="w-[44px] h-[44px] rounded-full object-cover" src="${
-      profile.avatar
-    }" alt="" />
+    <img class="w-[44px] h-[44px] rounded-full object-cover" src="${avatar}" alt="" />
     <svg
       class="absolute z-10 bottom-0 right-0 "
       width="12"
