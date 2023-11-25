@@ -6,6 +6,8 @@ import { inputAvatarListener } from "../forms/inputAvatar.js";
 
 function registerListener(event) {
   event.preventDefault();
+  const emailCheck = inputEmailListener();
+
   const form = event.target;
   const data = new FormData(form);
   const userData = {
@@ -14,8 +16,8 @@ function registerListener(event) {
     password: data.get("password"),
     avatar: data.get("avatar"),
   };
-  console.log(userData);
-  register(userData);
+
+  emailCheck && register(userData);
 }
 
 const registerForm = document.querySelector("#register-form");

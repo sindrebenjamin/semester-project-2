@@ -21,7 +21,8 @@ export async function login(userData) {
       save("token", result.accessToken);
       delete result.accessToken;
       save("profile", result);
-      return result;
+      window.location.href = "index.html";
+      //return result;
     }
   } catch (e) {
     displayErrors(e.message);
