@@ -1,7 +1,7 @@
 import { checkMedia } from "../utils/checkMedia.js";
 
-export const Card = (listing) => {
-  const media = checkMedia(listing.media[0]);
+export const Card = async (listing) => {
+  const media = await checkMedia(listing.media[0]);
   return `<a class="flex flex-col gap-4 w-[200px]" href="listing.html?id=${listing.id}">
     <div class="h-40">
       <img
@@ -20,10 +20,10 @@ export const Card = (listing) => {
   </a>`;
 };
 
-export const printListings = (listings) => {
-  listings.forEach((listing) => {
+export const printListings = async (listings) => {
+  for (const listing of listings) {
     const card = document.createElement("div");
-    card.innerHTML = Card(listing);
+    card.innerHTML = await Card(listing);
     document.querySelector(".cards").appendChild(card);
-  });
+  }
 };
