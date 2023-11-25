@@ -10,13 +10,13 @@ export const Card = async (listing) => {
   const title = checkTitle(listing.title);
 
   return `<a class="hover:opacity-50 transition-all flex flex-col gap-4" href="listing.html?id=${listing.id}">
-    <div class="h-40">
+
       <img
-        class="object-cover w-full h-full"
+        class="object-cover w-full h-full aspect-square"
         src="${media}"
         alt=""
       />
-    </div>
+ 
 
     <h3 class="text-secondary-800 text-xl font-bold">${title}</h3>
     <div>
