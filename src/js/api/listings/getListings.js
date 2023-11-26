@@ -4,7 +4,7 @@ import { printListings } from "./printListings.js";
 import { checkErrors } from "../checkErrors.js";
 import { displayErrors } from "../displayErrors.js";
 
-export async function getListings(contentHolder, sortByPopular, queryString) {
+export async function getListings(contentHolder, queryString) {
   const options = {
     method: "GET",
     headers: headers("application/json"),
@@ -20,7 +20,7 @@ export async function getListings(contentHolder, sortByPopular, queryString) {
     checkErrors(result);
     if (response.ok) {
       console.log(result);
-      printListings(result, contentHolder, sortByPopular);
+      printListings(result, contentHolder);
     }
   } catch (e) {
     displayErrors(e.message);

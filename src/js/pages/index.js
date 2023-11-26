@@ -1,4 +1,4 @@
 import { getListings } from "../api/listings/getListings.js";
 
-getListings("#popular", true, "&sort=endsAt&sortOrder=asc&limit=100");
-getListings("#ending-soon", false, "&sort=endsAt&sortOrder=asc&limit=4");
+getListings("#ending-soon", "&sort=endsAt&sortOrder=asc&limit=4");
+getListings("#latest", "&sort=created&sortOrder=desc&limit=4");
