@@ -26,11 +26,3 @@ export const Card = async (listing) => {
     <p class="text-secondary-100">${daysLeft}</p>
   </a>`;
 };
-
-export const printListings = async (listings) => {
-  for (const listing of listings) {
-    const card = document.createElement("div");
-    card.innerHTML = await Card(listing);
-    document.querySelector(".cards").appendChild(card);
-  }
-};
