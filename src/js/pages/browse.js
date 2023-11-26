@@ -2,13 +2,18 @@ import { getListings } from "../api/listings/getListings.js";
 
 let offset = 0;
 let sortString = `&sort=endsAt&sortOrder=asc`;
+let tags = "";
 
-getListings("#browse-listings", `${sortString}&limit=100`);
+const querySearch = new URLSearchParams(window.location.search).get("search");
+querySearch && (tags = `&_tag=${querySearch}`);
+let URL = `${sortString}&limit=100&offset=${offset}${tags}`;
+
+getListings("#browse-listings", URL);
 
 window.onscroll = () => {
   if (window.scrollY + window.innerHeight >= document.body.offsetHeight) {
     offset = offset + 100;
-    getListings("#browse-listings", `${sortString}&limit=100&offset=${offset}`);
+    getListings("#browse-listings", URL);
   }
 };
 
@@ -22,7 +27,6 @@ let currentText = "Ending soon";
 
 sortSelect.onclick = () => {
   sortMenu.classList.toggle("hidden");
-  console.log("hei");
 };
 
 document.onclick = (event) => {
@@ -44,7 +48,8 @@ const setNewest = () => {
     sortNewest.classList.add("border-primary-200");
     listingsContainer.innerHTML = "";
     sortString = `&sort=created&sortOrder=desc`;
-    getListings("#browse-listings", `${sortString}&limit=100`);
+    URL = `${sortString}&limit=100&offset=${offset}${tags}`;
+    getListings("#browse-listings", URL);
   }
 };
 
@@ -59,7 +64,8 @@ const setEnding = () => {
     sortEnding.classList.add("border-primary-200");
     listingsContainer.innerHTML = "";
     sortString = `&sort=endsAt&sortOrder=asc`;
-    getListings("#browse-listings", `${sortString}&limit=100`);
+    URL = `${sortString}&limit=100&offset=${offset}${tags}`;
+    getListings("#browse-listings", URL);
   }
 };
 
