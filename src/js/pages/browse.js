@@ -6,7 +6,6 @@ let sortString = `&sort=endsAt&sortOrder=asc`;
 getListings("#browse-listings", `${sortString}&limit=100`);
 
 window.onscroll = () => {
-  console.log(offset);
   if (window.scrollY + window.innerHeight >= document.body.offsetHeight) {
     offset = offset + 100;
     getListings("#browse-listings", `${sortString}&limit=100&offset=${offset}`);
@@ -21,8 +20,22 @@ const current = document.querySelector("#sort-current");
 const listingsContainer = document.querySelector("#browse-listings");
 let currentText = "Ending soon";
 
+sortSelect.onclick = () => {
+  sortMenu.classList.toggle("hidden");
+  console.log("hei");
+};
+
+document.onclick = (event) => {
+  const isClickInsideMenu = sortMenu.contains(event.target);
+  const isClickInsideSelect = sortSelect.contains(event.target);
+  if (!isClickInsideMenu && !isClickInsideSelect) {
+    sortMenu.classList.add("hidden");
+  }
+};
+
 const setNewest = () => {
   if (currentText === "Ending soon") {
+    sortMenu.classList.add("hidden");
     currentText = "Newest";
     current.innerText = currentText;
     sortEnding.classList.remove("border-primary-200");
@@ -37,6 +50,7 @@ const setNewest = () => {
 
 const setEnding = () => {
   if (currentText === "Newest") {
+    sortMenu.classList.add("hidden");
     currentText = "Ending soon";
     current.innerText = currentText;
     sortNewest.classList.remove("border-primary-200");

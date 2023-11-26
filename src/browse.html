@@ -15,11 +15,14 @@
         <h2>Browse</h2>
 
         <!-- Sorting -->
-        <div class="cursor-pointer relative">
-          <div id="sort-select" class="flex gap-2">
+        <div class="w-full flex flex-col items-end cursor-pointer relative">
+          <div
+            id="sort-select"
+            class="flex gap-2 hover:opacity-50 transition-all"
+          >
             <p class="text-secondary-200">Sort by:</p>
             <div class="flex gap-1 items-center">
-              <p id="sort-current" class="text-secondary-800 text-bold">
+              <p id="sort-current" class="text-secondary-800 font-bold">
                 Ending soon
               </p>
               <svg
@@ -42,7 +45,7 @@
 
           <div
             id="sort-menu"
-            class="shadow-md absolute bg-white z-20 top-6 left-0 w-[200px]"
+            class="hidden shadow-md absolute bg-white z-20 top-6 right-0 w-[200px]"
           >
             <div
               id="sort-ending"
