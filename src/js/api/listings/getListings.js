@@ -4,7 +4,7 @@ import { printListings } from "./printListings.js";
 import { checkErrors } from "../checkErrors.js";
 import { displayErrors } from "../displayErrors.js";
 
-export async function getListings(contentHolder, sortByPopular) {
+export async function getListings(contentHolder, sortByPopular, queryString) {
   const options = {
     method: "GET",
     headers: headers("application/json"),
@@ -12,7 +12,7 @@ export async function getListings(contentHolder, sortByPopular) {
 
   try {
     const response = await fetch(
-      `${apiURL}/auction/listings?_active=true&_bids=true&sort=endsAt&sortOrder=asc&limit=10`,
+      `${apiURL}/auction/listings?_active=true&_bids=true${queryString}`,
       options
     );
     const result = await response.json();
@@ -26,7 +26,3 @@ export async function getListings(contentHolder, sortByPopular) {
     displayErrors(e.message);
   }
 }
-
-getListings("#ending-soon", true);
-
-// `${apiURL}/auction/listings?_active=true&_bids=true&sort=endsAt&sortOrder=asc`
