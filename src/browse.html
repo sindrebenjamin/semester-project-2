@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lecture</title>
+    <script src="./js/components/index.js" type="module"></script>
+    <script defer src="./js/pages/browse.js" type="module"></script>
+    <link rel="stylesheet" href="../dist/output.css" />
+  </head>
+  <body class="text-secondary-400">
+    <div id="browse-container" class="p-4">
+      <div class="max-w-[1200px] m-auto">
+        <h2>Browse</h2>
+
+        <!-- Sorting -->
+        <div class="w-full flex flex-col items-end cursor-pointer relative">
+          <div
+            id="sort-select"
+            class="flex gap-2 hover:opacity-50 transition-all"
+          >
+            <p class="text-secondary-200">Sort by:</p>
+            <div class="flex gap-1 items-center">
+              <p id="sort-current" class="text-secondary-800 font-bold">
+                Ending soon
+              </p>
+              <svg
+                width="16"
+                height="17"
+                viewBox="0 0 16 17"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M11.3327 7.16667L7.99935 10.5L4.66602 7.16667"
+                  stroke="#020D1D"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+          </div>
+
+          <div
+            id="sort-menu"
+            class="hidden shadow-md absolute bg-white z-20 top-6 right-0 w-[200px]"
+          >
+            <div
+              id="sort-ending"
+              class="transition-all hover:bg-neutral-100 border-l-4 border-primary-200 p-2"
+            >
+              Ending soon
+            </div>
+            <div
+              id="sort-newest"
+              class="transition-all hover:bg-neutral-100 border-l-4 border-neutral-200 p-2"
+            >
+              Newest
+            </div>
+          </div>
+        </div>
+
+        <div
+          id="browse-listings"
+          class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6"
+        ></div>
+      </div>
+    </div>
+  </body>
+</html>

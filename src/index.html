@@ -5,10 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bidnet | Home</title>
     <script src="./js/components/index.js" type="module"></script>
-    <script src="./js/api/listings/getListings.js" type="module"></script>
+    <script src="./js/pages/index.js" type="module"></script>
     <link rel="stylesheet" href="../dist/output.css" />
   </head>
-  <body class="bg-neutral-100 text-secondary-400"></body>
-  <div class="cards grid grid-cols-2"></div>
-  <div id="error-element"></div>
+  <body class="text-secondary-400">
+    <!-- Ending soon -->
+
+    <div class="p-4">
+      <div class="max-w-[1200px] m-auto">
+        <h2>Ending Soon</h2>
+        <a
+          class="text-primary-300 hover:opacity-50 transition-all underline focus:outline-none focus:ring focus:ring- -700"
+          href="browse.html?order=ending"
+          >View more</a
+        >
+        <div
+          id="ending-soon"
+          class="grid grid-cols-2 md:grid-cols-4 gap-6"
+        ></div>
+      </div>
+    </div>
+
+    <!-- Popular -->
+
+    <div class="p-4">
+      <div class="max-w-[1200px] m-auto">
+        <h2>Newest</h2>
+        <a
+          class="text-primary-300 hover:opacity-50 transition-all underline focus:outline-none focus:ring focus:ring- -700"
+          href="browse.html?order=newest"
+          >View more</a
+        >
+        <div id="newest" class="grid grid-cols-2 md:grid-cols-4 gap-6"></div>
+      </div>
+    </div>
+
+    <div id="error-element"></div>
+  </body>
 </html>

@@ -1,6 +1,6 @@
 export const Searchbar = () => {
   return `
-  <form id="search-form" class="hidden md:hidden w-full max-w-[500px]">
+  <form id="search-form" class="hidden md:hidden w-full">
   <div class="relative">
     <input class="border-2 border-neutral-100 focus:border-primary-100 px-3 py-2 w-full focus:outline-none" type="text" id="search" name="search" placeholder="Search" />
 
