@@ -33,9 +33,9 @@ export const Nav = () => {
   </nav> `;
   } else {
     return `
-    <nav class="flex gap-2 items-center">
+    <nav class="ml-4 flex gap-2 items-center">
     <a
-    class="text-primary-300 hover:text-primary-500 transition-all underline focus:outline-none focus:ring focus:ring-primary-700"
+    class="whitespace-nowrap text-primary-300 hover:text-primary-500 transition-all underline focus:outline-none focus:ring focus:ring-primary-700"
     href="register.html"
     >Sign up</a> 
 
