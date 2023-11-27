@@ -1038,6 +1038,16 @@ video {
   background-color: rgb(8 59 41 / var(--tw-bg-opacity));
 }
 
+.hover\:bg-primary-100:hover{
+  --tw-bg-opacity: 1;
+  background-color: rgb(124 225 189 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-primary-300:hover{
+  --tw-bg-opacity: 1;
+  background-color: rgb(31 136 98 / var(--tw-bg-opacity));
+}
+
 .hover\:text-primary-500:hover{
   --tw-text-opacity: 1;
   color: rgb(0 88 56 / var(--tw-text-opacity));

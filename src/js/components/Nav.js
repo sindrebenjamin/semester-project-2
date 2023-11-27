@@ -35,13 +35,13 @@ export const Nav = () => {
     return `
     <nav class="ml-4 flex gap-2 items-center">
     <a
-    class="whitespace-nowrap text-primary-300 hover:text-primary-500 transition-all underline focus:outline-none focus:ring focus:ring-primary-700"
+    class="whitespace-nowrap text-primary-300 hover:opacity-50 transition-all underline focus:outline-none focus:ring focus:ring-primary-700"
     href="register.html"
     >Sign up</a> 
 
     <p class="text-secondary-400">or</p>
 
-    <a href="login.html" class="w-fit text-white text-sm font-bold bg-primary-400 py-2 px-6 hover:bg-primary-600 focus:outline-none focus:ring focus:ring-primary-700 transition-all cursor-pointer">Login</a>
+    <a href="login.html" class="w-fit text-white text-sm font-bold bg-primary-400 py-2 px-6 hover:bg-primary-300 focus:outline-none focus:ring focus:ring-primary-700 transition-all cursor-pointer">Login</a>
 
     </nav>
     
