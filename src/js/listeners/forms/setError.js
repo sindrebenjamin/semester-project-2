@@ -1,3 +1,5 @@
+import { addRemove } from "../../utils/addRemove.js";
+
 /**
  *
  * @param {*} test
@@ -13,18 +15,23 @@ export const setError = (test, input, hint, label, message, def) => {
     def ? (hint.innerText = def) : (hint.innerText = "");
     hint.classList.add("text-secondary-200");
     hint.classList.remove("text-red");
-    input.classList.add("border-secondary-50");
-    input.classList.add("placeholder-shown:border-secondary-50");
-    input.classList.remove("border-red");
+    addRemove(
+      ["border-secondary-50", "placeholder-shown:border-secondary-50"],
+      ["border-red"],
+      input
+    );
+
     label.classList.add("text-secondary-200");
     label.classList.remove("text-red");
   } else {
-    hint.classList.remove("text-secondary-200");
-    hint.classList.add("text-red");
     hint.innerText = message;
-    input.classList.remove("border-secondary-50");
-    input.classList.remove("placeholder-shown:border-secondary-50");
-    input.classList.add("border-red");
+    addRemove(["text-red"], ["text-secondary-200"], hint);
+    addRemove(
+      ["border-red"],
+      ["border-secondary-50", "placeholder-shown:border-secondary-50"],
+      input
+    );
+
     label.classList.remove("text-secondary-200");
     label.classList.add("text-red");
   }
