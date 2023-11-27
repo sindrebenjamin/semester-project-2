@@ -33,7 +33,7 @@ export const Nav = () => {
   </nav> `;
   } else {
     return `
-    <div class="flex gap-2 items-center">
+    <nav class="flex gap-2 items-center">
     <a
     class="text-primary-300 hover:text-primary-500 transition-all underline focus:outline-none focus:ring focus:ring-primary-700"
     href="register.html"
@@ -43,7 +43,7 @@ export const Nav = () => {
 
     <a href="login.html" class="w-fit text-white text-sm font-bold bg-primary-400 py-2 px-6 hover:bg-primary-600 focus:outline-none focus:ring focus:ring-primary-700 transition-all cursor-pointer">Login</a>
 
-    </div>
+    </nav>
     
     `;
   }

@@ -28,25 +28,27 @@ export const setHeader = () => {
   const headerProfile = document.querySelector("#header-profile");
   const navMenu = document.querySelector("#nav-menu");
 
-  headerProfile.onclick = () => {
-    navMenu.classList.toggle("hidden");
-    headerProfile.classList.toggle("opacity-50");
-  };
+  if (headerProfile) {
+    headerProfile.onclick = () => {
+      navMenu.classList.toggle("hidden");
+      headerProfile.classList.toggle("opacity-50");
+    };
 
-  document.onclick = (event) => {
-    const isClickInsideMenu = navMenu.contains(event.target);
-    const isClickInsideAvatar = headerProfile.contains(event.target);
+    document.onclick = (event) => {
+      if (
+        !navMenu.contains(event.target) &&
+        !headerProfile.contains(event.target)
+      ) {
+        navMenu.classList.add("hidden");
+        headerProfile.classList.remove("opacity-50");
+      }
+    };
 
-    if (!isClickInsideMenu && !isClickInsideAvatar) {
-      navMenu.classList.add("hidden");
-      headerProfile.classList.remove("opacity-50");
-    }
-  };
+    // Logout
 
-  // Logout
-
-  const logoutBtn = document.querySelector("#logout-btn");
-  logoutBtn.onclick = () => logout();
+    const logoutBtn = document.querySelector("#logout-btn");
+    logoutBtn.onclick = () => logout();
+  }
 
   // Toggle searchbar visibility
 
