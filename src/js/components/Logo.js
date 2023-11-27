@@ -1,6 +1,6 @@
 export const Logo = (color) => {
   return `<a href="index.html"><svg
-    class="${color}"
+    class="${color} hover:opacity-50 transition-all"
     width="48"
     height="44"
     viewBox="0 0 48 44"
