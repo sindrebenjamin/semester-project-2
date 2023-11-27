@@ -10,42 +10,48 @@
     <link rel="stylesheet" href="../dist/output.css" />
   </head>
   <body class="text-secondary-400">
-    <div id="browse-container" class="p-4">
+    <div id="browse-container" class="px-4 py-[64px] md:py-[128px]">
       <div class="max-w-[1200px] m-auto">
-        <h2>Browse</h2>
+        <h1 class="mb-6 md:mb-12 font-bold text-4xl md:text-5xl">
+          Browse Listings
+        </h1>
 
         <!-- Sorting -->
-        <div class="w-full flex flex-col items-end cursor-pointer relative">
-          <div
-            id="sort-select"
-            class="flex gap-2 hover:opacity-50 transition-all"
-          >
-            <p class="text-secondary-200">Sort by:</p>
-            <div class="flex gap-1 items-center">
-              <p id="sort-current" class="text-secondary-800 font-bold">
-                Ending soon
-              </p>
-              <svg
-                width="16"
-                height="17"
-                viewBox="0 0 16 17"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M11.3327 7.16667L7.99935 10.5L4.66602 7.16667"
-                  stroke="#020D1D"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
+        <div class="w-full flex flex-col cursor-pointer relative text-sm">
+          <div class="flex items-center mb-4 gap-6">
+            <div
+              id="sort-select"
+              class="flex gap-2 hover:opacity-50 transition-all whitespace-nowrap"
+            >
+              <p class="text-secondary-200">Sort by:</p>
+
+              <div class="flex gap-1 items-center">
+                <p id="sort-current" class="text-secondary-800 font-bold">
+                  Ending soon
+                </p>
+                <svg
+                  width="16"
+                  height="17"
+                  viewBox="0 0 16 17"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M11.3327 7.16667L7.99935 10.5L4.66602 7.16667"
+                    stroke="#020D1D"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
             </div>
+            <!-- <div class="h-[1px] bg-neutral-200 w-full"></div> -->
           </div>
 
           <div
             id="sort-menu"
-            class="hidden shadow-md absolute bg-white z-20 top-6 right-0 w-[200px]"
+            class="hidden shadow-md absolute bg-white z-20 top-6 left-0 w-[200px]"
           >
             <div
               id="sort-ending"
