@@ -17,9 +17,13 @@ export async function getListings(contentHolder, queryString) {
     );
     const result = await response.json();
 
+    if (result.length === 0) {
+      const holder = document.querySelector(contentHolder);
+      holder.innerHTML = "No results";
+    }
+
     checkErrors(result);
     if (response.ok) {
-      console.log(result);
       printListings(result, contentHolder);
     }
   } catch (e) {

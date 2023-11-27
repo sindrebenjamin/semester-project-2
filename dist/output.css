@@ -661,10 +661,6 @@ video {
   width: 100vw;
 }
 
-.w-\[140px\]{
-  width: 140px;
-}
-
 .min-w-\[200px\]{
   min-width: 200px;
 }
@@ -705,10 +701,6 @@ video {
 
 .items-center{
   align-items: center;
-}
-
-.justify-end{
-  justify-content: flex-end;
 }
 
 .justify-center{

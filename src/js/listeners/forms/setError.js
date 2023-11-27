@@ -1,31 +1,35 @@
+import { addRemove } from "../../utils/addRemove.js";
+
 /**
  *
- * @param {*} test
- * @param {*} input
- * @param {*} hint
- * @param {*} label
- * @param {*} message
+ * @param {boolean} test True or false value based on test
+ * @param {*} input Input field from form
+ * @param {*} hint Hint element associated with input
+ * @param {*} label Label associated with input
+ * @param {*} message Message to display inside hint element
+ * @param {*} def Default message for hint element
+ *
  * Changes style for input and displays message if value is invalid.
  */
 
 export const setError = (test, input, hint, label, message, def) => {
   if (test) {
     def ? (hint.innerText = def) : (hint.innerText = "");
-    hint.classList.add("text-secondary-200");
-    hint.classList.remove("text-red");
-    input.classList.add("border-secondary-50");
-    input.classList.add("placeholder-shown:border-secondary-50");
-    input.classList.remove("border-red");
-    label.classList.add("text-secondary-200");
-    label.classList.remove("text-red");
+    addRemove(["text-secondary-200"], ["text-red"], hint);
+    addRemove(
+      ["border-secondary-50", "placeholder-shown:border-secondary-50"],
+      ["border-red"],
+      input
+    );
+    addRemove(["text-secondary-200"], ["text-red"], label);
   } else {
-    hint.classList.remove("text-secondary-200");
-    hint.classList.add("text-red");
     hint.innerText = message;
-    input.classList.remove("border-secondary-50");
-    input.classList.remove("placeholder-shown:border-secondary-50");
-    input.classList.add("border-red");
-    label.classList.remove("text-secondary-200");
-    label.classList.add("text-red");
+    addRemove(["text-red"], ["text-secondary-200"], hint);
+    addRemove(
+      ["border-red"],
+      ["border-secondary-50", "placeholder-shown:border-secondary-50"],
+      input
+    );
+    addRemove(["text-red"], ["text-secondary-200"], label);
   }
 };
