@@ -1,7 +1,15 @@
 import { checkTitle } from "../utils/checkTitle.js";
 import { dateToDays } from "../utils/dateToDays.js";
 
-export const Bids = (bids) => {
+/**
+ *
+ * @param {*} bids Array containing bids
+ * @param {*} int Index for loop
+ * @param {*} loopBreak Set to true to break loop at 3
+ * @returns
+ */
+
+export const Bids = (bids, int, loopBreak) => {
   const allBids = document.createElement("div");
   allBids.classList.add(
     "text-xs",
@@ -11,7 +19,7 @@ export const Bids = (bids) => {
     "gap-3"
   );
 
-  for (let i = 0; i < bids.length; i++) {
+  for (let i = int; i < bids.length; i++) {
     // Title
     const listingTitle = document.createElement("p");
     listingTitle.innerText = checkTitle(bids[i].listing.title);
@@ -37,8 +45,10 @@ export const Bids = (bids) => {
     // Append top
     allBids.appendChild(bidContainer);
 
-    if (i === 3) {
-      break;
+    if (loopBreak) {
+      if (i === 3) {
+        break;
+      }
     }
   }
 

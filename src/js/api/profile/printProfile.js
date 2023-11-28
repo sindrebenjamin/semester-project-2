@@ -12,20 +12,31 @@ export const printProfile = async (user) => {
   console.log(bidResults);
 
   const topSection = Profile(profileResult);
-  const bidSection = Bids(bidResults);
+  const bidSection = Bids(bidResults, 0, true);
+  const moreBids = Bids(bidResults, 4, false);
 
-  const viewMore = bidResults.length > 4 ? document.createElement("p") : ``;
-  viewMore.innerText = `View more (${bidResults.length - 4})`;
-  viewMore.id = "view-more";
+  const viewMore = document.querySelector("#view-more");
+  viewMore.innerText =
+    bidResults.length > 4 ? `View more (${bidResults.length - 4})` : ``;
 
-  const profileContainer = document.querySelector("#profile");
-  profileContainer.innerHTML = `${topSection} ${bidSection} ${viewMore.outerHTML}`;
+  // Print content
+  document.querySelector("#profile").innerHTML = topSection;
+  document.querySelector("#bids").innerHTML = bidSection;
+  document.querySelector("#more-bids").innerHTML = moreBids;
 
-  document.querySelector("#view-more").onclick = () => {
-    let open = false;
+  // Toggle more results
+  const viewMoreBtn = document.querySelector("#view-more-btn");
+  const viewArrow = document.querySelector("#view-arrow");
+
+  let open = false;
+  viewMoreBtn.onclick = () => {
     open = !open;
     console.log(open);
-    viewMore.innerText = open ? "Hide results" : "View more";
-    profileContainer.innerHTML = `${topSection} ${bidSection}`;
+    viewMore.innerText = !open
+      ? `View more (${bidResults.length - 4})`
+      : `Show less results`;
+    viewArrow.classList.toggle(`rotate-180`);
+
+    document.querySelector("#more-bids").classList.toggle("hidden");
   };
 };
