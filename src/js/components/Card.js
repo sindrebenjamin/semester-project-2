@@ -28,26 +28,4 @@ ${title.outerHTML}
 </div>
 <p class="text-secondary-100">${daysLeft}</p>
 </a>`;
-
-  /*
-
-  return `<a class="hover:opacity-50 transition-all flex flex-col gap-4" href="listing.html?id=${listing.id}">
-
-      <img
-        class="object-cover w-full h-full aspect-square"
-        src="${media}"
-        alt=""
-      />
- 
-
-    <h3 class="text-secondary-800 text-xl font-bold">${title}</h3>
-    <div>
-      <p>Current bid</p>
-      <p class="font-bold">$${bid}</p>
-    </div>
-    <p class="text-secondary-100">${daysLeft}</p>
-  </a>`;
-
-
-  */
 };

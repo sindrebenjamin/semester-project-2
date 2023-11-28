@@ -1,10 +1,9 @@
 import { headers } from "../headers.js";
 import { apiURL } from "../constants.js";
-import { printListings } from "./printListings.js";
 import { checkErrors } from "../checkErrors.js";
 import { displayErrors } from "../displayErrors.js";
 
-export async function getListings(contentHolder, queryString) {
+export async function getProfile(string) {
   const options = {
     method: "GET",
     headers: headers("application/json"),
@@ -12,18 +11,14 @@ export async function getListings(contentHolder, queryString) {
 
   try {
     const response = await fetch(
-      `${apiURL}/auction/listings?_active=true&_bids=true${queryString}`,
+      `${apiURL}/auction/profiles/${string}`,
       options
     );
     const result = await response.json();
 
     checkErrors(result);
     if (response.ok) {
-      printListings(result, contentHolder);
-      if (result.length === 0) {
-        const holder = document.querySelector(contentHolder);
-        holder.innerHTML = "No results";
-      }
+      return result;
     }
   } catch (e) {
     displayErrors(e.message);

@@ -7,7 +7,7 @@ const profile = load("profile");
 export const Nav = () => {
   if (profile) {
     const avatar = checkAvatar(profile.avatar);
-    return `<nav class="relative">
+    return `<nav class="ml-4 relative">
     <div class=" w-[44px] h-[44px] hover:opacity-50 transition-all cursor-pointer" id="header-profile">
     <img class="w-[44px] h-[44px] rounded-full object-cover" src="${avatar}" alt="" />
     <svg
