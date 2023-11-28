@@ -5,7 +5,7 @@ import { checkTitle } from "../utils/checkTitle.js";
 
 export const Card = async (listing) => {
   const media = await checkMedia(listing.media[0]);
-  const daysLeft = `Ends in ` + dateToDays(listing.endsAt);
+  const daysLeft = dateToDays(listing.endsAt);
   const bid = document.createElement("p");
   bid.innerText = currentBid(listing.bids);
   bid.classList.add("font-bold");

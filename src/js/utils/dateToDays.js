@@ -10,7 +10,9 @@ export const dateToDays = (date, past) => {
   if (!past) {
     const timeDifference = targetDate - currentDate;
     const daysRemaining = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
-    return `${daysRemaining} ` + (daysRemaining > 1 ? `days` : `day`);
+    return daysRemaining <= 0
+      ? `Auction ended`
+      : `Ends in ${daysRemaining} ` + (daysRemaining > 1 ? `days` : `day`);
   } else {
     const timeDifference = currentDate - targetDate;
     const daysAgo = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));

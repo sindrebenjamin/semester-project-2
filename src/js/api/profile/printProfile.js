@@ -1,6 +1,7 @@
 import { getProfile } from "./getProfile.js";
 import { Profile } from "../../components/Profile.js";
 import { Bids } from "../../components/Bids.js";
+import { printListings } from "../listings/printListings.js";
 
 export const printProfile = async (user) => {
   const profileResult = await getProfile(user);
@@ -8,12 +9,12 @@ export const printProfile = async (user) => {
     user + "/listings?_seller=true&_bids=true"
   );
   const bidResults = await getProfile(user + "/bids?_listings=true");
-  //console.log(listingsResult);
-  console.log(bidResults);
+  console.log(listingsResult);
 
   const topSection = Profile(profileResult);
   const bidSection = Bids(bidResults, 0, true);
   const moreBids = Bids(bidResults, 4, false);
+  printListings(listingsResult, "#listings", `Lots Offered by ${user}`);
 
   const viewMore = document.querySelector("#view-more");
   viewMore.innerText =
@@ -21,7 +22,9 @@ export const printProfile = async (user) => {
 
   // Print content
   document.querySelector("#profile").innerHTML = topSection;
-  document.querySelector("#bids").innerHTML = bidSection;
+  document.querySelector("#bids").innerHTML =
+    `<h2 class="mb-6 md:mb-8 font-bold text-2xl md:text-3xl">Bid History</h2>` +
+    bidSection;
   document.querySelector("#more-bids").innerHTML = moreBids;
 
   // Toggle more results
@@ -31,7 +34,6 @@ export const printProfile = async (user) => {
   let open = false;
   viewMoreBtn.onclick = () => {
     open = !open;
-    console.log(open);
     viewMore.innerText = !open
       ? `View more (${bidResults.length - 4})`
       : `Show less results`;
