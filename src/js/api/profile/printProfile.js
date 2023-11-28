@@ -9,10 +9,23 @@ export const printProfile = async (user) => {
   );
   const bidResults = await getProfile(user + "/bids?_listings=true");
   //console.log(listingsResult);
-  //console.log(bidResults);
+  console.log(bidResults);
 
   const topSection = Profile(profileResult);
   const bidSection = Bids(bidResults);
 
-  document.querySelector("#profile").innerHTML = `${topSection} ${bidSection}`;
+  const viewMore = bidResults.length > 4 ? document.createElement("p") : ``;
+  viewMore.innerText = `View more (${bidResults.length - 4})`;
+  viewMore.id = "view-more";
+
+  const profileContainer = document.querySelector("#profile");
+  profileContainer.innerHTML = `${topSection} ${bidSection} ${viewMore.outerHTML}`;
+
+  document.querySelector("#view-more").onclick = () => {
+    let open = false;
+    open = !open;
+    console.log(open);
+    viewMore.innerText = open ? "Hide results" : "View more";
+    profileContainer.innerHTML = `${topSection} ${bidSection}`;
+  };
 };
