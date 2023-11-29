@@ -14,7 +14,7 @@ export const printProfile = async (user) => {
   const topSection = Profile(profileResult);
   const bidSection = Bids(bidResults, 0, true);
   const moreBids = Bids(bidResults, 4, false);
-  printListings(listingsResult, "#listings", `Lots Offered by ${user}`);
+  printListings(listingsResult, "#listings");
 
   const viewMore = document.querySelector("#view-more");
   viewMore.innerText =
@@ -26,6 +26,9 @@ export const printProfile = async (user) => {
     `<h2 class="mb-6 md:mb-8 font-bold text-2xl md:text-3xl">Bid History</h2>` +
     bidSection;
   document.querySelector("#more-bids").innerHTML = moreBids;
+  document.querySelector(
+    "#listings-heading"
+  ).innerText = `Lots Offered by ${user}`;
 
   // Toggle more results
   const viewMoreBtn = document.querySelector("#view-more-btn");

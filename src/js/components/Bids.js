@@ -11,13 +11,7 @@ import { dateToDays } from "../utils/dateToDays.js";
 
 export const Bids = (bids, int, loopBreak) => {
   const allBids = document.createElement("div");
-  allBids.classList.add(
-    "text-xs",
-    "max-w-[370px]",
-    "flex",
-    "flex-col",
-    "gap-3"
-  );
+  allBids.classList.add("text-xs", "flex", "flex-col");
 
   for (let i = int; i < bids.length; i++) {
     // Title
@@ -28,7 +22,7 @@ export const Bids = (bids, int, loopBreak) => {
     // Days ago
     const daysAgo = document.createElement("p");
     daysAgo.innerText = dateToDays(bids[i].created, true) + ` ago`;
-    daysAgo.classList.add("text-secondary-100", "text-right");
+    daysAgo.classList.add("text-secondary-100", "text-right", "sm:text-left");
 
     // Amount
     const amount = document.createElement("p");
@@ -36,8 +30,15 @@ export const Bids = (bids, int, loopBreak) => {
     amount.classList.add("font-bold", "text-right");
 
     // Append
-    const bidContainer = document.createElement("div");
-    bidContainer.classList.add("grid", "grid-cols-4");
+    const bidContainer = document.createElement("a");
+    bidContainer.href = `listing.html?id=${bids[i].listing.id}`;
+    bidContainer.classList.add(
+      "grid",
+      "grid-cols-4",
+      "sm:grid-cols-4",
+      "hover:bg-neutral-100",
+      "py-2"
+    );
     bidContainer.appendChild(listingTitle);
     bidContainer.appendChild(daysAgo);
     bidContainer.appendChild(amount);
