@@ -6,7 +6,7 @@ import { logout } from "../api/auth/logout.js";
 
 const Header = () => {
   return `<div class="m-auto max-w-[1200px] items-center flex justify-between w-full">
-  <div class="md:mr-6">${Logo("fill-primary-400")} 
+  <div class="mr-4 md:mr-6">${Logo("fill-primary-400")} 
   </div>
   ${Searchbar()} 
   <div class="flex sm:gap-8 items-center">
