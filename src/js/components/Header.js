@@ -9,7 +9,7 @@ const Header = () => {
   <div class="mr-4">${Logo("fill-primary-400")} 
   </div>
   ${Searchbar()} 
-  <div class="flex gap-8 items-center">
+  <div class="flex sm:gap-8 items-center">
   ${Searchbutton()}
   ${Nav()}
   </div>

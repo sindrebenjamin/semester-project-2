@@ -1318,6 +1318,10 @@ video {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
+  .sm\:gap-8{
+    gap: 2rem;
+  }
+
   .sm\:text-left{
     text-align: left;
   }
