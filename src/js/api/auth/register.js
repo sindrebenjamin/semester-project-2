@@ -28,15 +28,3 @@ export async function register(userData) {
     displayErrors(e.message);
   }
 }
-
-/*
-
-const userData = {
-    name: "sindrelinerereeerereo",
-    email: "sindbert1@stud.noroff.nyyo",
-    password: "1234568"
-}
-
-register(userData);
-
-*/

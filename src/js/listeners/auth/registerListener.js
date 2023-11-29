@@ -3,6 +3,7 @@ import { inputEmailListener } from "../forms/inputEmail.js";
 import { inputNameListener } from "../forms/inputName.js";
 import { inputPasswordListener } from "../forms/inputPassword.js";
 import { inputAvatarListener } from "../forms/inputAvatar.js";
+const profile = new URLSearchParams(window.location.search).get("user");
 
 function registerListener(event) {
   event.preventDefault();
@@ -27,3 +28,6 @@ inputEmailListener();
 inputNameListener();
 inputPasswordListener("Password must be at least 8 characters");
 inputAvatarListener();
+
+const loginLink = document.querySelector("#login-link");
+loginLink.href = !profile ? `login.html` : `login.html?user=${profile}`;
