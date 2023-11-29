@@ -13,7 +13,7 @@ const profile = load("profile");
 export const Nav = () => {
   if (profile) {
     const avatar = checkAvatar(profile.avatar);
-    return `<nav class="ml-4 relative">
+    return `<nav class="ml-4 md:ml-6 relative">
     <div class=" w-[44px] h-[44px] hover:opacity-50 transition-all cursor-pointer" id="header-profile">
     <img class="w-[44px] h-[44px] rounded-full object-cover" src="${avatar}" alt="" />
     <svg
@@ -39,7 +39,7 @@ export const Nav = () => {
   </nav> `;
   } else {
     return `
-    <nav class="ml-4 flex gap-2 items-center">
+    <nav class="ml-4 md:ml-6 flex gap-2 items-center">
     <a
     class="whitespace-nowrap text-primary-300 hover:opacity-50 transition-all underline focus:outline-none focus:ring focus:ring-primary-700"
     href="${registerLink}"
