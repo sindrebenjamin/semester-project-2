@@ -993,6 +993,11 @@ video {
   padding-bottom: 1rem;
 }
 
+.py-6{
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
 .pb-1{
   padding-bottom: 0.25rem;
 }
@@ -1007,6 +1012,10 @@ video {
 
 .text-left{
   text-align: left;
+}
+
+.text-center{
+  text-align: center;
 }
 
 .text-right{
@@ -1293,6 +1302,14 @@ video {
     max-width: 360px;
   }
 
+  .sm\:max-w-\[400px\]{
+    max-width: 400px;
+  }
+
+  .sm\:max-w-\[300px\]{
+    max-width: 300px;
+  }
+
   .sm\:grid-cols-3{
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
@@ -1325,6 +1342,10 @@ video {
 
   .md\:hidden{
     display: none;
+  }
+
+  .md\:w-\[360px\]{
+    width: 360px;
   }
 
   .md\:max-w-\[600px\]{

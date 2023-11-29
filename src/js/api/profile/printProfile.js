@@ -31,10 +31,17 @@ export const printProfile = async (user) => {
   const moreBids = Bids(bidResults, 4, false);
   printListings(listingsResult, "#listings");
 
+  // Conditional rendering
   if (listingsResult.length === 0) {
     const listings = document.querySelector("#listings");
     listings.innerHTML = noListings;
     listings.classList.remove("grid");
+  }
+
+  if (bidResults.length === 0) {
+    const bids = document.querySelector("#bids-wrapper");
+    bids.classList.remove("md:max-w-[360px]");
+    bids.classList.add("md:max-w-[400px]");
   }
 
   // Print content
