@@ -6,10 +6,10 @@ import { logout } from "../api/auth/logout.js";
 
 const Header = () => {
   return `<div class="m-auto max-w-[1200px] items-center flex justify-between w-full">
-  <div class="mr-4">${Logo("fill-primary-400")} 
+  <div class="mr-4 md:mr-6">${Logo("fill-primary-400")} 
   </div>
   ${Searchbar()} 
-  <div class="flex gap-8 items-center">
+  <div class="flex sm:gap-8 items-center">
   ${Searchbutton()}
   ${Nav()}
   </div>
@@ -19,7 +19,7 @@ const Header = () => {
 export const setHeader = () => {
   const headerElement = document.createElement("header");
   headerElement.innerHTML = Header();
-  headerElement.classList.add("bg-white", "py-3", "px-4");
+  headerElement.classList.add("bg-white", "py-3", "px-4", "md:px-6");
 
   document.body.prepend(headerElement);
 
@@ -34,15 +34,17 @@ export const setHeader = () => {
       headerProfile.classList.toggle("opacity-50");
     };
 
-    document.onclick = (event) => {
-      if (
-        !navMenu.contains(event.target) &&
-        !headerProfile.contains(event.target)
-      ) {
-        navMenu.classList.add("hidden");
-        headerProfile.classList.remove("opacity-50");
-      }
-    };
+    document.addEventListener("DOMContentLoaded", function () {
+      document.onclick = (event) => {
+        if (
+          !navMenu.contains(event.target) &&
+          !headerProfile.contains(event.target)
+        ) {
+          navMenu.classList.add("hidden");
+          headerProfile.classList.remove("opacity-50");
+        }
+      };
+    });
 
     // Logout
 

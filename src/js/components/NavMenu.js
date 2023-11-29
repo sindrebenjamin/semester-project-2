@@ -1,14 +1,17 @@
 export const NavMenu = (name, credits) => {
   return `<div id="nav-menu" class="text-sm hidden bg-white absolute top-[60px] right-0 w-[200px] shadow-md z-20">
 
-  <div class="p-4">
+  <div class="p-4 flex flex-col gap-3">
+  <div>
   <p class="text-secondary-100 text-xs">Logged in as</p>
   <p class="text-primary-400 font-bold text-sm">${name}</p>
   </div>
-  <div class="p-4">
+  <div>
   <p class="text-secondary-100 text-xs">My balance</p>
   <p class="text-primary-400 font-bold text-sm">$${credits}</p>
   </div>
+  </div>
+
   
   <div class="h-[1px] w-full bg-secondary-50"></div>
 

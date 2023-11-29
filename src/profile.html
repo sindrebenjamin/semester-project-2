@@ -11,22 +11,20 @@
   </head>
   <body class="text-secondary-400">
     <main>
-      <div class="px-6 py-[64px] md:py-[128px]">
+      <div class="px-4 md:px-6 py-[64px] md:py-[128px]">
         <div class="max-w-[1200px] m-auto">
           <!-- Full page wrapper -->
           <div class="md:flex justify-between gap-16">
             <!-- Profile & Bid History wrapper -->
-            <div
-              class="md:max-w-[360px] w-full sm:flex justify-between md:block"
-            >
+            <div class="">
               <!-- Profile -->
-              <div id="profile"></div>
+              <div id="profile" class="md:w-[360px]"></div>
               <!-- Divider -->
               <div
-                class="h-[1px] bg-neutral-100 w-full my-[36px] sm:hidden md:block"
+                class="h-[1px] bg-neutral-100 w-full my-[36px] md:max-w-[360px]"
               ></div>
               <!-- Bid history -->
-              <div class="w-full sm:max-w-[360px]">
+              <div id="bids-wrapper" class="w-full">
                 <div id="bids"></div>
                 <div class="hidden" id="more-bids"></div>
                 <div
