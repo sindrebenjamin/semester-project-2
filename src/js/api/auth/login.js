@@ -3,6 +3,7 @@ import { apiURL } from "../constants.js";
 import { displayErrors } from "../displayErrors.js";
 import { save } from "../storage/save.js";
 import { checkErrors } from "../checkErrors.js";
+const profile = new URLSearchParams(window.location.search).get("user");
 
 export async function login(userData) {
   const options = {
@@ -21,22 +22,11 @@ export async function login(userData) {
       save("token", result.accessToken);
       delete result.accessToken;
       save("profile", result);
-      window.location.href = "index.html";
-      //return result;
+      !profile
+        ? (window.location.href = "index.html")
+        : (window.location.href = `profile.html?user=${profile}`);
     }
   } catch (e) {
     displayErrors(e.message);
   }
 }
-
-/*
-
-const userData = {
-    email: "sindbert@stud.noroff.no",
-    password: "1234568"
-}
-
-login(userData);
-
-
-*/

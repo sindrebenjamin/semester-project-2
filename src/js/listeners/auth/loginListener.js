@@ -1,4 +1,5 @@
 import { login } from "../../api/auth/login.js";
+const profile = new URLSearchParams(window.location.search).get("user");
 
 function loginListener(event) {
   event.preventDefault();
@@ -13,3 +14,8 @@ function loginListener(event) {
 
 const loginForm = document.querySelector("#login-form");
 loginForm.addEventListener("submit", loginListener);
+
+const registerLink = document.querySelector("#register-link");
+registerLink.href = !profile
+  ? `register.html`
+  : `register.html?user=${profile}`;

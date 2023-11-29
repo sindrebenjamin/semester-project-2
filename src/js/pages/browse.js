@@ -24,6 +24,7 @@ getListings("#browse-listings", URL);
 window.onscroll = () => {
   if (window.scrollY + window.innerHeight >= document.body.offsetHeight) {
     offset = offset + 100;
+    URL = updateURL();
     getListings("#browse-listings", URL);
   }
 };

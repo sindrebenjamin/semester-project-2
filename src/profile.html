@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bidnet | Profile</title>
+    <script defer src="./js/pages/profile.js" type="module"></script>
+    <script src="./js/components/index.js" type="module"></script>
+    <link rel="stylesheet" href="../dist/output.css" />
+  </head>
+  <body class="text-secondary-400">
+    <main>
+      <div class="px-6 py-[64px] md:py-[128px]">
+        <div class="max-w-[1200px] m-auto">
+          <!-- Full page wrapper -->
+          <div class="md:flex justify-between gap-16">
+            <!-- Profile & Bid History wrapper -->
+            <div
+              class="md:max-w-[360px] w-full sm:flex justify-between md:block"
+            >
+              <!-- Profile -->
+              <div id="profile"></div>
+              <!-- Divider -->
+              <div
+                class="h-[1px] bg-neutral-100 w-full my-[36px] sm:hidden md:block"
+              ></div>
+              <!-- Bid history -->
+              <div class="w-full sm:max-w-[360px]">
+                <div id="bids"></div>
+                <div class="hidden" id="more-bids"></div>
+                <div
+                  id="view-more-btn"
+                  class="cursor-pointer flex items-center gap-1 justify-center hover:opacity-50 transition-all mt-[36px] hidden"
+                >
+                  <div id="view-more"></div>
+                  <svg
+                    id="view-arrow"
+                    width="25"
+                    height="24"
+                    viewBox="0 0 25 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M17.5 10L12.5 15L7.5 10"
+                      stroke="#263448"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <!-- Divider -->
+            <div
+              class="h-[1px] bg-neutral-100 w-full my-[36px] md:hidden"
+            ></div>
+            <!-- Listings -->
+            <div>
+              <h2
+                class="mb-6 md:mb-8 font-bold text-2xl md:text-3xl"
+                id="listings-heading"
+              ></h2>
+              <div
+                id="listings"
+                class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-2 lg:grid-cols-3 gap-6 md:max-w-[600px]"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div class="text-red" id="error-element"></div>
+  </body>
+</html>

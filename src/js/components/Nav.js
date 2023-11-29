@@ -1,13 +1,19 @@
 import { load } from "../api/storage/load.js";
 import { NavMenu } from "./NavMenu.js";
 import { checkAvatar } from "../utils/checkAvatar.js";
-
+const profilePage = new URLSearchParams(window.location.search).get("user");
+const registerLink = !profilePage
+  ? `register.html`
+  : `register.html?user=${profilePage}`;
+const loginLink = !profilePage
+  ? `login.html`
+  : `login.html?user=${profilePage}`;
 const profile = load("profile");
 
 export const Nav = () => {
   if (profile) {
     const avatar = checkAvatar(profile.avatar);
-    return `<nav class="relative">
+    return `<nav class="ml-4 relative">
     <div class=" w-[44px] h-[44px] hover:opacity-50 transition-all cursor-pointer" id="header-profile">
     <img class="w-[44px] h-[44px] rounded-full object-cover" src="${avatar}" alt="" />
     <svg
@@ -36,12 +42,12 @@ export const Nav = () => {
     <nav class="ml-4 flex gap-2 items-center">
     <a
     class="whitespace-nowrap text-primary-300 hover:opacity-50 transition-all underline focus:outline-none focus:ring focus:ring-primary-700"
-    href="register.html"
+    href="${registerLink}"
     >Sign up</a> 
 
     <p class="text-secondary-400">or</p>
 
-    <a href="login.html" class="w-fit text-white text-sm font-bold bg-primary-400 py-2 px-6 hover:bg-primary-300 focus:outline-none focus:ring focus:ring-primary-700 transition-all cursor-pointer">Login</a>
+    <a href="${loginLink}" class="w-fit text-white text-sm font-bold bg-primary-400 py-2 px-6 hover:bg-primary-300 focus:outline-none focus:ring focus:ring-primary-700 transition-all cursor-pointer">Login</a>
 
     </nav>
     
