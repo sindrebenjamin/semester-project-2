@@ -34,15 +34,17 @@ export const setHeader = () => {
       headerProfile.classList.toggle("opacity-50");
     };
 
-    document.onclick = (event) => {
-      if (
-        !navMenu.contains(event.target) &&
-        !headerProfile.contains(event.target)
-      ) {
-        navMenu.classList.add("hidden");
-        headerProfile.classList.remove("opacity-50");
-      }
-    };
+    document.addEventListener("DOMContentLoaded", function () {
+      document.onclick = (event) => {
+        if (
+          !navMenu.contains(event.target) &&
+          !headerProfile.contains(event.target)
+        ) {
+          navMenu.classList.add("hidden");
+          headerProfile.classList.remove("opacity-50");
+        }
+      };
+    });
 
     // Logout
 
