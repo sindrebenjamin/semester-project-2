@@ -14,7 +14,6 @@ export async function register(userData) {
   try {
     const response = await fetch(`${apiURL}/auction/auth/register`, options);
     const result = await response.json();
-    console.log(result);
 
     checkErrors(result);
     if (response.ok) {

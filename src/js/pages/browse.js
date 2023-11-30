@@ -81,11 +81,11 @@ sortSelect.onclick = () => {
   sortMenu.classList.toggle("hidden");
 };
 
-document.onclick = (event) => {
+document.addEventListener("click", function (event) {
   if (!sortMenu.contains(event.target) && !sortSelect.contains(event.target)) {
     sortMenu.classList.add("hidden");
   }
-};
+});
 
 // Change fetch endpoint based on what link user clicks on from homepage
 
