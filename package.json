@@ -1,6 +1,6 @@
 {
   "name": "bidnet",
-  "version": "0.8.5",
+  "version": "0.8.6",
   "description": "Semester Project 2",
   "main": "index.js",
   "scripts": {
