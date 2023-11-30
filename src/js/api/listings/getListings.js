@@ -4,6 +4,7 @@ import { printListings } from "./printListings.js";
 import { checkErrors } from "../checkErrors.js";
 import { displayErrors } from "../displayErrors.js";
 const search = new URLSearchParams(window.location.search).get("search");
+let endReached = false;
 
 export async function getListings(contentHolder, queryString) {
   const options = {
@@ -17,7 +18,6 @@ export async function getListings(contentHolder, queryString) {
       options
     );
     const result = await response.json();
-    let endReached = false;
 
     checkErrors(result);
     if (response.ok) {
@@ -26,8 +26,9 @@ export async function getListings(contentHolder, queryString) {
         document.querySelector(contentHolder).innerHTML = "No results";
       } else if (result.length === 0 && !endReached) {
         endReached = true;
-        document.querySelector(contentHolder).innerHTML +=
-          "You have reached the end";
+        document.querySelector(
+          contentHolder
+        ).innerHTML += `<div class="text-center mt-[80px] text-xl col-span-4">You have reached the end</div>`;
       }
     }
   } catch (e) {
