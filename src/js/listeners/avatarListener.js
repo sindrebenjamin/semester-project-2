@@ -47,7 +47,7 @@ discardBtn.onclick = (e) => {
 };
 
 function discard() {
-  inputField.value = profileAvatar;
+  inputField.value = profile.avatar ? profileAvatar : "";
   currentAvatar.src = profileAvatar;
   settingsWrapper.classList.add("hidden");
   profileSection.classList.remove("hidden");
