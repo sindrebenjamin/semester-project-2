@@ -8,7 +8,9 @@ const profileAvatar = checkAvatar(profile.avatar);
 const currentAvatar = document.querySelector("#current-avatar");
 const settingsForm = document.querySelector("#settings-form");
 const inputField = document.querySelector("#avatar");
-const removeBtn = document.querySelector("#remove-btn");
+const discardBtn = document.querySelector("#discard-btn");
+const settingsWrapper = document.querySelector("#settings-wrapper");
+const profileSection = document.querySelector("#profile");
 
 currentAvatar.src = profileAvatar;
 profile.avatar && (inputField.value = profileAvatar);
@@ -37,8 +39,25 @@ settingsForm.addEventListener("submit", function (e) {
   testResult && putAvatar(body);
 });
 
-removeBtn.onclick = (e) => {
+// Discard changes
+
+discardBtn.onclick = (e) => {
   e.preventDefault();
-  inputField.value = "";
-  currentAvatar.src = "./public/noavatar.png";
+  inputField.value = profileAvatar;
+  currentAvatar.src = profileAvatar;
+  settingsWrapper.classList.add("hidden");
+  profileSection.classList.remove("hidden");
 };
+
+currentAvatar.onclick = () => {
+  inputField.focus();
+};
+
+// Open settings
+
+document.addEventListener("click", (e) => {
+  if (e.target === "change-avatar" || e.target.closest("#change-avatar")) {
+    settingsWrapper.classList.remove("hidden");
+    profileSection.classList.add("hidden");
+  }
+});

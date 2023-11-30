@@ -31,7 +31,7 @@ export const Profile = (user) => {
   const localProfile = load("profile");
   const changeAvatar =
     localProfile.name === user.name
-      ? `<a href="settings.html" class="text-primary-300 hover:opacity-50 transition-all underline focus:outline-none focus:ring focus:ring-primary-700">Change avatar</a>`
+      ? `<a id="change-avatar" class="cursor-pointer text-primary-300 hover:opacity-50 transition-all underline focus:outline-none focus:ring focus:ring-primary-700">Change avatar</a>`
       : "";
 
   // Return component
