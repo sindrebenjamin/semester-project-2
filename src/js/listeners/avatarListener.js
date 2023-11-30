@@ -2,6 +2,7 @@ import { load } from "../api/storage/load.js";
 import { checkAvatar } from "../utils/checkAvatar.js";
 import { inputAvatarListener } from "./forms/inputProfileAvatar.js";
 import { putAvatar } from "../api/profile/putAvatar.js";
+import { setError } from "./forms/setError.js";
 
 const profile = load("profile");
 const profileAvatar = checkAvatar(profile.avatar);
@@ -55,8 +56,13 @@ currentAvatar.onclick = () => {
 
 // Open settings
 
+const label = document.querySelector("#avatar-label");
+const hint = document.querySelector("#avatar-hint");
+
 document.addEventListener("click", (e) => {
   if (e.target === "change-avatar" || e.target.closest("#change-avatar")) {
+    testResult = true;
+    setError(testResult, inputField, hint, label);
     settingsWrapper.classList.remove("hidden");
     profileSection.classList.add("hidden");
   }
