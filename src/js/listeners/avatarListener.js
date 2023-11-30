@@ -4,11 +4,14 @@ import { inputAvatarListener } from "./forms/inputProfileAvatar.js";
 import { putAvatar } from "../api/profile/putAvatar.js";
 
 const profile = load("profile");
-const profileAvatar = checkAvatar(profile.media);
+const profileAvatar = checkAvatar(profile.avatar);
 const currentAvatar = document.querySelector("#current-avatar");
 const settingsForm = document.querySelector("#settings-form");
+const inputField = document.querySelector("#avatar");
+const removeBtn = document.querySelector("#remove-btn");
 
 currentAvatar.src = profileAvatar;
+profile.avatar && (inputField.value = profileAvatar);
 
 let testResult = true;
 
@@ -28,9 +31,14 @@ function testing(test, input) {
 settingsForm.addEventListener("submit", function (e) {
   e.preventDefault();
   console.log(testResult);
-  const inputValue = document.querySelector("#avatar").value;
   const body = {
-    avatar: inputValue,
+    avatar: inputField.value,
   };
   testResult && putAvatar(body);
 });
+
+removeBtn.onclick = (e) => {
+  e.preventDefault();
+  inputField.value = "";
+  currentAvatar.src = "./public/noavatar.png";
+};

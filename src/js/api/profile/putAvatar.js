@@ -26,7 +26,7 @@ export async function putAvatar(avatar) {
     if (response.ok) {
       profile.avatar = result.avatar;
       save("profile", profile);
-      //window.location.href = `profile.html?user=${profile.name}`;
+      window.location.href = `profile.html?user=${profile.name}`;
     }
   } catch (e) {
     displayErrors(e.message);
