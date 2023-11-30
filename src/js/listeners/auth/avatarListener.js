@@ -8,4 +8,11 @@ const currentAvatar = document.querySelector("#current-avatar");
 
 currentAvatar.src = profileAvatar;
 
-inputAvatarListener();
+inputAvatarListener("", testing);
+function testing(test, input) {
+  if (test && input.value) {
+    currentAvatar.src = input.value;
+  } else if (input.value === "") {
+    currentAvatar.src = "./public/noavatar.png";
+  }
+}

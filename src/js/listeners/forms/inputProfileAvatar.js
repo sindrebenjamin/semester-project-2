@@ -5,14 +5,15 @@ import { setError } from "./setError.js";
  * @param {*} def
  * Takes default hint for input as argument
  */
-export const inputAvatarListener = (def) => {
+export const inputAvatarListener = (def, callback) => {
   const input = document.querySelector("#avatar");
   const label = document.querySelector("#avatar-label");
   const hint = document.querySelector("#avatar-hint");
 
-  input.onkeyup = async () => {
+  input.oninput = async () => {
     const test = await checkUrl(input.value);
     setError(test, input, hint, label, "Must be a valid image URL", def);
+    callback(test, input);
   };
 };
 
