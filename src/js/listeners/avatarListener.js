@@ -33,7 +33,6 @@ function testing(test, input) {
 
 settingsForm.addEventListener("submit", function (e) {
   e.preventDefault();
-  console.log(testResult);
   const body = {
     avatar: inputField.value,
   };
@@ -44,26 +43,48 @@ settingsForm.addEventListener("submit", function (e) {
 
 discardBtn.onclick = (e) => {
   e.preventDefault();
+  discard();
+};
+
+function discard() {
   inputField.value = profileAvatar;
   currentAvatar.src = profileAvatar;
   settingsWrapper.classList.add("hidden");
   profileSection.classList.remove("hidden");
-};
+}
 
 currentAvatar.onclick = () => {
   inputField.focus();
 };
 
-// Open settings
+// Settings visibility
 
 const label = document.querySelector("#avatar-label");
 const hint = document.querySelector("#avatar-hint");
 
 document.addEventListener("click", (e) => {
-  if (e.target === "change-avatar" || e.target.closest("#change-avatar")) {
+  if (
+    e.target === "change-avatar" ||
+    e.target.closest("#change-avatar") ||
+    e.target === "avatar-img" ||
+    e.target.closest("#avatar-img")
+  ) {
     testResult = true;
     setError(testResult, inputField, hint, label);
     settingsWrapper.classList.remove("hidden");
     profileSection.classList.add("hidden");
+    inputField.focus();
+  }
+
+  if (
+    !(
+      e.target === "change-avatar" ||
+      e.target.closest("#change-avatar") ||
+      e.target === "avatar-img" ||
+      e.target.closest("#avatar-img") ||
+      settingsWrapper.contains(e.target)
+    )
+  ) {
+    discard();
   }
 });

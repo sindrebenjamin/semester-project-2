@@ -4,6 +4,7 @@ import { load } from "../api/storage/load.js";
 export const Profile = (user) => {
   // Avatar
   const avatar = document.createElement("img");
+  avatar.id = "avatar-img";
   avatar.src = checkAvatar(user.avatar);
   avatar.classList.add(
     "rounded-full",
