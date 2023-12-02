@@ -14,6 +14,7 @@ const label = document.querySelector("#image-input-label");
 const hint = document.querySelector("#image-input-hint");
 export const imageInputListener = () => {
   input.oninput = async () => {
+    hint.innerText = "Loading...";
     const test = await checkUrl(input.value);
     setError(
       test,
