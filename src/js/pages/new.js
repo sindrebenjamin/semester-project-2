@@ -46,19 +46,35 @@ imageInputListener();
 let imageArray = [];
 
 function createImage(url) {
+  // imageItem
   const imageItem = document.createElement("div");
   imageItem.className = "img-item cursor-grab";
   imageItem.draggable = true;
 
+  // image
   const image = document.createElement("img");
   image.className = "aspect-square object-cover";
   image.src = url;
-
   imageItem.appendChild(image);
 
+  // removeBtn
+  const removeBtn = document.createElement("div");
+  removeBtn.innerText = "Remove";
+  removeBtn.className = "remove-btn";
+  imageItem.appendChild(removeBtn);
+
+  // Append
   imgContainer.appendChild(imageItem);
   imageArray.push(url);
   console.log(imageArray);
+
+  const removeButtons = document.querySelectorAll(".remove-btn");
+  removeButtons.forEach((btn) => {
+    btn.onclick = (e) => {
+      e.target.closest(".img-item").remove();
+      updateArray();
+    };
+  });
 }
 
 // Dragging
