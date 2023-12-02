@@ -6,15 +6,15 @@ import {
 } from "../utils/dragDropHelpers.js";
 
 const imgContainer = document.querySelector("#img-container");
-
+const input = document.querySelector("#image-input");
+const label = document.querySelector("#image-input-label");
 export const imageInputListener = () => {
-  const input = document.querySelector("#image-input");
-  const label = document.querySelector("#image-input-label");
   const hint = document.querySelector("#image-input-hint");
 
   input.oninput = async () => {
     const test = await checkUrl(input.value);
     setError(test, input, hint, label, "Must be a valid image URL");
+
     //callback(test, input);
   };
 };
@@ -29,6 +29,7 @@ function checkUrl(url) {
     img.onload = function () {
       resolve(true);
       createImage(url);
+      input.value = "";
     };
 
     img.onerror = function () {
@@ -53,7 +54,7 @@ function createImage(url) {
 
   // image
   const image = document.createElement("img");
-  image.className = "aspect-square object-cover";
+  image.className = "inner-img aspect-square object-cover";
   image.src = url;
   imageItem.appendChild(image);
 
@@ -66,8 +67,12 @@ function createImage(url) {
   // Append
   imgContainer.appendChild(imageItem);
   imageArray.push(url);
+
+  inputVisibility();
+
   console.log(imageArray);
 
+  // Delete function
   const removeButtons = document.querySelectorAll(".remove-btn");
   removeButtons.forEach((btn) => {
     btn.onclick = (e) => {
@@ -157,11 +162,24 @@ function handleTouchEnd() {
 
 function updateArray() {
   imageArray = [];
-  const imgItems = document.querySelectorAll(".img-item");
-  imgItems.forEach((imgItem) => {
-    imageArray.push(imgItem.src);
+  const images = document.querySelectorAll(".inner-img");
+  images.forEach((image) => {
+    imageArray.push(image.src);
   });
+
+  inputVisibility();
+
   console.log(imageArray);
+}
+
+function inputVisibility() {
+  if (imageArray.length === 8) {
+    input.classList.add("hidden");
+    label.classList.add("hidden");
+  } else {
+    input.classList.remove("hidden");
+    label.classList.remove("hidden");
+  }
 }
 
 // num for the div...
@@ -175,3 +193,9 @@ function updateArray() {
 
 // remove btn...
 // Create array and push items when images are added, update this array when pictures are moved around
+
+// clear input, when image is added succesfully
+// Hide input when 8 images, then show it again if an image gets removed.
+// Number indicator of which image is first
+
+//show placeholder for where image is coming, make it focused when input field is focused.. rly only need 1
