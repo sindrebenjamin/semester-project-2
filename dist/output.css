@@ -723,6 +723,10 @@ video {
   width: 200px;
 }
 
+.w-\[360px\]{
+  width: 360px;
+}
+
 .w-\[44px\]{
   width: 44px;
 }
@@ -736,16 +740,8 @@ video {
   width: 100%;
 }
 
-.w-\[360px\]{
-  width: 360px;
-}
-
 .min-w-\[200px\]{
   min-width: 200px;
-}
-
-.min-w-\[360px\]{
-  min-width: 360px;
 }
 
 .max-w-\[1200px\]{
@@ -771,6 +767,14 @@ video {
 
 .cursor-pointer{
   cursor: pointer;
+}
+
+.cursor-grabbing{
+  cursor: grabbing;
+}
+
+.cursor-grab{
+  cursor: grab;
 }
 
 .select-none{
