@@ -23,8 +23,6 @@ export const imageInputListener = () => {
       "Must be a valid image URL",
       "Add up to 8 photos"
     );
-
-    //callback(test, input);
   };
 };
 
@@ -51,7 +49,14 @@ function checkUrl(url) {
 
 imageInputListener();
 
-let imageArray = [];
+let imageArray = []; // Set this conditionally when using queryString to edit
+
+// Counter
+
+const counterMessage = document.querySelector("#counter-message");
+const counterNumber = document.querySelector("#counter-number");
+
+counterNumber.innerText = imageArray.length;
 
 input.onfocus = () => {
   const placeholders = document.querySelectorAll(".placeholder");
@@ -70,24 +75,32 @@ function createImage(url) {
 
   // imageItem
   const imageItem = document.createElement("div");
-  imageItem.className = "img-item cursor-grab";
+  imageItem.className = "img-item cursor-grab relative";
   imageItem.draggable = true;
 
   // image
   const image = document.createElement("img");
-  image.className = "inner-img aspect-square object-cover";
+  image.className = "inner-img aspect-square object-cover w-full";
   image.src = url;
   imageItem.appendChild(image);
+
+  // number
+  const numHolder = document.createElement("div");
+  numHolder.className =
+    "absolute z-20 bg-white top-4 right-4 p-4 rounded-full flex justify-center items-center w-12 h-12";
+  const num = document.createElement("p");
+  num.className = "num";
+  numHolder.appendChild(num);
+  imageItem.appendChild(numHolder);
 
   // removeBtn
   const removeBtn = document.createElement("div");
   removeBtn.innerText = "Remove";
-  removeBtn.className = "remove-btn py-4 ";
+  removeBtn.className =
+    "remove-btn py-4 cursor-pointer hover:opacity-50 transition-all text-center";
   imageItem.appendChild(removeBtn);
 
   // Append
-  //imgContainer.append(imageItem);
-
   imgContainer.insertBefore(imageItem, imgContainer.children[child]);
   child++;
   imageArray.push(url);
@@ -100,17 +113,10 @@ function createImage(url) {
   console.log(placeholders);
 
   console.log(imageArray);
+
+  updateNumbers();
+  counterNumber.innerText = imageArray.length;
 }
-
-// Remove
-
-imgContainer.addEventListener("click", function (e) {
-  const removeBtn = e.target.closest(".remove-btn");
-  if (removeBtn) {
-    child--;
-    deleteImg(removeBtn);
-  }
-});
 
 // Dragging
 
@@ -168,6 +174,7 @@ function handleDragOver(e) {
   e.preventDefault();
   const mouseY = e.clientY;
   const targetItem = e.target.closest(".img-item");
+  updateNumbers();
   handleDragAndDrop(targetItem, mouseY, draggedItem);
 }
 
@@ -177,6 +184,7 @@ function handleTouchMove(e) {
   const targetItem = document
     .elementFromPoint(touch.clientX, touch.clientY)
     .closest(".img-item");
+  updateNumbers();
   handleDragAndDrop(targetItem, touch.clientY, draggedItem);
 }
 
@@ -203,6 +211,18 @@ function handleTouchEnd() {
 
 // Helper Functions
 
+// Remove
+
+imgContainer.addEventListener("click", function (e) {
+  const removeBtn = e.target.closest(".remove-btn");
+  if (removeBtn) {
+    child--;
+    deleteImg(removeBtn);
+  }
+});
+
+// Update
+
 export function updateArray() {
   imageArray = [];
   const images = document.querySelectorAll(".inner-img");
@@ -211,7 +231,8 @@ export function updateArray() {
   });
 
   inputVisibility();
-
+  updateNumbers();
+  counterNumber.innerText = imageArray.length;
   console.log(imageArray);
 }
 
@@ -227,6 +248,13 @@ function inputVisibility() {
     label.classList.remove("hidden");
     hint.classList.remove("hidden");
     maxImg.classList.add("hidden");
+  }
+}
+
+function updateNumbers() {
+  const numbers = document.querySelectorAll(".num");
+  for (let i = 0; i < numbers.length; i++) {
+    numbers[i].innerText = i + 1;
   }
 }
 

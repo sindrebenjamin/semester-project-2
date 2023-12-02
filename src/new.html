@@ -42,22 +42,16 @@
 
             <div
               id="max-img"
-              class="hidden text-primary-400 font-bold flex gap-2 items-center"
+              class="hidden text-secondary-400 font-bold flex gap-2 items-center"
             >
-              <svg
-                class="fill-primary-400"
-                width="20"
-                height="20"
-                viewBox="0 0 20 20"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path d="M0 11L2 9L7 14L18 3L20 5L7 18L0 11Z" />
-              </svg>
-              <p>8/8 photos added</p>
+              <p>Photo limit reached</p>
             </div>
+            <p id="counter-message" class="mt-4 text-xl">
+              <span id="counter-number"></span>/8 photos added. Drag to
+              rearrange them.
+            </p>
           </div>
-          <div class="grid grid-cols-2 gap-4" id="img-container">
+          <div class="mt-8 grid grid-cols-2 gap-4" id="img-container">
             <!-- Placecholders -->
             <div
               class="placeholder border-dotted border-2 border-neutral-200 aspect-square"
