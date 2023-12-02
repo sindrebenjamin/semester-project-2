@@ -64,7 +64,7 @@ input.onblur = () => {
 };
 
 // Create image when added
-
+let child = 0;
 function createImage(url) {
   input.blur();
 
@@ -86,7 +86,10 @@ function createImage(url) {
   imageItem.appendChild(removeBtn);
 
   // Append
-  imgContainer.prepend(imageItem);
+  //imgContainer.append(imageItem);
+
+  imgContainer.insertBefore(imageItem, imgContainer.children[child]);
+  child++;
   imageArray.push(url);
 
   inputVisibility();
@@ -104,6 +107,7 @@ function createImage(url) {
 imgContainer.addEventListener("click", function (e) {
   const removeBtn = e.target.closest(".remove-btn");
   if (removeBtn) {
+    child--;
     deleteImg(removeBtn);
   }
 });
@@ -145,7 +149,10 @@ function handleTouchStart(e) {
     e.touches[0].clientY
   );
   const removeBtn = touchedElement.closest(".remove-btn");
-  removeBtn && deleteImg(removeBtn);
+  if (removeBtn) {
+    child--;
+    deleteImg(removeBtn);
+  }
 
   if (!removeBtn) {
     draggedItem = e.touches[0].target.closest(".img-item");
