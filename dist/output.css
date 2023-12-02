@@ -777,6 +777,10 @@ video {
   cursor: pointer;
 }
 
+.touch-none{
+  touch-action: none;
+}
+
 .select-none{
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -843,6 +847,10 @@ video {
   gap: 64px;
 }
 
+.gap-8{
+  gap: 2rem;
+}
+
 .self-center{
   align-self: center;
 }
@@ -865,6 +873,10 @@ video {
 
 .border-l-4{
   border-left-width: 4px;
+}
+
+.border-dotted{
+  border-style: dotted;
 }
 
 .border-neutral-100{
@@ -947,6 +959,10 @@ video {
   padding: 1rem;
 }
 
+.p-8{
+  padding: 2rem;
+}
+
 .px-3{
   padding-left: 0.75rem;
   padding-right: 0.75rem;
@@ -975,6 +991,11 @@ video {
 .py-\[64px\]{
   padding-top: 64px;
   padding-bottom: 64px;
+}
+
+.py-4{
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 .pb-1{

@@ -8,12 +8,18 @@ import {
 const imgContainer = document.querySelector("#img-container");
 const input = document.querySelector("#image-input");
 const label = document.querySelector("#image-input-label");
+const hint = document.querySelector("#image-input-hint");
 export const imageInputListener = () => {
-  const hint = document.querySelector("#image-input-hint");
-
   input.oninput = async () => {
     const test = await checkUrl(input.value);
-    setError(test, input, hint, label, "Must be a valid image URL");
+    setError(
+      test,
+      input,
+      hint,
+      label,
+      "Must be a valid image URL",
+      "Add up to 8 photos"
+    );
 
     //callback(test, input);
   };
@@ -42,9 +48,9 @@ function checkUrl(url) {
 
 imageInputListener();
 
-// Create image when added (make logic for when 8 images)
-
 let imageArray = [];
+
+// Create image when added (make logic for when 8 images)
 
 function createImage(url) {
   // imageItem
@@ -61,25 +67,39 @@ function createImage(url) {
   // removeBtn
   const removeBtn = document.createElement("div");
   removeBtn.innerText = "Remove";
-  removeBtn.className = "remove-btn";
+  removeBtn.className = "remove-btn py-4 ";
   imageItem.appendChild(removeBtn);
 
   // Append
-  imgContainer.appendChild(imageItem);
+  imgContainer.prepend(imageItem);
   imageArray.push(url);
 
   inputVisibility();
 
-  console.log(imageArray);
+  // Remove placeholder
+  const placeholders = document.querySelectorAll(".placeholder");
+  placeholders[0].remove();
 
-  // Delete function
-  const removeButtons = document.querySelectorAll(".remove-btn");
-  removeButtons.forEach((btn) => {
-    btn.onclick = (e) => {
-      e.target.closest(".img-item").remove();
-      updateArray();
-    };
-  });
+  console.log(imageArray);
+}
+
+// Remove
+
+imgContainer.addEventListener("click", function (e) {
+  const removeBtn = e.target.closest(".remove-btn");
+  if (removeBtn) {
+    deleteImg(removeBtn);
+  }
+});
+
+function deleteImg(removeBtn) {
+  console.log("deleting");
+  removeBtn.closest(".img-item").remove();
+  updateArray();
+  const placeholder = document.createElement("div");
+  placeholder.className =
+    "placeholder border-dotted border-2 border-neutral-200 aspect-square";
+  imgContainer.appendChild(placeholder);
 }
 
 // Dragging
@@ -97,10 +117,11 @@ imgContainer.addEventListener("dragend", handleDragEnd);
 imgContainer.addEventListener("touchstart", handleTouchStart, {
   passive: false,
 });
+
 imgContainer.addEventListener("touchmove", handleTouchMove, { passive: false });
 imgContainer.addEventListener("touchend", handleTouchEnd);
 
-// Start
+// Drag start
 
 function handleDragStart(e) {
   draggedItem = e.target.closest(".img-item");
@@ -112,13 +133,28 @@ function handleDragStart(e) {
 }
 
 function handleTouchStart(e) {
+  /*
+  const removeButtons = document.querySelectorAll(".remove-btn");
+  removeButtons.forEach((removeBtn) => {
+    removeBtn.contains(e.target) && console.log("hei");
+  });
+*/
+
   e.preventDefault();
-  draggedItem = e.touches[0].target.closest(".img-item");
-  if (draggedItem) {
-    addOpacityToOtherItems(draggedItem);
+  const touchedElement = document.elementFromPoint(
+    e.touches[0].clientX,
+    e.touches[0].clientY
+  );
+  const removeBtn = touchedElement.closest(".remove-btn");
+  removeBtn && deleteImg(removeBtn);
+
+  if (!removeBtn) {
+    draggedItem = e.touches[0].target.closest(".img-item");
+    if (draggedItem) {
+      addOpacityToOtherItems(draggedItem);
+    }
   }
 }
-
 // While dragging
 
 function handleDragOver(e) {
@@ -173,12 +209,17 @@ function updateArray() {
 }
 
 function inputVisibility() {
+  const maxImg = document.querySelector("#max-img");
   if (imageArray.length === 8) {
     input.classList.add("hidden");
     label.classList.add("hidden");
+    hint.classList.add("hidden");
+    maxImg.classList.remove("hidden");
   } else {
     input.classList.remove("hidden");
     label.classList.remove("hidden");
+    hint.classList.remove("hidden");
+    maxImg.classList.add("hidden");
   }
 }
 
