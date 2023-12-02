@@ -3,7 +3,10 @@ import {
   addOpacityToOtherItems,
   removeOpacityFromAllItems,
   handleDragAndDrop,
+  deleteImg,
 } from "../utils/dragDropHelpers.js";
+
+import { addRemove } from "../utils/addRemove.js";
 
 const imgContainer = document.querySelector("#img-container");
 const input = document.querySelector("#image-input");
@@ -50,9 +53,21 @@ imageInputListener();
 
 let imageArray = [];
 
-// Create image when added (make logic for when 8 images)
+input.onfocus = () => {
+  const placeholders = document.querySelectorAll(".placeholder");
+  addRemove(["border-primary-100"], ["border-neutral-200"], placeholders[0]);
+};
+
+input.onblur = () => {
+  const placeholders = document.querySelectorAll(".placeholder");
+  addRemove(["border-neutral-200"], ["border-primary-100"], placeholders[0]);
+};
+
+// Create image when added
 
 function createImage(url) {
+  input.blur();
+
   // imageItem
   const imageItem = document.createElement("div");
   imageItem.className = "img-item cursor-grab";
@@ -79,6 +94,7 @@ function createImage(url) {
   // Remove placeholder
   const placeholders = document.querySelectorAll(".placeholder");
   placeholders[0].remove();
+  console.log(placeholders);
 
   console.log(imageArray);
 }
@@ -91,16 +107,6 @@ imgContainer.addEventListener("click", function (e) {
     deleteImg(removeBtn);
   }
 });
-
-function deleteImg(removeBtn) {
-  console.log("deleting");
-  removeBtn.closest(".img-item").remove();
-  updateArray();
-  const placeholder = document.createElement("div");
-  placeholder.className =
-    "placeholder border-dotted border-2 border-neutral-200 aspect-square";
-  imgContainer.appendChild(placeholder);
-}
 
 // Dragging
 
@@ -133,13 +139,6 @@ function handleDragStart(e) {
 }
 
 function handleTouchStart(e) {
-  /*
-  const removeButtons = document.querySelectorAll(".remove-btn");
-  removeButtons.forEach((removeBtn) => {
-    removeBtn.contains(e.target) && console.log("hei");
-  });
-*/
-
   e.preventDefault();
   const touchedElement = document.elementFromPoint(
     e.touches[0].clientX,
@@ -155,6 +154,7 @@ function handleTouchStart(e) {
     }
   }
 }
+
 // While dragging
 
 function handleDragOver(e) {
@@ -196,7 +196,7 @@ function handleTouchEnd() {
 
 // Helper Functions
 
-function updateArray() {
+export function updateArray() {
   imageArray = [];
   const images = document.querySelectorAll(".inner-img");
   images.forEach((image) => {
