@@ -1,4 +1,9 @@
 import { setError } from "../listeners/forms/setError.js";
+import {
+  addOpacityToOtherItems,
+  removeOpacityFromAllItems,
+  handleDragAndDrop,
+} from "../utils/dragDropHelpers.js";
 
 const imgContainer = document.querySelector("#img-container");
 
@@ -41,11 +46,16 @@ imageInputListener();
 let imageArray = [];
 
 function createImage(url) {
-  const imageItem = document.createElement("img");
-  imageItem.className = "img-item";
-  imageItem.classList.add("aspect-square", "object-cover", "cursor-grab");
-  imageItem.src = url;
+  const imageItem = document.createElement("div");
+  imageItem.className = "img-item cursor-grab";
   imageItem.draggable = true;
+
+  const image = document.createElement("img");
+  image.className = "aspect-square object-cover";
+  image.src = url;
+
+  imageItem.appendChild(image);
+
   imgContainer.appendChild(imageItem);
   imageArray.push(url);
   console.log(imageArray);
@@ -55,37 +65,58 @@ function createImage(url) {
 
 let draggedItem = null;
 
+// Desktop EventListeners
+
 imgContainer.addEventListener("dragstart", handleDragStart);
 imgContainer.addEventListener("dragover", handleDragOver);
 imgContainer.addEventListener("dragend", handleDragEnd);
 
+// Mobile EventListeners
+
+imgContainer.addEventListener("touchstart", handleTouchStart, {
+  passive: false,
+});
+imgContainer.addEventListener("touchmove", handleTouchMove, { passive: false });
+imgContainer.addEventListener("touchend", handleTouchEnd);
+
+// Start
+
 function handleDragStart(e) {
   draggedItem = e.target.closest(".img-item");
-  draggedItem.classList.add("cursor-grabbing");
-
-  const imgItems = document.querySelectorAll(".img-item");
-  imgItems.forEach((imgItem) => {
-    if (imgItem !== draggedItem) {
-      imgItem.classList.add("opacity-50");
-    }
-  });
+  if (draggedItem) {
+    e.dataTransfer.setData("text/plain", ""); // Required for Firefox to allow drag
+    draggedItem.classList.add("cursor-grabbing");
+    addOpacityToOtherItems(draggedItem);
+  }
 }
+
+function handleTouchStart(e) {
+  e.preventDefault();
+  draggedItem = e.touches[0].target.closest(".img-item");
+  if (draggedItem) {
+    addOpacityToOtherItems(draggedItem);
+  }
+}
+
+// While dragging
 
 function handleDragOver(e) {
   e.preventDefault();
+  const mouseY = e.clientY;
   const targetItem = e.target.closest(".img-item");
-  if (targetItem && targetItem !== draggedItem) {
-    const rect = targetItem.getBoundingClientRect();
-    const mouseY = e.clientY;
-    const isAbove = mouseY < rect.top + rect.height / 2;
-
-    if (isAbove) {
-      imgContainer.insertBefore(draggedItem, targetItem);
-    } else {
-      imgContainer.insertBefore(draggedItem, targetItem.nextSibling);
-    }
-  }
+  handleDragAndDrop(targetItem, mouseY, draggedItem);
 }
+
+function handleTouchMove(e) {
+  e.preventDefault();
+  const touch = e.touches[0];
+  const targetItem = document
+    .elementFromPoint(touch.clientX, touch.clientY)
+    .closest(".img-item");
+  handleDragAndDrop(targetItem, touch.clientY, draggedItem);
+}
+
+// Drag end
 
 function handleDragEnd(e) {
   draggedItem.classList.remove("cursor-grabbing");
@@ -98,31 +129,6 @@ function handleDragEnd(e) {
   updateArray();
 }
 
-// Dragging mobile devices
-
-imgContainer.addEventListener("touchstart", handleTouchStart, {
-  passive: false,
-});
-imgContainer.addEventListener("touchmove", handleTouchMove, { passive: false });
-imgContainer.addEventListener("touchend", handleTouchEnd);
-
-function handleTouchStart(e) {
-  e.preventDefault();
-  draggedItem = e.touches[0].target.closest(".img-item");
-  if (draggedItem) {
-    addOpacityToOtherItems(draggedItem);
-  }
-}
-
-function handleTouchMove(e) {
-  e.preventDefault();
-  const touch = e.touches[0];
-  const targetItem = document
-    .elementFromPoint(touch.clientX, touch.clientY)
-    .closest(".img-item");
-  handleDragAndDrop(targetItem, touch.clientY);
-}
-
 function handleTouchEnd() {
   if (draggedItem) {
     draggedItem = null;
@@ -133,35 +139,6 @@ function handleTouchEnd() {
 
 // Helper Functions
 
-function addOpacityToOtherItems(excludeItem) {
-  const imgItems = document.querySelectorAll(".img-item");
-  imgItems.forEach((imgItem) => {
-    if (imgItem !== excludeItem) {
-      imgItem.classList.add("opacity-50");
-    }
-  });
-}
-
-function removeOpacityFromAllItems() {
-  const imgItems = document.querySelectorAll(".img-item");
-  imgItems.forEach((imgItem) => {
-    imgItem.classList.remove("opacity-50");
-  });
-}
-
-function handleDragAndDrop(targetItem, mouseY) {
-  if (targetItem && targetItem !== draggedItem) {
-    const rect = targetItem.getBoundingClientRect();
-    const isAbove = mouseY < rect.top + rect.height / 2;
-
-    if (isAbove) {
-      imgContainer.insertBefore(draggedItem, targetItem);
-    } else {
-      imgContainer.insertBefore(draggedItem, targetItem.nextSibling);
-    }
-  }
-}
-
 function updateArray() {
   imageArray = [];
   const imgItems = document.querySelectorAll(".img-item");
@@ -170,8 +147,6 @@ function updateArray() {
   });
   console.log(imageArray);
 }
-
-// Make array at handledragend that can be passed ... or update exisiting array or smt? Clean up code eventually
 
 // num for the div...
 // make the div movable...
