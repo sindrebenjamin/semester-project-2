@@ -2,9 +2,16 @@ import { checkAvatar } from "../utils/checkAvatar.js";
 import { load } from "../api/storage/load.js";
 
 export const Profile = (user) => {
+  // Change avatar
+  const localProfile = load("profile");
+  const changeAvatar =
+    localProfile.name === user.name
+      ? `<a id="change-avatar" class="cursor-pointer text-primary-300 hover:opacity-50 transition-all underline focus:outline-none focus:ring focus:ring-primary-700">Change avatar</a>`
+      : "";
+
   // Avatar
   const avatar = document.createElement("img");
-  avatar.id = "avatar-img";
+  avatar.id = localProfile.name === user.name ? "avatar-img" : "";
   avatar.src = checkAvatar(user.avatar);
   avatar.classList.add(
     "rounded-full",
@@ -27,13 +34,6 @@ export const Profile = (user) => {
   const email = document.createElement("p");
   email.innerText = user.email;
   email.classList.add("text-secondary-200", "text-sm");
-
-  // Change avatar
-  const localProfile = load("profile");
-  const changeAvatar =
-    localProfile.name === user.name
-      ? `<a id="change-avatar" class="cursor-pointer text-primary-300 hover:opacity-50 transition-all underline focus:outline-none focus:ring focus:ring-primary-700">Change avatar</a>`
-      : "";
 
   // Return component
   return `
