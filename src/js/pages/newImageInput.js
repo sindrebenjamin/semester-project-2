@@ -69,7 +69,7 @@ input.onblur = () => {
   addRemove(["border-neutral-200"], ["border-primary-100"], placeholders[0]);
 };
 
-// Create image when added
+// Create imageItem when onload is successful
 let child = 0;
 function createImage(url) {
   input.blur();
@@ -81,7 +81,8 @@ function createImage(url) {
 
   // image
   const image = document.createElement("img");
-  image.className = "inner-img aspect-square object-cover w-full";
+  image.className =
+    "inner-img aspect-square object-cover w-full hover:opacity-90 transition-all";
   image.src = url;
   imageItem.appendChild(image);
 
