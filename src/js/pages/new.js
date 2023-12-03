@@ -1,6 +1,6 @@
 import { inputImages } from "../listeners/forms/inputImages.js";
+import { inputDate } from "../listeners/forms/inputDate.js";
 
 inputImages("Add up to 8 photos");
 
-document.querySelector("#end-date").onfocus = () =>
-  document.querySelector("#end-date").showPicker();
+inputDate();

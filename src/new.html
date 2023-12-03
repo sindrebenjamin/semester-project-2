@@ -7,6 +7,11 @@
     <script src="./js/components/index.js" type="module"></script>
     <script src="./js/pages/new.js" type="module"></script>
     <link rel="stylesheet" href="../dist/output.css" />
+    <style>
+      ::-webkit-calendar-picker-indicator {
+        fill: green;
+      }
+    </style>
   </head>
   <body class="text-secondary-400">
     <main class="flex flex-col justify-center py-[64px] md:py-[128px]">
@@ -54,7 +59,7 @@
                 for="Description"
                 class="after:content[' '] pointer-events-none absolute left-0 -top-3 flex h-full w-full select-none text-[11px] font-normal leading-tight text-secondary-200 transition-all after:absolute after:-bottom-1.5 after:block after:w-full after:scale-x-0 after:border-b-1 after:transition-transform after:duration-300 peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[4.25] peer-placeholder-shown:text-blue-gray-500 peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-primary-100 peer-focus:after:scale-x-100 peer-focus:after:border-primary-100 peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500"
               >
-                Description*
+                Description
               </label>
             </div>
             <p id="Description-hint" class="text-secondary-200 text-xs"></p>
@@ -120,7 +125,7 @@
               class="placeholder border-dotted border-2 border-neutral-200 aspect-square"
             ></div>
           </div>
-
+          <!-- New Input -->
           <div class="h-[72px] flex flex-col gap-1 w-full">
             <div class="relative h-11 min-w-[200px]">
               <input
@@ -140,22 +145,33 @@
             </div>
             <p id="end-date-hint" class="text-secondary-200 text-xs"></p>
           </div>
+          <!-- New Input -->
+          <div class="h-[72px] flex flex-col gap-1 w-full">
+            <div class="relative h-11 min-w-[200px]">
+              <input
+                id="tags"
+                name="tags"
+                type="text"
+                class="peer h-full w-full border-b border-secondary-50 bg-transparent pt-4 pb-1.5 text-sm font-normal outline outline-0 transition-all placeholder-shown:border-secondary-50 focus:border-primary-100 focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
+                placeholder=" "
+              />
+              <label
+                id="tags-label"
+                for="tags"
+                class="after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none text-[11px] font-normal leading-tight text-secondary-200 transition-all after:absolute after:-bottom-1.5 after:block after:w-full after:scale-x-0 after:border-b-1 after:transition-transform after:duration-300 peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[4.25] peer-placeholder-shown:text-blue-gray-500 peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-primary-100 peer-focus:after:scale-x-100 peer-focus:after:border-primary-100 peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500"
+              >
+                Tags
+              </label>
+            </div>
+            <p id="tags-hint" class="text-secondary-200 text-xs"></p>
+          </div>
           <input
             class="w-full max-w-[500px] text-white text-sm font-bold bg-primary-400 p-4 hover:bg-primary-300 focus:outline-none focus:ring focus:ring-primary-700 transition-all cursor-pointer"
             type="submit"
-            value="Create Account"
+            value="Create Listing"
             name="submit"
             id="submit"
           />
-          <p class="">
-            Already have a user?
-            <a
-              id="login-link"
-              class="text-primary-300 hover:opacity-50 transition-all underline focus:outline-none focus:ring focus:ring-primary-700"
-              href="login.html"
-              >Log in here</a
-            >
-          </p>
         </div>
 
         <div class="text-red" id="error-element"></div>
