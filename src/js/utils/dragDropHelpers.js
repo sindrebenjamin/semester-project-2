@@ -45,7 +45,7 @@ export function handleDragAndDrop(targetItem, mouseY, draggedItem) {
   }
 }
 
-import { updateArray } from "../pages/newImageInput.js";
+import { updateArray } from "../listeners/forms/inputImages.js";
 
 /**
  *

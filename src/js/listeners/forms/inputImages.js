@@ -1,29 +1,28 @@
-import { setError } from "../listeners/forms/setError.js";
+import { setError } from "./setError.js";
 import {
   addOpacityToOtherItems,
   removeOpacityFromAllItems,
   handleDragAndDrop,
   deleteImg,
-} from "../utils/dragDropHelpers.js";
+} from "../../utils/dragDropHelpers.js";
 
-import { addRemove } from "../utils/addRemove.js";
+import { addRemove } from "../../utils/addRemove.js";
 
 const imgContainer = document.querySelector("#img-container");
 const input = document.querySelector("#image-input");
 const label = document.querySelector("#image-input-label");
 const hint = document.querySelector("#image-input-hint");
-export const imageInputListener = () => {
+
+/**
+ *
+ * @param {*} def
+ * Takes default hint for input as argument
+ */
+export const inputImages = (def) => {
   input.oninput = async () => {
     hint.innerText = "Loading...";
     const test = await checkUrl(input.value);
-    setError(
-      test,
-      input,
-      hint,
-      label,
-      "Must be a valid image URL",
-      "Add up to 8 photos"
-    );
+    setError(test, input, hint, label, "Must be a valid image URL", def);
   };
 };
 
@@ -47,8 +46,6 @@ function checkUrl(url) {
     img.src = url;
   });
 }
-
-imageInputListener();
 
 let imageArray = []; // Set this conditionally when using queryString to edit
 
@@ -259,21 +256,3 @@ function updateNumbers() {
     numbers[i].innerText = i + 1;
   }
 }
-
-// num for the div...
-// make the div movable...
-
-// remove btn
-
-// Clean code
-
-// "dragg to rearrange msg when 2 or more images"
-
-// remove btn...
-// Create array and push items when images are added, update this array when pictures are moved around
-
-// clear input, when image is added succesfully
-// Hide input when 8 images, then show it again if an image gets removed.
-// Number indicator of which image is first
-
-//show placeholder for where image is coming, make it focused when input field is focused.. rly only need 1
