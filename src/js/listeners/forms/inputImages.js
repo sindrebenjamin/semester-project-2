@@ -1,29 +1,46 @@
-import { setError } from "../listeners/forms/setError.js";
+import { setError } from "./setError.js";
 import {
   addOpacityToOtherItems,
   removeOpacityFromAllItems,
   handleDragAndDrop,
   deleteImg,
-} from "../utils/dragDropHelpers.js";
+  checkMaxPhotos,
+} from "./inputImagesHelpers.js";
 
-import { addRemove } from "../utils/addRemove.js";
+import { addRemove } from "../../utils/addRemove.js";
+
+let imageArray = [];
 
 const imgContainer = document.querySelector("#img-container");
 const input = document.querySelector("#image-input");
 const label = document.querySelector("#image-input-label");
 const hint = document.querySelector("#image-input-hint");
-export const imageInputListener = () => {
+
+// Load images if editing
+export const loadImages = (images) => {
+  images.forEach((image) => {
+    createImage(image);
+    placeholderVisiblity();
+    imageArray.length > 1 && placeHolderMain.classList.add("hidden");
+    hint.innerText = checkMaxPhotos(imageArray);
+  });
+};
+
+/**
+ *
+ * @param {*} def
+ * Takes default hint for input as argument
+ */
+export const inputImages = (def) => {
   input.oninput = async () => {
+    if (imageArray.length === 8) {
+      const hintMsg = (hint.innerText = checkMaxPhotos(imageArray));
+      setError(false, input, hint, label, hintMsg, def);
+      return;
+    }
     hint.innerText = "Loading...";
     const test = await checkUrl(input.value);
-    setError(
-      test,
-      input,
-      hint,
-      label,
-      "Must be a valid image URL",
-      "Add up to 8 photos"
-    );
+    setError(test, input, hint, label, "Must be a valid image URL", def);
   };
 };
 
@@ -48,32 +65,54 @@ function checkUrl(url) {
   });
 }
 
-imageInputListener();
-
-let imageArray = []; // Set this conditionally when using queryString to edit
-
 // Counter
-
-const counterMessage = document.querySelector("#counter-message");
 const counterNumber = document.querySelector("#counter-number");
-
 counterNumber.innerText = imageArray.length;
 
+// Placeholder visiblity
+const placeHolderHalf = document.querySelector("#placeholder-half");
+const placeHolderMain = document.querySelector("#placeholder-main");
+const placeholders = document.querySelectorAll(".placeholder");
+
+placeholders.forEach((placeholder) => {
+  placeholder.onclick = () => input.focus();
+});
+
+export function placeholderVisiblity() {
+  if (imageArray.length > 0) {
+    placeHolderHalf.classList.add("hidden");
+    //placeHolderMain.classList.add("hidden");
+  } else {
+    placeHolderHalf.classList.remove("hidden");
+    placeHolderMain.classList.remove("hidden");
+  }
+}
+
 input.onfocus = () => {
-  const placeholders = document.querySelectorAll(".placeholder");
-  addRemove(["border-primary-100"], ["border-neutral-200"], placeholders[0]);
+  if (imageArray.length < 8) {
+    addRemove(
+      ["border-primary-100"],
+      ["border-neutral-200", "hidden"],
+      placeholders[0]
+    );
+  }
 };
 
 input.onblur = () => {
-  const placeholders = document.querySelectorAll(".placeholder");
   addRemove(["border-neutral-200"], ["border-primary-100"], placeholders[0]);
+  imageArray.length > 0 && placeHolderMain.classList.add("hidden");
 };
 
 // Create imageItem when onload is successful
 let child = 0;
 function createImage(url) {
-  input.blur();
+  if (imageArray.length === 8) {
+    hint.innerText = checkMaxPhotos(imageArray);
+    return;
+  }
+  imageArray.length === 7 && input.blur();
 
+  imageArray.length < 8 && imageArray.push(url);
   // imageItem
   const imageItem = document.createElement("div");
   imageItem.className = "img-item cursor-grab relative";
@@ -95,7 +134,7 @@ function createImage(url) {
   numHolder.appendChild(num);
   imageItem.appendChild(numHolder);
 
-  // removeBtn
+  // remove button
   const removeBtn = document.createElement("div");
   removeBtn.innerText = "Remove";
   removeBtn.className =
@@ -105,33 +144,22 @@ function createImage(url) {
   // Append
   imgContainer.insertBefore(imageItem, imgContainer.children[child]);
   child++;
-  imageArray.push(url);
 
-  inputVisibility();
-
-  // Remove placeholder
-  const placeholders = document.querySelectorAll(".placeholder");
-  placeholders[0].remove();
-  console.log(placeholders);
-
-  console.log(imageArray);
-
+  //inputVisibility();
+  placeholderVisiblity();
   updateNumbers();
   counterNumber.innerText = imageArray.length;
 }
 
 // Dragging
-
 let draggedItem = null;
 
 // Desktop EventListeners
-
 imgContainer.addEventListener("dragstart", handleDragStart);
 imgContainer.addEventListener("dragover", handleDragOver);
 imgContainer.addEventListener("dragend", handleDragEnd);
 
 // Mobile EventListeners
-
 imgContainer.addEventListener("touchstart", handleTouchStart, {
   passive: false,
 });
@@ -140,7 +168,6 @@ imgContainer.addEventListener("touchmove", handleTouchMove, { passive: false });
 imgContainer.addEventListener("touchend", handleTouchEnd);
 
 // Drag start
-
 function handleDragStart(e) {
   draggedItem = e.target.closest(".img-item");
   if (draggedItem) {
@@ -160,6 +187,8 @@ function handleTouchStart(e) {
   if (removeBtn) {
     child--;
     deleteImg(removeBtn);
+    setError(true, input, hint, label, "");
+    input.value = "";
   }
 
   if (!removeBtn) {
@@ -171,7 +200,6 @@ function handleTouchStart(e) {
 }
 
 // While dragging
-
 function handleDragOver(e) {
   e.preventDefault();
   const mouseY = e.clientY;
@@ -191,7 +219,6 @@ function handleTouchMove(e) {
 }
 
 // Drag end
-
 function handleDragEnd(e) {
   draggedItem.classList.remove("cursor-grabbing");
   draggedItem.null;
@@ -214,30 +241,29 @@ function handleTouchEnd() {
 // Helper Functions
 
 // Remove
-
 imgContainer.addEventListener("click", function (e) {
   const removeBtn = e.target.closest(".remove-btn");
   if (removeBtn) {
     child--;
     deleteImg(removeBtn);
+    setError(true, input, hint, label, "");
+    input.value = "";
   }
 });
 
 // Update
-
 export function updateArray() {
   imageArray = [];
   const images = document.querySelectorAll(".inner-img");
   images.forEach((image) => {
     imageArray.push(image.src);
   });
-
-  inputVisibility();
+  //inputVisibility();
   updateNumbers();
   counterNumber.innerText = imageArray.length;
-  console.log(imageArray);
 }
 
+/*
 function inputVisibility() {
   const maxImg = document.querySelector("#max-img");
   if (imageArray.length === 8) {
@@ -253,6 +279,8 @@ function inputVisibility() {
   }
 }
 
+*/
+
 function updateNumbers() {
   const numbers = document.querySelectorAll(".num");
   for (let i = 0; i < numbers.length; i++) {
@@ -260,20 +288,6 @@ function updateNumbers() {
   }
 }
 
-// num for the div...
-// make the div movable...
-
-// remove btn
-
-// Clean code
-
-// "dragg to rearrange msg when 2 or more images"
-
-// remove btn...
-// Create array and push items when images are added, update this array when pictures are moved around
-
-// clear input, when image is added succesfully
-// Hide input when 8 images, then show it again if an image gets removed.
-// Number indicator of which image is first
-
-//show placeholder for where image is coming, make it focused when input field is focused.. rly only need 1
+export const captureImages = () => {
+  return imageArray;
+};

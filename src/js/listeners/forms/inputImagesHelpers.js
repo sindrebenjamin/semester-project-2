@@ -45,7 +45,8 @@ export function handleDragAndDrop(targetItem, mouseY, draggedItem) {
   }
 }
 
-import { updateArray } from "../pages/newImageInput.js";
+import { updateArray } from "./inputImages.js";
+import { placeholderVisiblity } from "./inputImages.js";
 
 /**
  *
@@ -53,11 +54,15 @@ import { updateArray } from "../pages/newImageInput.js";
  * Delete related DOM element, update imageArray and create new placeholder
  */
 export function deleteImg(removeBtn) {
-  const imgContainer = document.querySelector("#img-container");
   removeBtn.closest(".img-item").remove();
   updateArray();
-  const placeholder = document.createElement("div");
-  placeholder.className =
-    "placeholder border-dotted border-2 border-neutral-200 aspect-square";
-  imgContainer.appendChild(placeholder);
+  placeholderVisiblity();
 }
+
+export const checkMaxPhotos = (array) => {
+  if (array.length === 8) {
+    return "Photo limit reached";
+  } else {
+    return "";
+  }
+};
