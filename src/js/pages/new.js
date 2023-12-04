@@ -49,7 +49,7 @@ listingForm.addEventListener("submit", function (e) {
   };
 
   if (dateTest && titleTest) {
-    postListing(body, "POST");
+    postListing(body, editId ? "PUT" : "POST", editId);
   }
 });
 

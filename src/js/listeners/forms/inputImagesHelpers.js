@@ -45,8 +45,8 @@ export function handleDragAndDrop(targetItem, mouseY, draggedItem) {
   }
 }
 
-import { updateArray } from "../listeners/forms/inputImages.js";
-import { placeholderVisiblity } from "../listeners/forms/inputImages.js";
+import { updateArray } from "./inputImages.js";
+import { placeholderVisiblity } from "./inputImages.js";
 
 /**
  *
@@ -57,10 +57,12 @@ export function deleteImg(removeBtn) {
   removeBtn.closest(".img-item").remove();
   updateArray();
   placeholderVisiblity();
-  /*
-  const placeholder = document.createElement("div");
-  placeholder.className =
-    "placeholder border-dotted border-2 border-neutral-200 aspect-square";
-  imgContainer.appendChild(placeholder);
-  */
 }
+
+export const checkMaxPhotos = (array) => {
+  if (array.length === 8) {
+    return "Photo limit reached";
+  } else {
+    return "";
+  }
+};

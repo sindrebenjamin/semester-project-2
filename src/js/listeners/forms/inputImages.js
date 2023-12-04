@@ -4,14 +4,27 @@ import {
   removeOpacityFromAllItems,
   handleDragAndDrop,
   deleteImg,
-} from "../../utils/dragDropHelpers.js";
+  checkMaxPhotos,
+} from "./inputImagesHelpers.js";
 
 import { addRemove } from "../../utils/addRemove.js";
+
+let imageArray = [];
 
 const imgContainer = document.querySelector("#img-container");
 const input = document.querySelector("#image-input");
 const label = document.querySelector("#image-input-label");
 const hint = document.querySelector("#image-input-hint");
+
+// Load images if editing
+export const loadImages = (images) => {
+  images.forEach((image) => {
+    createImage(image);
+    placeholderVisiblity();
+    imageArray.length > 1 && placeHolderMain.classList.add("hidden");
+    hint.innerText = checkMaxPhotos(imageArray);
+  });
+};
 
 /**
  *
@@ -20,6 +33,11 @@ const hint = document.querySelector("#image-input-hint");
  */
 export const inputImages = (def) => {
   input.oninput = async () => {
+    if (imageArray.length === 8) {
+      const hintMsg = (hint.innerText = checkMaxPhotos(imageArray));
+      setError(false, input, hint, label, hintMsg, def);
+      return;
+    }
     hint.innerText = "Loading...";
     const test = await checkUrl(input.value);
     setError(test, input, hint, label, "Must be a valid image URL", def);
@@ -47,8 +65,6 @@ function checkUrl(url) {
   });
 }
 
-let imageArray = [];
-
 // Counter
 const counterNumber = document.querySelector("#counter-number");
 counterNumber.innerText = imageArray.length;
@@ -72,15 +88,6 @@ export function placeholderVisiblity() {
   }
 }
 
-// Load images if editing
-export const loadImages = (images) => {
-  images.forEach((image) => {
-    createImage(image);
-    placeholderVisiblity();
-    imageArray.length > 1 && placeHolderMain.classList.add("hidden");
-  });
-};
-
 input.onfocus = () => {
   if (imageArray.length < 8) {
     addRemove(
@@ -100,6 +107,7 @@ input.onblur = () => {
 let child = 0;
 function createImage(url) {
   if (imageArray.length === 8) {
+    hint.innerText = checkMaxPhotos(imageArray);
     return;
   }
   imageArray.length === 7 && input.blur();
@@ -179,6 +187,8 @@ function handleTouchStart(e) {
   if (removeBtn) {
     child--;
     deleteImg(removeBtn);
+    setError(true, input, hint, label, "");
+    input.value = "";
   }
 
   if (!removeBtn) {
@@ -236,6 +246,8 @@ imgContainer.addEventListener("click", function (e) {
   if (removeBtn) {
     child--;
     deleteImg(removeBtn);
+    setError(true, input, hint, label, "");
+    input.value = "";
   }
 });
 

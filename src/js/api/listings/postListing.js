@@ -3,7 +3,8 @@ import { apiURL } from "../constants.js";
 import { displayErrors } from "../displayErrors.js";
 import { checkErrors } from "../checkErrors.js";
 
-export async function postListing(data, requestType) {
+export async function postListing(data, requestType, id) {
+  const editId = id ? "/" + id : "";
   const options = {
     method: requestType,
     headers: headers("application/json"),
@@ -11,7 +12,10 @@ export async function postListing(data, requestType) {
   };
 
   try {
-    const response = await fetch(`${apiURL}/auction/listings`, options);
+    const response = await fetch(
+      `${apiURL}/auction/listings${editId}`,
+      options
+    );
     const result = await response.json();
 
     checkErrors(result);
