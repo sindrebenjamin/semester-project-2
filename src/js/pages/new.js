@@ -4,6 +4,7 @@ import { inputTags } from "../listeners/forms/inputTags.js";
 import { captureTags } from "../listeners/forms/inputTags.js";
 import { captureImages } from "../listeners/forms/inputImages.js";
 import { dateToISO } from "../utils/dateToIso.js";
+import { postListing } from "../api/listings/postListing.js";
 
 inputImages("Add up to 8 photos");
 inputDate();
@@ -22,5 +23,5 @@ listingForm.addEventListener("submit", function (e) {
     endsAt: dateToISO(data.get("end-date")),
   };
 
-  console.log(body);
+  postListing(body, "POST");
 });
