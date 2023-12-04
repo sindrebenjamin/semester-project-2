@@ -86,3 +86,7 @@ function removeTag(tag) {
   tag.remove();
   updateCounter();
 }
+
+export const captureTags = () => {
+  return tags;
+};

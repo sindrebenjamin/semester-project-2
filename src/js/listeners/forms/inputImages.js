@@ -256,3 +256,7 @@ function updateNumbers() {
     numbers[i].innerText = i + 1;
   }
 }
+
+export const captureImages = () => {
+  return imageArray;
+};
