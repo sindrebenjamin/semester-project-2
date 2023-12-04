@@ -14,7 +14,7 @@ export async function getListings(contentHolder, queryString) {
 
   try {
     const response = await fetch(
-      `${apiURL}/auction/listings?_active=true&_bids=true${queryString}`,
+      `${apiURL}/auction/listings?_seller=true&_active=true&_bids=true${queryString}`,
       options
     );
     const result = await response.json();
