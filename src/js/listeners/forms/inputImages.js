@@ -47,7 +47,7 @@ function checkUrl(url) {
   });
 }
 
-let imageArray = []; // Set this conditionally when using queryString to edit
+let imageArray = [];
 
 // Counter
 const counterNumber = document.querySelector("#counter-number");
@@ -72,12 +72,23 @@ export function placeholderVisiblity() {
   }
 }
 
+// Load images if editing
+export const loadImages = (images) => {
+  images.forEach((image) => {
+    createImage(image);
+    placeholderVisiblity();
+    imageArray.length > 1 && placeHolderMain.classList.add("hidden");
+  });
+};
+
 input.onfocus = () => {
-  addRemove(
-    ["border-primary-100"],
-    ["border-neutral-200", "hidden"],
-    placeholders[0]
-  );
+  if (imageArray.length < 8) {
+    addRemove(
+      ["border-primary-100"],
+      ["border-neutral-200", "hidden"],
+      placeholders[0]
+    );
+  }
 };
 
 input.onblur = () => {
@@ -88,8 +99,12 @@ input.onblur = () => {
 // Create imageItem when onload is successful
 let child = 0;
 function createImage(url) {
-  //input.blur();
+  if (imageArray.length === 8) {
+    return;
+  }
+  imageArray.length === 7 && input.blur();
 
+  imageArray.length < 8 && imageArray.push(url);
   // imageItem
   const imageItem = document.createElement("div");
   imageItem.className = "img-item cursor-grab relative";
@@ -111,7 +126,7 @@ function createImage(url) {
   numHolder.appendChild(num);
   imageItem.appendChild(numHolder);
 
-  // removeBtn
+  // remove button
   const removeBtn = document.createElement("div");
   removeBtn.innerText = "Remove";
   removeBtn.className =
@@ -121,26 +136,22 @@ function createImage(url) {
   // Append
   imgContainer.insertBefore(imageItem, imgContainer.children[child]);
   child++;
-  imageArray.push(url);
 
-  inputVisibility();
+  //inputVisibility();
   placeholderVisiblity();
   updateNumbers();
   counterNumber.innerText = imageArray.length;
 }
 
 // Dragging
-
 let draggedItem = null;
 
 // Desktop EventListeners
-
 imgContainer.addEventListener("dragstart", handleDragStart);
 imgContainer.addEventListener("dragover", handleDragOver);
 imgContainer.addEventListener("dragend", handleDragEnd);
 
 // Mobile EventListeners
-
 imgContainer.addEventListener("touchstart", handleTouchStart, {
   passive: false,
 });
@@ -149,7 +160,6 @@ imgContainer.addEventListener("touchmove", handleTouchMove, { passive: false });
 imgContainer.addEventListener("touchend", handleTouchEnd);
 
 // Drag start
-
 function handleDragStart(e) {
   draggedItem = e.target.closest(".img-item");
   if (draggedItem) {
@@ -180,7 +190,6 @@ function handleTouchStart(e) {
 }
 
 // While dragging
-
 function handleDragOver(e) {
   e.preventDefault();
   const mouseY = e.clientY;
@@ -200,7 +209,6 @@ function handleTouchMove(e) {
 }
 
 // Drag end
-
 function handleDragEnd(e) {
   draggedItem.classList.remove("cursor-grabbing");
   draggedItem.null;
@@ -223,7 +231,6 @@ function handleTouchEnd() {
 // Helper Functions
 
 // Remove
-
 imgContainer.addEventListener("click", function (e) {
   const removeBtn = e.target.closest(".remove-btn");
   if (removeBtn) {
@@ -233,18 +240,18 @@ imgContainer.addEventListener("click", function (e) {
 });
 
 // Update
-
 export function updateArray() {
   imageArray = [];
   const images = document.querySelectorAll(".inner-img");
   images.forEach((image) => {
     imageArray.push(image.src);
   });
-  inputVisibility();
+  //inputVisibility();
   updateNumbers();
   counterNumber.innerText = imageArray.length;
 }
 
+/*
 function inputVisibility() {
   const maxImg = document.querySelector("#max-img");
   if (imageArray.length === 8) {
@@ -259,6 +266,8 @@ function inputVisibility() {
     maxImg.classList.add("hidden");
   }
 }
+
+*/
 
 function updateNumbers() {
   const numbers = document.querySelectorAll(".num");

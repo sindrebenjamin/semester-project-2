@@ -5,7 +5,6 @@ import { checkTitle } from "../utils/checkTitle.js";
 import { load } from "../api/storage/load.js";
 
 export const Card = async (listing) => {
-  console.log(listing);
   const profileName = load("profile").name;
   const currentUser = profileName === listing.seller.name ? true : false;
 

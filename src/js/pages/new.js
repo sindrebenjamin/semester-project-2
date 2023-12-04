@@ -7,6 +7,9 @@ import { captureImages } from "../listeners/forms/inputImages.js";
 import { dateToISO } from "../utils/dateToIso.js";
 import { postListing } from "../api/listings/postListing.js";
 import { setError } from "../listeners/forms/setError.js";
+import { getSingleListing } from "../api/listings/getSingleListing.js";
+import { formatDate } from "../utils/formatDate.js";
+import { loadImages } from "../listeners/forms/inputImages.js";
 
 inputImages("Add up to 8 photos");
 inputDate();
@@ -14,6 +17,22 @@ inputTags("Press enter to add tag");
 inputTitle();
 
 const listingForm = document.querySelector("#listing-form");
+const editId = new URLSearchParams(window.location.search).get("edit");
+
+if (editId) {
+  setEdit();
+}
+
+async function setEdit() {
+  const listingData = await getSingleListing(editId);
+  console.log(listingData);
+  document.querySelector("h1").innerText = "Edit Listing";
+  document.querySelector("#submit").value = "Update Listing";
+  document.querySelector("#title").value = listingData.title;
+  document.querySelector("#description").value = listingData.description;
+  document.querySelector("#end-date").value = formatDate(listingData.endsAt);
+  loadImages(listingData.media);
+}
 
 listingForm.addEventListener("submit", function (e) {
   e.preventDefault();
