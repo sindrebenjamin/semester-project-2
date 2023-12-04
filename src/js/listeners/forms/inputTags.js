@@ -13,56 +13,49 @@ tagCounterContainer.innerText = tagCounter;
  * @param {*} def
  * Takes default hint for input as argument
  */
-export const inputNameListener = (def) => {
-  const label = document.querySelector("#tags-label");
-  const hint = document.querySelector("#tags-hint");
-
+export const inputTags = (def) => {
   input.onkeydown = (e) => {
-    handleKeyDown(e);
-    if (tags.includes(tagPre)) {
-      setError(true, input);
-    }
-  };
-
-  input.onblur = () => {
-    const test = input.value.length <= 20 ? true : false;
-    setError(
-      test,
-      input,
-      hint,
-      label,
-      "Name can't be longer than 20 characters",
-      def
-    );
+    const tagPre = input.value.replace(/\s+/g, " ").trim();
+    handleKeyDown(e, tagPre, def);
   };
 };
 
-// Shows counter in UI
+// Check if tag already exist
+function testInput(tagPre) {
+  if (tags.includes(tagPre)) {
+    return false;
+  }
+  return true;
+}
 
+// Shows remaining tags in UI
 function updateCounter() {
   tagCounter = 8 - tags.length;
   tagCounterContainer.innerText = tagCounter;
 }
 
-export const inputTags = () => {
-  input.onkeydown = (e) => handleKeyDown(e);
-};
+// Handle what happens when user press enter
+function handleKeyDown(e, tagPre, def) {
+  const label = document.querySelector("#tags-label");
+  const hint = document.querySelector("#tags-hint");
 
-function handleKeyDown(e) {
   if (e.key === "Enter" || e.keyCode === 13) {
     e.preventDefault();
-    const tagPre = input.value.replace(/\s+/g, " ").trim();
+    const test = testInput(tagPre);
+    setError(test, input, hint, label, "Tag already exists", def);
 
-    if (tagPre.length > 0 && !tags.includes(tagPre)) {
+    if (tagPre.length > 0 && !tags.includes(tagPre) && tags.length < 8) {
       createTag(tagPre);
       tags.push(tagPre);
       console.log(tags);
       updateCounter();
       input.value = "";
     }
+    return test;
   }
 }
 
+// Create tag element in DOM and push string to tags array
 function createTag(text) {
   const tag = document.createElement("div");
   tag.className =
@@ -85,8 +78,7 @@ function createTag(text) {
   tagContainer.appendChild(tag);
 }
 
-//max 8 tags
-
+// Remove tag
 function removeTag(tag) {
   const tagText = tag.querySelector("p").innerHTML;
   tags = tags.filter((tag) => tag !== tagText);

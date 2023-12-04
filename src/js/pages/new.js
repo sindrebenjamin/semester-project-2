@@ -4,4 +4,4 @@ import { inputTags } from "../listeners/forms/inputTags.js";
 
 inputImages("Add up to 8 photos");
 inputDate();
-inputTags();
+inputTags("Press enter to add tag");
