@@ -50,26 +50,45 @@ function checkUrl(url) {
 let imageArray = []; // Set this conditionally when using queryString to edit
 
 // Counter
-
-const counterMessage = document.querySelector("#counter-message");
 const counterNumber = document.querySelector("#counter-number");
-
 counterNumber.innerText = imageArray.length;
 
+// Placeholder visiblity
+const placeHolderHalf = document.querySelector("#placeholder-half");
+const placeHolderMain = document.querySelector("#placeholder-main");
+const placeholders = document.querySelectorAll(".placeholder");
+
+placeholders.forEach((placeholder) => {
+  placeholder.onclick = () => input.focus();
+});
+
+export function placeholderVisiblity() {
+  if (imageArray.length > 0) {
+    placeHolderHalf.classList.add("hidden");
+    //placeHolderMain.classList.add("hidden");
+  } else {
+    placeHolderHalf.classList.remove("hidden");
+    placeHolderMain.classList.remove("hidden");
+  }
+}
+
 input.onfocus = () => {
-  const placeholders = document.querySelectorAll(".placeholder");
-  addRemove(["border-primary-100"], ["border-neutral-200"], placeholders[0]);
+  addRemove(
+    ["border-primary-100"],
+    ["border-neutral-200", "hidden"],
+    placeholders[0]
+  );
 };
 
 input.onblur = () => {
-  const placeholders = document.querySelectorAll(".placeholder");
   addRemove(["border-neutral-200"], ["border-primary-100"], placeholders[0]);
+  imageArray.length > 0 && placeHolderMain.classList.add("hidden");
 };
 
 // Create imageItem when onload is successful
 let child = 0;
 function createImage(url) {
-  input.blur();
+  //input.blur();
 
   // imageItem
   const imageItem = document.createElement("div");
@@ -105,14 +124,7 @@ function createImage(url) {
   imageArray.push(url);
 
   inputVisibility();
-
-  // Remove placeholder
-  const placeholders = document.querySelectorAll(".placeholder");
-  placeholders[0].remove();
-  console.log(placeholders);
-
-  console.log(imageArray);
-
+  placeholderVisiblity();
   updateNumbers();
   counterNumber.innerText = imageArray.length;
 }
@@ -228,11 +240,9 @@ export function updateArray() {
   images.forEach((image) => {
     imageArray.push(image.src);
   });
-
   inputVisibility();
   updateNumbers();
   counterNumber.innerText = imageArray.length;
-  console.log(imageArray);
 }
 
 function inputVisibility() {

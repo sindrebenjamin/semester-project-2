@@ -46,6 +46,7 @@ export function handleDragAndDrop(targetItem, mouseY, draggedItem) {
 }
 
 import { updateArray } from "../listeners/forms/inputImages.js";
+import { placeholderVisiblity } from "../listeners/forms/inputImages.js";
 
 /**
  *
@@ -53,11 +54,13 @@ import { updateArray } from "../listeners/forms/inputImages.js";
  * Delete related DOM element, update imageArray and create new placeholder
  */
 export function deleteImg(removeBtn) {
-  const imgContainer = document.querySelector("#img-container");
   removeBtn.closest(".img-item").remove();
   updateArray();
+  placeholderVisiblity();
+  /*
   const placeholder = document.createElement("div");
   placeholder.className =
     "placeholder border-dotted border-2 border-neutral-200 aspect-square";
   imgContainer.appendChild(placeholder);
+  */
 }
