@@ -24,7 +24,6 @@ export const inputDate = (def) => {
       "Cannot be past date or more than one year from now",
       def
     );
-    //input.blur();
   };
 };
 
@@ -36,7 +35,6 @@ function testDate(date) {
   const year = dateToISO(inAYear.setFullYear(createDate.getFullYear() + 1));
 
   if (selectedDate < now || selectedDate > year) {
-    console.log("boo");
     return false;
   }
   return true;

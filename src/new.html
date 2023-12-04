@@ -146,7 +146,7 @@
             <p id="end-date-hint" class="text-secondary-200 text-xs"></p>
           </div>
           <!-- New Input -->
-          <div class="h-[72px] flex flex-col gap-1 w-full">
+          <div class="lex flex-col gap-1 w-full">
             <div class="relative h-11 min-w-[200px]">
               <input
                 id="tags"
@@ -163,7 +163,49 @@
                 Tags
               </label>
             </div>
-            <p id="tags-hint" class="text-secondary-200 text-xs"></p>
+            <p id="tags-hint" class="text-secondary-200 text-xs">
+              Press enter to add tag
+            </p>
+
+            <div class="mt-4 flex gap-2 flex-wrap" id="tag-container">
+              <div
+                class="gap-1 bg-neutral-100 p-2 flex items-center text-secondary-200 select-none transition-all"
+              >
+                <p>Car</p>
+
+                <svg
+                  class="fill-secondary-200 hover:bg-neutral-200 transition-all"
+                  width="20"
+                  height="21"
+                  viewBox="0 0 20 21"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M14.8535 14.146C14.8999 14.1925 14.9368 14.2476 14.9619 14.3083C14.9871 14.369 15 14.4341 15 14.4997C15 14.5654 14.9871 14.6305 14.9619 14.6912C14.9368 14.7519 14.8999 14.807 14.8535 14.8535C14.807 14.8999 14.7519 14.9368 14.6912 14.9619C14.6305 14.9871 14.5654 15 14.4997 15C14.4341 15 14.369 14.9871 14.3083 14.9619C14.2476 14.9368 14.1925 14.8999 14.146 14.8535L10 10.7068L5.85398 14.8535C5.76017 14.9473 5.63292 15 5.50025 15C5.36758 15 5.24033 14.9473 5.14652 14.8535C5.0527 14.7597 5 14.6324 5 14.4997C5 14.3671 5.0527 14.2398 5.14652 14.146L9.29316 10L5.14652 5.85398C5.0527 5.76017 5 5.63292 5 5.50025C5 5.36758 5.0527 5.24033 5.14652 5.14652C5.24033 5.0527 5.36758 5 5.50025 5C5.63292 5 5.76017 5.0527 5.85398 5.14652L10 9.29316L14.146 5.14652C14.2398 5.0527 14.3671 5 14.4997 5C14.6324 5 14.7597 5.0527 14.8535 5.14652C14.9473 5.24033 15 5.36758 15 5.50025C15 5.63292 14.9473 5.76017 14.8535 5.85398L10.7068 10L14.8535 14.146Z"
+                  />
+                </svg>
+              </div>
+              <div
+                class="gap-1 bg-neutral-100 p-2 flex items-center text-secondary-200 select-none transition-all"
+              >
+                <p>Car</p>
+
+                <svg
+                  class="fill-secondary-200 hover:bg-neutral-200 transition-all"
+                  width="20"
+                  height="21"
+                  viewBox="0 0 20 21"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M14.8535 14.146C14.8999 14.1925 14.9368 14.2476 14.9619 14.3083C14.9871 14.369 15 14.4341 15 14.4997C15 14.5654 14.9871 14.6305 14.9619 14.6912C14.9368 14.7519 14.8999 14.807 14.8535 14.8535C14.807 14.8999 14.7519 14.9368 14.6912 14.9619C14.6305 14.9871 14.5654 15 14.4997 15C14.4341 15 14.369 14.9871 14.3083 14.9619C14.2476 14.9368 14.1925 14.8999 14.146 14.8535L10 10.7068L5.85398 14.8535C5.76017 14.9473 5.63292 15 5.50025 15C5.36758 15 5.24033 14.9473 5.14652 14.8535C5.0527 14.7597 5 14.6324 5 14.4997C5 14.3671 5.0527 14.2398 5.14652 14.146L9.29316 10L5.14652 5.85398C5.0527 5.76017 5 5.63292 5 5.50025C5 5.36758 5.0527 5.24033 5.14652 5.14652C5.24033 5.0527 5.36758 5 5.50025 5C5.63292 5 5.76017 5.0527 5.85398 5.14652L10 9.29316L14.146 5.14652C14.2398 5.0527 14.3671 5 14.4997 5C14.6324 5 14.7597 5.0527 14.8535 5.14652C14.9473 5.24033 15 5.36758 15 5.50025C15 5.63292 14.9473 5.76017 14.8535 5.85398L10.7068 10L14.8535 14.146Z"
+                  />
+                </svg>
+              </div>
+            </div>
+            <p class="mt-2"><span id="tag-counter"></span> Tags remaining</p>
           </div>
           <input
             class="w-full max-w-[500px] text-white text-sm font-bold bg-primary-400 p-4 hover:bg-primary-300 focus:outline-none focus:ring focus:ring-primary-700 transition-all cursor-pointer"
