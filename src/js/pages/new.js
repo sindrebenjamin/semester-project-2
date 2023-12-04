@@ -1,6 +1,6 @@
 import { inputImages } from "../listeners/forms/inputImages.js";
 import { inputDate } from "../listeners/forms/inputDate.js";
-import { inputTags } from "../listeners/forms/inputTags.js";
+import { inputTags, loadTags } from "../listeners/forms/inputTags.js";
 import { inputTitle } from "../listeners/forms/inputTitle.js";
 import { captureTags } from "../listeners/forms/inputTags.js";
 import { captureImages } from "../listeners/forms/inputImages.js";
@@ -32,6 +32,7 @@ async function setEdit() {
   document.querySelector("#description").value = listingData.description;
   document.querySelector("#end-date").value = formatDate(listingData.endsAt);
   loadImages(listingData.media);
+  loadTags(listingData.tags);
 }
 
 listingForm.addEventListener("submit", function (e) {

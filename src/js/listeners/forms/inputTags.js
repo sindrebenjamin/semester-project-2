@@ -1,12 +1,22 @@
 import { setError } from "./setError.js";
 
 const input = document.querySelector("#tags");
+const label = document.querySelector("#tags-label");
+const hint = document.querySelector("#tags-hint");
 const tagContainer = document.querySelector("#tag-container");
 const tagCounterContainer = document.querySelector("#tag-counter");
 
 let tags = [];
 let tagCounter = 8 - tags.length;
 tagCounterContainer.innerText = tagCounter;
+
+export const loadTags = (loadingTags) => {
+  loadingTags.forEach((tag) => {
+    tags.push(tag);
+    updateCounter();
+    createTag(tag);
+  });
+};
 
 /**
  *
@@ -36,18 +46,20 @@ function updateCounter() {
 
 // Handle what happens when user press enter
 function handleKeyDown(e, tagPre, def) {
-  const label = document.querySelector("#tags-label");
-  const hint = document.querySelector("#tags-hint");
-
   if (e.key === "Enter" || e.keyCode === 13) {
+    console.log(tags.length);
     e.preventDefault();
+    if (tags.length === 8) {
+      setError(false, input, hint, label, "0 tags remaining", def);
+      return;
+    }
+
     const test = testInput(tagPre);
     setError(test, input, hint, label, "Tag already exists", def);
 
     if (tagPre.length > 0 && !tags.includes(tagPre) && tags.length < 8) {
       createTag(tagPre);
       tags.push(tagPre);
-      console.log(tags);
       updateCounter();
       input.value = "";
     }
@@ -82,9 +94,9 @@ function createTag(text) {
 function removeTag(tag) {
   const tagText = tag.querySelector("p").innerHTML;
   tags = tags.filter((tag) => tag !== tagText);
-  console.log(tags);
   tag.remove();
   updateCounter();
+  setError(true, input, hint, label, "Press enter to add tag");
 }
 
 export const captureTags = () => {
