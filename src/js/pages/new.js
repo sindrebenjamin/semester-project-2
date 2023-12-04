@@ -32,6 +32,7 @@ listingForm.addEventListener("submit", function (e) {
   }
 });
 
+// Check if required information is missing
 const testDate = () => {
   const input = document.querySelector("#end-date");
   const label = document.querySelector("#end-date-label");
