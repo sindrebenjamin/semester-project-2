@@ -10,11 +10,13 @@ import { setError } from "../listeners/forms/setError.js";
 import { getSingleListing } from "../api/listings/getSingleListing.js";
 import { formatDate } from "../utils/formatDate.js";
 import { loadImages } from "../listeners/forms/inputImages.js";
+import { descriptionInput } from "../listeners/forms/inputDescription.js";
 
 inputImages("Add up to 8 photos");
 inputDate();
 inputTags("Press enter to add tag");
 inputTitle();
+descriptionInput();
 
 const listingForm = document.querySelector("#listing-form");
 const editId = new URLSearchParams(window.location.search).get("edit");
