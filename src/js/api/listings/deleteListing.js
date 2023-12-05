@@ -6,26 +6,17 @@ import { load } from "../storage/load.js";
 
 const profile = load("profile").name;
 
-export async function postListing(data, requestType, id) {
-  const editId = id ? "/" + id : "";
+export async function deleteListing(id) {
   const options = {
-    method: requestType,
+    method: "DELETE",
     headers: headers("application/json"),
-    body: JSON.stringify(data),
   };
 
   try {
-    const response = await fetch(
-      `${apiURL}/auction/listings${editId}`,
-      options
-    );
+    const response = await fetch(`${apiURL}/auction/listings/${id}`, options);
+    window.location.href = `profile.html?user=${profile}`;
     const result = await response.json();
-
-    checkErrors(result);
-
-    if (response.ok) {
-      window.location.href = `profile.html?user=${profile}`;
-    }
+    setTimeout(checkErrors(result), 2000);
   } catch (e) {
     displayErrors(e.message);
   }

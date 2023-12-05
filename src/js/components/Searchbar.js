@@ -2,7 +2,7 @@ export const Searchbar = () => {
   return `
   <form id="search-form" class="hidden md:block w-full md:max-w-[600px]" action="browse.html">
   <div class="relative">
-    <input class="border-2 border-neutral-100 focus:border-primary-100 px-3 py-2 w-full focus:outline-none" type="text" id="search" name="search" placeholder="Search" />
+    <input class="rounded overflow-hidden border-2 border-neutral-100 focus:border-primary-100 px-3 py-2 w-full focus:outline-none" type="text" id="search" name="search" placeholder="Search by tags" />
     
     <label for="search" class="invisible absolute">Search</label>
     <svg class="fill-neutral-300 absolute right-[12px] top-[8px]" width="27" height="28" viewBox="0 0 27 28" fill="none" xmlns="http://www.w3.org/2000/svg">

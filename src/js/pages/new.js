@@ -10,11 +10,13 @@ import { setError } from "../listeners/forms/setError.js";
 import { getSingleListing } from "../api/listings/getSingleListing.js";
 import { formatDate } from "../utils/formatDate.js";
 import { loadImages } from "../listeners/forms/inputImages.js";
+import { descriptionInput } from "../listeners/forms/inputDescription.js";
 
 inputImages("Add up to 8 photos");
 inputDate();
 inputTags("Press enter to add tag");
 inputTitle();
+descriptionInput();
 
 const listingForm = document.querySelector("#listing-form");
 const editId = new URLSearchParams(window.location.search).get("edit");
@@ -25,7 +27,6 @@ if (editId) {
 
 async function setEdit() {
   const listingData = await getSingleListing(editId);
-  console.log(listingData);
   document.querySelector("h1").innerText = "Edit Listing";
   document.querySelector("#submit").value = "Update Listing";
   document.querySelector("#title").value = listingData.title;
@@ -50,6 +51,9 @@ listingForm.addEventListener("submit", function (e) {
   };
 
   if (dateTest && titleTest) {
+    document.querySelector("#submit").value = editId
+      ? "Updating..."
+      : "Creating...";
     postListing(body, editId ? "PUT" : "POST", editId);
   }
 });

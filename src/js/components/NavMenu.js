@@ -1,5 +1,5 @@
 export const NavMenu = (name, credits) => {
-  return `<div id="nav-menu" class="text-sm hidden bg-white absolute top-[60px] right-0 w-[200px] shadow-md z-20">
+  return `<div id="nav-menu" class="rounded overflow-hidden text-sm hidden bg-white absolute top-[60px] right-0 w-[200px] shadow-md z-20">
 
   <div class="p-4 flex flex-col gap-3">
   <div>

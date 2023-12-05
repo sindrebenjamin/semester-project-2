@@ -10,7 +10,7 @@ export const inputTitle = (def) => {
   const label = document.querySelector("#title-label");
   const hint = document.querySelector("#title-hint");
 
-  input.onblur = () => {
+  input.onkeyup = () => {
     const test = !input.value ? false : true;
     setError(test, input, hint, label, "Title must be included", def);
   };

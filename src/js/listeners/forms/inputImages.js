@@ -73,6 +73,7 @@ counterNumber.innerText = imageArray.length;
 const placeHolderHalf = document.querySelector("#placeholder-half");
 const placeHolderMain = document.querySelector("#placeholder-main");
 const placeholders = document.querySelectorAll(".placeholder");
+const firstPhotoMsg = document.querySelector("#first-photo-msg");
 
 placeholders.forEach((placeholder) => {
   placeholder.onclick = () => input.focus();
@@ -81,10 +82,12 @@ placeholders.forEach((placeholder) => {
 export function placeholderVisiblity() {
   if (imageArray.length > 0) {
     placeHolderHalf.classList.add("hidden");
+    firstPhotoMsg.classList.add("hidden");
     //placeHolderMain.classList.add("hidden");
   } else {
     placeHolderHalf.classList.remove("hidden");
     placeHolderMain.classList.remove("hidden");
+    firstPhotoMsg.classList.remove("hidden");
   }
 }
 

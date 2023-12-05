@@ -55,9 +55,9 @@ export const printProfile = async (user) => {
     `<h2 class="mb-6 md:mb-8 font-bold text-2xl md:text-3xl">Bid History</h2>` +
     bidSection;
   document.querySelector("#more-bids").innerHTML = moreBids;
-  document.querySelector("#listings-heading").innerText = `Lots Offered by ${
-    currentProfile ? `You` : user
-  }`;
+  document.querySelector("#listings-heading").innerText = currentProfile
+    ? `Your Listings`
+    : `Listings Offered by ${user}`;
 
   // Toggle more results
   let open = false;
