@@ -9,7 +9,7 @@
     <title>Document</title>
   </head>
   <body>
-    <div id="carousel" class="relative w-[500px] h-[300px]">
+    <div id="carousel" class="relative w-[500px] h-[300px] overflow-auto">
       <svg
         id="left-arrow"
         class="absolute left-2 top-[40%] z-30 opacity-50 hover:opacity-90 transition-all rotate-180"
@@ -60,13 +60,18 @@
       </svg>
       <div id="image-container">
         <img
-          class="object-cover w-full h-full absolute"
+          class="carousel-img object-cover w-full h-full absolute"
           src="https://www.topgear.com/sites/default/files/2022/07/13.jpg"
           alt=""
         />
         <img
-          class="object-cover w-full h-full absolute"
+          class="carousel-img object-cover w-full h-full absolute"
           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnNw-QEceGEOnluRoEjXiYFoimyCiUWbyFVWvZL2sODsFqP0KQ-MYHL0ZNTSNd4yIMM_A&usqp=CAU"
+          alt=""
+        />
+        <img
+          class="carousel-img object-cover w-full h-full absolute"
+          src="https://hips.hearstapps.com/hmg-prod/images/dw-burnett-pcoty22-8260-1671143390.jpg?crop=0.668xw:1.00xh;0.184xw,0&resize=640:*"
           alt=""
         />
       </div>
