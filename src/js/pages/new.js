@@ -51,6 +51,9 @@ listingForm.addEventListener("submit", function (e) {
   };
 
   if (dateTest && titleTest) {
+    document.querySelector("#submit").value = editId
+      ? "Updating..."
+      : "Creating...";
     postListing(body, editId ? "PUT" : "POST", editId);
   }
 });

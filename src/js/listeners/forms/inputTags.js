@@ -71,7 +71,7 @@ function handleKeyDown(e, tagPre, def) {
 function createTag(text) {
   const tag = document.createElement("div");
   tag.className =
-    "gap-1 bg-neutral-100 p-2 flex items-center text-secondary-200 select-none transition-all";
+    "rounded gap-1 bg-neutral-100 p-2 flex items-center text-secondary-200 select-none transition-all";
   tag.innerHTML = `<p>${text}</p> <svg 
   class="cursor-pointer fill-secondary-200 hover:bg-neutral-200 transition-all"
   width="20"
