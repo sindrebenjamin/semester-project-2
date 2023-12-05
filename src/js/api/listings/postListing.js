@@ -2,6 +2,9 @@ import { headers } from "../headers.js";
 import { apiURL } from "../constants.js";
 import { displayErrors } from "../displayErrors.js";
 import { checkErrors } from "../checkErrors.js";
+import { load } from "../storage/load.js";
+
+const profile = load("profile").name;
 
 export async function postListing(data, requestType, id) {
   const editId = id ? "/" + id : "";
@@ -21,7 +24,7 @@ export async function postListing(data, requestType, id) {
     checkErrors(result);
 
     if (response.ok) {
-      console.log(result);
+      window.location.href = `profile.html?user=${profile}`;
     }
   } catch (e) {
     displayErrors(e.message);

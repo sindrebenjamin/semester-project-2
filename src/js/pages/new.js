@@ -25,7 +25,6 @@ if (editId) {
 
 async function setEdit() {
   const listingData = await getSingleListing(editId);
-  console.log(listingData);
   document.querySelector("h1").innerText = "Edit Listing";
   document.querySelector("#submit").value = "Update Listing";
   document.querySelector("#title").value = listingData.title;

@@ -10,7 +10,6 @@ export async function deleteListing(id) {
   const options = {
     method: "DELETE",
     headers: headers("application/json"),
-    // body: JSON.stringify(data),
   };
 
   try {
