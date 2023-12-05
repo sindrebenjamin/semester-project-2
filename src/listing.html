@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="./js/components/index.js" type="module"></script>
+    <script src="./js/pages/listing.js" type="module"></script>
+    <link rel="stylesheet" href="../dist/output.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="carousel" class="relative w-[500px] h-[300px]">
+      <svg
+        id="left-arrow"
+        class="absolute left-2 top-[40%] z-30 opacity-50 hover:opacity-90 transition-all rotate-180"
+        width="44"
+        height="44"
+        viewBox="0 0 44 44"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <rect
+          x="44"
+          width="44"
+          height="44"
+          rx="22"
+          transform="rotate(90 44 0)"
+          fill="white"
+        />
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M18.7 13.2L27.5 22L18.7 30.8L16.5 28.6L23.1 22L16.5 15.4L18.7 13.2Z"
+          fill="#101010"
+        />
+      </svg>
+      <svg
+        id="right-arrow"
+        class="absolute right-2 top-[40%] z-30 opacity-50 hover:opacity-90 transition-all"
+        width="44"
+        height="44"
+        viewBox="0 0 44 44"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <rect
+          x="44"
+          width="44"
+          height="44"
+          rx="22"
+          transform="rotate(90 44 0)"
+          fill="white"
+        />
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M18.7 13.2L27.5 22L18.7 30.8L16.5 28.6L23.1 22L16.5 15.4L18.7 13.2Z"
+          fill="#101010"
+        />
+      </svg>
+      <div id="image-container">
+        <img
+          class="object-cover w-full h-full absolute"
+          src="https://www.topgear.com/sites/default/files/2022/07/13.jpg"
+          alt=""
+        />
+        <img
+          class="object-cover w-full h-full absolute"
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnNw-QEceGEOnluRoEjXiYFoimyCiUWbyFVWvZL2sODsFqP0KQ-MYHL0ZNTSNd4yIMM_A&usqp=CAU"
+          alt=""
+        />
+      </div>
+    </div>
+  </body>
+</html>
