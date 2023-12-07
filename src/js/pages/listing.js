@@ -7,38 +7,6 @@ const slides = document.querySelectorAll(".slide");
 // Current slide counter
 let curSlide = 0;
 
-// Touch event variables
-let touchStartX = 0;
-let touchEndX = 0;
-
-// Touch event listeners
-document.addEventListener("touchstart", touchStart);
-document.addEventListener("touchmove", touchMove);
-document.addEventListener("touchend", touchEnd);
-
-function touchStart(event) {
-  touchStartX = event.touches[0].clientX;
-  console.log(touchStartX);
-}
-
-function touchMove(event) {
-  touchEndX = event.touches[0].clientX;
-  console.log(touchEndX);
-}
-
-function touchEnd() {
-  const deltaX = touchEndX - touchStartX;
-  console.log(deltaX);
-
-  if (deltaX > 0) {
-    // Swipe right
-    prevSlide();
-  } else if (deltaX < 0) {
-    // Swipe left
-    nextSlide();
-  }
-}
-
 // Next slide
 const nextSlideBtn = document.querySelector("#right-arrow");
 

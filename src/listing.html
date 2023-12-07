@@ -10,27 +10,43 @@
   </head>
   <body class="text-secondary-400 antialiased">
     <main>
-      <div
-        class="mobile-slider w-full snap-x snap-mandatory overflow-x-scroll flex"
-      >
-        <div class="mobile-slide w-full snap-start flex-none">
-          <img
-            class="carousel-img object-cover w-full h-full"
-            src="https://www.topgear.com/sites/default/files/2022/07/13.jpg"
-            alt=""
-          />
+      <div class="relative">
+        <!-- Slide Indicators -->
+        <div
+          class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2"
+        >
+          <div
+            class="indicator w-[10px] h-[10px] rounded-full bg-white opacity-80"
+          ></div>
+          <div
+            class="indicator w-[10px] h-[10px] rounded-full bg-white opacity-50"
+          ></div>
         </div>
-        <div class="mobile-slide w-full snap-start flex-none">
-          <img
-            class="carousel-img object-cover w-full h-full"
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnNw-QEceGEOnluRoEjXiYFoimyCiUWbyFVWvZL2sODsFqP0KQ-MYHL0ZNTSNd4yIMM_A&usqp=CAU "
-            alt=""
-          />
+
+        <!-- Mobile slider -->
+        <div
+          class="mobile-slider w-full snap-x snap-mandatory overflow-x-scroll flex md:hidden"
+        >
+          <div class="mobile-slide w-full snap-start flex-none">
+            <img
+              class="carousel-img object-cover w-full h-full"
+              src="https://www.topgear.com/sites/default/files/2022/07/13.jpg"
+              alt=""
+            />
+          </div>
+          <div class="mobile-slide w-full snap-start flex-none">
+            <img
+              class="carousel-img object-cover w-full h-full"
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnNw-QEceGEOnluRoEjXiYFoimyCiUWbyFVWvZL2sODsFqP0KQ-MYHL0ZNTSNd4yIMM_A&usqp=CAU "
+              alt=""
+            />
+          </div>
         </div>
       </div>
 
+      <!-- Desktop slider -->
       <div
-        class="slider overflow-hidden w-full max-w-[800px] h-[350px] relative"
+        class="slider overflow-hidden w-full max-w-[800px] h-[350px] relative hidden md:block"
       >
         <div class="slide transition-all w-full h-[350px] absolute">
           <img
