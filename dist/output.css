@@ -807,6 +807,14 @@ video {
   height: 100vh;
 }
 
+.h-\[450px\]{
+  height: 450px;
+}
+
+.h-\[400px\]{
+  height: 400px;
+}
+
 .min-h-\[60px\]{
   min-height: 60px;
 }

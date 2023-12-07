@@ -1,7 +1,6 @@
 import { addRemove } from "../utils/addRemove.js";
 
-export const DesktopSlider = (data) => {
-  console.log(data);
+export const DesktopSlider = (checkedPhotos) => {
   const slider = document.querySelector(".slider");
   const slideIndicatorsDesktop = document.querySelector(
     ".slide-indicators-desktop"
@@ -20,7 +19,7 @@ export const DesktopSlider = (data) => {
       // Slide
       const slide = document.createElement("div");
       slide.className =
-        "top-0 left-0 slide transition-all w-full h-[350px] absolute";
+        "top-0 left-0 slide transition-all w-full h-[450px] absolute";
 
       // Image
       const img = document.createElement("img");
@@ -57,7 +56,7 @@ export const DesktopSlider = (data) => {
     }
   }
 
-  createSlides(data.media);
+  createSlides(checkedPhotos);
 
   const slides = document.querySelectorAll(".slide");
   const slideIndicators = document.querySelectorAll(".indicator-desktop");
@@ -111,6 +110,16 @@ export const DesktopSlider = (data) => {
   }
 
   showSlide();
+
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowRight") {
+      nextSlide();
+      updateIndicators();
+    } else if (e.key === "ArrowLeft") {
+      prevSlide();
+      updateIndicators();
+    }
+  });
 
   slideIndicators.forEach((indicator, index) => {
     indicator.addEventListener("click", () => {

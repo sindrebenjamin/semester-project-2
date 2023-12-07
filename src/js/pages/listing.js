@@ -1,18 +1,33 @@
 import { getSingleListing } from "../api/listings/getSingleListing.js";
 import { MobileSlider } from "../components/MobileSlider.js";
 import { DesktopSlider } from "../components/DesktopSlider.js";
+import { checkMedia } from "../utils/checkMedia.js";
 const id = new URLSearchParams(window.location.search).get("id");
 
 async function getData() {
-  const data = await getSingleListing(id);
-  document.querySelector("title").innerText = `Bidnet | ${data.title}`;
+  const checkAllPhotos = async (data) => {
+    const promises = data.media.map(async (photo) => {
+      return checkMedia(photo);
+    });
+    return Promise.all(promises);
+  };
 
-  MobileSlider(data);
-  DesktopSlider(data);
+  try {
+    const data = await getSingleListing(id);
+    document.querySelector("title").innerText = `Bidnet | ${data.title}`;
+
+    // Extract resolved values from promises
+    const checkedPhotos = await checkAllPhotos(data);
+    console.log(checkedPhotos);
+
+    MobileSlider(checkedPhotos);
+    DesktopSlider(checkedPhotos);
+  } catch (error) {
+    console.error(error);
+  }
 }
 
 getData();
-
 /*
 
 

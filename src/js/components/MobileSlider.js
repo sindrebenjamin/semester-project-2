@@ -1,6 +1,6 @@
 import { addRemove } from "../utils/addRemove.js";
 
-export const MobileSlider = (data) => {
+export const MobileSlider = async (checkedPhotos) => {
   const mobileSlider = document.querySelector(".mobile-slider");
   const slideIndicators = document.querySelector(".slide-indicators");
 
@@ -8,7 +8,7 @@ export const MobileSlider = (data) => {
     images.forEach((image) => {
       // Slide
       const slide = document.createElement("div");
-      slide.className = "mobile-slide w-full snap-start flex-none";
+      slide.className = "mobile-slide w-full snap-start flex-none h-[400px]";
 
       // Image
       const img = document.createElement("img");
@@ -44,7 +44,7 @@ export const MobileSlider = (data) => {
     }
   }
 
-  createSlides(data.media);
+  createSlides(checkedPhotos);
 
   const mobileIndicators = document.querySelectorAll(".indicator");
 
