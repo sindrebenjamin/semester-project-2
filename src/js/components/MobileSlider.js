@@ -3,7 +3,6 @@ import { addRemove } from "../utils/addRemove.js";
 export const MobileSlider = (data) => {
   const mobileSlider = document.querySelector(".mobile-slider");
   const slideIndicators = document.querySelector(".slide-indicators");
-  console.log(data);
 
   function createSlides(images) {
     images.forEach((image) => {
@@ -66,8 +65,7 @@ export const MobileSlider = (data) => {
   function goToSlide(index) {
     currentIndex = index;
     updateIndicators();
-    document.querySelector(".mobile-slider").scrollLeft =
-      currentIndex * window.innerWidth;
+    mobileSlider.scrollLeft = currentIndex * window.innerWidth;
   }
 
   mobileIndicators.forEach((indicator, index) => {

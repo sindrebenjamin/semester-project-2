@@ -1,6 +1,6 @@
 import { getSingleListing } from "../api/listings/getSingleListing.js";
-import { addRemove } from "../utils/addRemove.js";
 import { MobileSlider } from "../components/MobileSlider.js";
+import { DesktopSlider } from "../components/DesktopSlider.js";
 const id = new URLSearchParams(window.location.search).get("id");
 
 async function getData() {
@@ -8,6 +8,7 @@ async function getData() {
   document.querySelector("title").innerText = `Bidnet | ${data.title}`;
 
   MobileSlider(data);
+  DesktopSlider(data);
 }
 
 getData();
