@@ -1,5 +1,44 @@
 import { getSingleListing } from "../api/listings/getSingleListing.js";
+import { addRemove } from "../utils/addRemove.js";
 const id = new URLSearchParams(window.location.search).get("id");
+
+const mobileSlides = document.querySelectorAll(".mobile-slide");
+const mobileIndicators = document.querySelectorAll(".indicator");
+
+let currentIndex = 0;
+
+function updateIndicators() {
+  mobileIndicators.forEach((indicator, index) => {
+    if (index === currentIndex) {
+      addRemove(["opacity-80"], ["opacity-50"], indicator);
+    } else {
+      addRemove(["opacity-50"], ["opacity-80"], indicator);
+    }
+  });
+}
+
+function goToSlide(index) {
+  currentIndex = index;
+  updateIndicators();
+  document.querySelector(".mobile-slider").scrollLeft =
+    currentIndex * window.innerWidth;
+}
+
+mobileIndicators.forEach((indicator, index) => {
+  indicator.addEventListener("click", () => {
+    goToSlide(index);
+  });
+});
+
+document.querySelector(".mobile-slider").addEventListener("scroll", () => {
+  const newSlideIndex = Math.round(
+    document.querySelector(".mobile-slider").scrollLeft / window.innerWidth
+  );
+  if (newSlideIndex !== currentIndex) {
+    currentIndex = newSlideIndex;
+    updateIndicators();
+  }
+});
 
 // Slider
 const slides = document.querySelectorAll(".slide");
