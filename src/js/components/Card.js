@@ -5,7 +5,8 @@ import { checkTitle } from "../utils/checkTitle.js";
 import { load } from "../api/storage/load.js";
 
 export const Card = async (listing) => {
-  const profileName = load("profile").name;
+  const profile = load("profile");
+  const profileName = profile && load("profile").name;
   const currentUser = profileName === listing.seller.name ? true : false;
 
   const media = await checkMedia(listing.media[0]);

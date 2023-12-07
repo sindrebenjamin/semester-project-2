@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="./js/components/index.js" type="module"></script>
+
+    <script src="./js/pages/listing.js" type="module"></script>
+    <link rel="stylesheet" href="../dist/output.css" />
+    <title></title>
+  </head>
+  <body class="text-secondary-400 antialiased">
+    <main>
+      <div class="relative">
+        <!-- Slide Indicators -->
+        <div
+          class="slide-indicators absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-30"
+        ></div>
+
+        <!-- Mobile slider -->
+        <div
+          class="mobile-slider w-full snap-x snap-mandatory overflow-x-scroll flex md:hidden"
+        ></div>
+      </div>
+
+      <!-- Desktop slider -->
+      <div
+        class="slider overflow-hidden w-full max-w-[800px] h-[450px] relative hidden md:block"
+      >
+        <!-- Slide Indicators for desktop -->
+        <div
+          class="slide-indicators-desktop absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-30"
+        ></div>
+        <button id="left-arrow" class="arrow-btn">
+          <svg
+            class="absolute left-2 top-[45%] z-30 opacity-50 hover:opacity-90 transition-all rotate-180 active:scale-90"
+            width="44"
+            height="44"
+            viewBox="0 0 44 44"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect
+              x="44"
+              width="44"
+              height="44"
+              rx="22"
+              transform="rotate(90 44 0)"
+              fill="white"
+            />
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M18.7 13.2L27.5 22L18.7 30.8L16.5 28.6L23.1 22L16.5 15.4L18.7 13.2Z"
+              fill="#101010"
+            />
+          </svg>
+        </button>
+        <button id="right-arrow" class="arrow-btn">
+          <svg
+            class="absolute right-2 top-[45%] z-30 opacity-50 hover:opacity-90 transition-all active:scale-90"
+            width="44"
+            height="44"
+            viewBox="0 0 44 44"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect
+              x="44"
+              width="44"
+              height="44"
+              rx="22"
+              transform="rotate(90 44 0)"
+              fill="white"
+            />
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M18.7 13.2L27.5 22L18.7 30.8L16.5 28.6L23.1 22L16.5 15.4L18.7 13.2Z"
+              fill="#101010"
+            />
+          </svg>
+        </button>
+      </div>
+    </main>
+  </body>
+</html>
