@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="./js/components/index.js" type="module"></script>
+    <script src="./js/components/MobileSlider.js" type="module"></script>
     <script src="./js/pages/listing.js" type="module"></script>
     <link rel="stylesheet" href="../dist/output.css" />
     <title></title>
@@ -13,35 +14,13 @@
       <div class="relative">
         <!-- Slide Indicators -->
         <div
-          class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2"
-        >
-          <div
-            class="indicator w-[10px] h-[10px] rounded-full bg-white opacity-80"
-          ></div>
-          <div
-            class="indicator w-[10px] h-[10px] rounded-full bg-white opacity-50"
-          ></div>
-        </div>
+          class="slide-indicators absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2"
+        ></div>
 
         <!-- Mobile slider -->
         <div
           class="mobile-slider w-full snap-x snap-mandatory overflow-x-scroll flex md:hidden"
-        >
-          <div class="mobile-slide w-full snap-start flex-none">
-            <img
-              class="carousel-img object-cover w-full h-full"
-              src="https://www.topgear.com/sites/default/files/2022/07/13.jpg"
-              alt=""
-            />
-          </div>
-          <div class="mobile-slide w-full snap-start flex-none">
-            <img
-              class="carousel-img object-cover w-full h-full"
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnNw-QEceGEOnluRoEjXiYFoimyCiUWbyFVWvZL2sODsFqP0KQ-MYHL0ZNTSNd4yIMM_A&usqp=CAU "
-              alt=""
-            />
-          </div>
-        </div>
+        ></div>
       </div>
 
       <!-- Desktop slider -->

@@ -1,44 +1,19 @@
 import { getSingleListing } from "../api/listings/getSingleListing.js";
 import { addRemove } from "../utils/addRemove.js";
+import { MobileSlider } from "../components/MobileSlider.js";
 const id = new URLSearchParams(window.location.search).get("id");
 
-const mobileSlides = document.querySelectorAll(".mobile-slide");
-const mobileIndicators = document.querySelectorAll(".indicator");
+async function getData() {
+  const data = await getSingleListing(id);
+  document.querySelector("title").innerText = `Bidnet | ${data.title}`;
 
-let currentIndex = 0;
-
-function updateIndicators() {
-  mobileIndicators.forEach((indicator, index) => {
-    if (index === currentIndex) {
-      addRemove(["opacity-80"], ["opacity-50"], indicator);
-    } else {
-      addRemove(["opacity-50"], ["opacity-80"], indicator);
-    }
-  });
+  MobileSlider(data);
 }
 
-function goToSlide(index) {
-  currentIndex = index;
-  updateIndicators();
-  document.querySelector(".mobile-slider").scrollLeft =
-    currentIndex * window.innerWidth;
-}
+getData();
 
-mobileIndicators.forEach((indicator, index) => {
-  indicator.addEventListener("click", () => {
-    goToSlide(index);
-  });
-});
+/*
 
-document.querySelector(".mobile-slider").addEventListener("scroll", () => {
-  const newSlideIndex = Math.round(
-    document.querySelector(".mobile-slider").scrollLeft / window.innerWidth
-  );
-  if (newSlideIndex !== currentIndex) {
-    currentIndex = newSlideIndex;
-    updateIndicators();
-  }
-});
 
 // Slider
 const slides = document.querySelectorAll(".slide");
@@ -79,15 +54,14 @@ function showSlide() {
 
 showSlide();
 
+
+*/
+
 // FIRST ATTEMPT CAROUSEL
 /*
-async function getData() {
-  const data = await getSingleListing(id);
-  document.querySelector("title").innerText = `Bidnet | ${data.title}`;
-  console.log(data);
-}
 
-getData();
+
+
 
 const images = document.querySelectorAll(".carousel-img");
 
