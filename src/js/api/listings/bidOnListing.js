@@ -7,6 +7,10 @@ import { updateBidsLength } from "../../listeners/outsideBidsListener.js";
 import { animateListing } from "../animateListing.js";
 
 export async function bidOnListing(data, id) {
+  const submitBtn = document.querySelector("#submit");
+  submitBtn.innerHTML = `
+  <div class="spinner"></div>
+`;
   const options = {
     method: "POST",
     headers: headers("application/json"),
@@ -29,5 +33,9 @@ export async function bidOnListing(data, id) {
     }
   } catch (e) {
     displayErrors(e.message);
+  } finally {
+    submitBtn.innerHTML = `
+    Place Bid
+  `;
   }
 }
