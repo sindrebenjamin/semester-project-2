@@ -6,17 +6,20 @@ import { dateToDays } from "../utils/dateToDays.js";
  * @param {*} bids Array containing bids
  * @param {*} int Index for loop
  * @param {*} loopBreak Set to true to break loop at 3
+ * @param {*} profilePage Set to true if profilePage
  * @returns
  */
 
-export const Bids = (bids, int, loopBreak) => {
+export const Bids = (bids, int, loopBreak, profilePage) => {
   const allBids = document.createElement("div");
   allBids.classList.add("text-xs", "flex", "flex-col");
 
   for (let i = int; i < bids.length; i++) {
     // Title
     const listingTitle = document.createElement("p");
-    listingTitle.innerText = checkTitle(bids[i].listing.title);
+    listingTitle.innerText = profilePage
+      ? checkTitle(bids[i].listing.title)
+      : bids[i].bidderName;
     listingTitle.classList.add("whitespace-nowrap", "col-span-2");
 
     // Days ago
@@ -31,7 +34,9 @@ export const Bids = (bids, int, loopBreak) => {
 
     // Append
     const bidContainer = document.createElement("a");
-    bidContainer.href = `listing.html?id=${bids[i].listing.id}`;
+    bidContainer.href = profilePage
+      ? `listing.html?id=${bids[i].listing.id}`
+      : `profile.html?user=${bids[i].bidderName}`;
     bidContainer.classList.add(
       "grid",
       "grid-cols-4",
