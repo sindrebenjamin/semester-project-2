@@ -9,14 +9,10 @@ let bidsLength = data.bids.length;
 //getData();
 
 async function lookForBids() {
-  console.log("Looking...");
-
   const dataCheck = await getSingleListing(id);
   let checkedLength = dataCheck.bids.length;
-  console.log(checkedLength);
 
   if (checkedLength > bidsLength) {
-    console.log("new bid!");
     await updateBids();
     animateListing();
     bidsLength = checkedLength;

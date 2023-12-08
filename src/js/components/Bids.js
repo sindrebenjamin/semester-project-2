@@ -15,11 +15,12 @@ export const Bids = (bids, int, loopBreak, profilePage) => {
   allBids.classList.add("text-xs", "flex", "flex-col");
 
   for (let i = int; i < bids.length; i++) {
+    console.log(bids[i]);
     // Title
     const listingTitle = document.createElement("p");
     listingTitle.innerText = profilePage
       ? checkTitle(bids[i].listing.title)
-      : bids[i].bidderName;
+      : checkTitle(bids[i].bidderName);
     listingTitle.classList.add("whitespace-nowrap", "col-span-2");
 
     // Days ago

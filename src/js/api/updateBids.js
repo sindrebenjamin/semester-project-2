@@ -21,20 +21,34 @@ export const updateBids = async () => {
   inputBidListener(highestBid);
 
   // Bid history
+  const reversedBids = sortedBids.reverse();
 
-  const bids = Bids(sortedBids.reverse(), 0, true, false);
+  const bids = Bids(reversedBids, 0, true, false);
   document.querySelector("#bids").innerHTML = bids;
-  const moreBids = Bids(sortedBids.reverse(), 4, false, false);
+  const moreBids = Bids(reversedBids, 4, false, false);
   document.querySelector("#more-bids").innerHTML = moreBids;
 
   // Show view more if 5 or more bids
   const viewMoreBtn = document.querySelector("#view-more-btn");
   const viewMore = document.querySelector("#view-more");
+  const viewArrow = document.querySelector("#view-arrow");
 
   viewMore.innerText = `View more (${data.bids.length - 4})`;
   if (data.bids.length > 4) {
     viewMoreBtn.classList.remove("hidden");
   }
+
+  // Toggle more results
+  let open = false;
+  viewMoreBtn.onclick = () => {
+    open = !open;
+    viewMore.innerText = !open
+      ? `View more (${data.bids.length - 4})`
+      : `Show less results`;
+    viewArrow.classList.toggle(`rotate-180`);
+
+    document.querySelector("#more-bids").classList.toggle("hidden");
+  };
 
   return data.bids.length;
 };
