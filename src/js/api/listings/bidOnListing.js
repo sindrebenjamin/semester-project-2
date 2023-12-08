@@ -3,6 +3,7 @@ import { apiURL } from "../constants.js";
 import { displayErrors } from "../displayErrors.js";
 import { checkErrors } from "../checkErrors.js";
 import { updateBids } from "../updateBids.js";
+import { updateBidsLength } from "../../listeners/outsideBidsListener.js";
 
 export async function bidOnListing(data, id) {
   const options = {
@@ -21,7 +22,8 @@ export async function bidOnListing(data, id) {
     checkErrors(result);
 
     if (response.ok) {
-      await updateBids();
+      const newLength = await updateBids();
+      updateBidsLength(newLength);
       const bidItems = document.querySelectorAll(".bid-item");
       bidItems[0].classList.add("bg-primary-100");
       setTimeout(() => {
