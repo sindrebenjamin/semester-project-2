@@ -15,7 +15,6 @@ export const Bids = (bids, int, loopBreak, profilePage) => {
   allBids.classList.add("text-xs", "flex", "flex-col");
 
   for (let i = int; i < bids.length; i++) {
-    console.log(bids[i]);
     // Title
     const listingTitle = document.createElement("p");
     listingTitle.innerText = profilePage
@@ -26,7 +25,7 @@ export const Bids = (bids, int, loopBreak, profilePage) => {
     // Days ago
     const daysAgo = document.createElement("p");
     daysAgo.innerText = dateToDays(bids[i].created, true);
-    daysAgo.className = "text-secondary-100 ml-[-24px]";
+    daysAgo.className = "text-secondary-100 ml-[-32px]";
 
     // Amount
     const amount = document.createElement("p");

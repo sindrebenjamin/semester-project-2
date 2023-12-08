@@ -5,8 +5,10 @@ import { checkErrors } from "../checkErrors.js";
 import { updateBids } from "../updateBids.js";
 import { updateBidsLength } from "../../listeners/outsideBidsListener.js";
 import { animateListing } from "../animateListing.js";
+import { updateCredits } from "../updateCredits.js";
 
 export async function bidOnListing(data, id) {
+  // Spinner
   const submitBtn = document.querySelector("#submit");
   submitBtn.innerHTML = `
   <div class="spinner"></div>
@@ -27,6 +29,7 @@ export async function bidOnListing(data, id) {
     checkErrors(result);
 
     if (response.ok) {
+      updateCredits(data.amount);
       const newLength = await updateBids();
       updateBidsLength(newLength);
       animateListing();

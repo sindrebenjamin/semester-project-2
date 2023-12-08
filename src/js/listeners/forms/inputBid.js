@@ -10,8 +10,6 @@ export const inputBidListener = (highestBid) => {
       ? parseInt(input.value.slice(1))
       : parseInt(input.value);
 
-    console.log(parsedNum);
-
     const test = parsedNum > highestBid ? true : false;
     setError(
       test,
