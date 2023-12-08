@@ -39,8 +39,7 @@ export const Bids = (bids, int, loopBreak, profilePage) => {
       : `profile.html?user=${bids[i].bidderName}`;
     bidContainer.classList.add(
       "grid",
-      "transition",
-      "duration-1000",
+      "transition-all",
       "bid-item",
       "grid-cols-4",
       "sm:grid-cols-4",

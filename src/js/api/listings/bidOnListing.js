@@ -4,6 +4,7 @@ import { displayErrors } from "../displayErrors.js";
 import { checkErrors } from "../checkErrors.js";
 import { updateBids } from "../updateBids.js";
 import { updateBidsLength } from "../../listeners/outsideBidsListener.js";
+import { animateListing } from "../animateListing.js";
 
 export async function bidOnListing(data, id) {
   const options = {
@@ -24,11 +25,7 @@ export async function bidOnListing(data, id) {
     if (response.ok) {
       const newLength = await updateBids();
       updateBidsLength(newLength);
-      const bidItems = document.querySelectorAll(".bid-item");
-      bidItems[0].classList.add("bg-primary-100");
-      setTimeout(() => {
-        bidItems[0].classList.remove("bg-primary-100");
-      }, 1000);
+      animateListing();
     }
   } catch (e) {
     displayErrors(e.message);
