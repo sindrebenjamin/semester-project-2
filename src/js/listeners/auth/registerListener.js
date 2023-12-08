@@ -5,6 +5,7 @@ import { inputPasswordListener } from "../forms/inputPassword.js";
 import { inputAvatarListener } from "../forms/inputAvatar.js";
 import { setError } from "../forms/setError.js";
 const profile = new URLSearchParams(window.location.search).get("user");
+const listing = new URLSearchParams(window.location.search).get("listing");
 
 function registerListener(event) {
   event.preventDefault();
@@ -35,8 +36,16 @@ inputNameListener();
 inputPasswordListener("Password must be at least 8 characters");
 inputAvatarListener();
 
+// Direct user according to where they clicked login or register from
 const loginLink = document.querySelector("#login-link");
-loginLink.href = !profile ? `login.html` : `login.html?user=${profile}`;
+
+if (profile) {
+  loginLink.href = `login.html?user=${profile}`;
+} else if (listing) {
+  loginLink.href = `login.html?listing=${listing}`;
+} else {
+  loginLink.href = `login.html`;
+}
 
 // Check if required information is missing
 const testUsername = () => {

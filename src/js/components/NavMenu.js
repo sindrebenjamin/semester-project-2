@@ -8,7 +8,7 @@ export const NavMenu = (name, credits) => {
   </div>
   <div>
   <p class="text-secondary-100 text-xs">My balance</p>
-  <p class="text-primary-400 font-bold text-sm">$${credits}</p>
+  <p id="my-balance" class="text-primary-400 font-bold text-sm">$${credits}</p>
   </div>
   </div>
 

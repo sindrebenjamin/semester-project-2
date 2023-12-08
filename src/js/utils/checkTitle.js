@@ -1,6 +1,6 @@
-export const checkTitle = (title) => {
-  if (title.length > 20) {
-    const cutTitle = title.slice(0, 19);
+export const checkTitle = (title, num) => {
+  if (title.length > num) {
+    const cutTitle = title.slice(0, num);
     return cutTitle + "...";
   }
   return title;

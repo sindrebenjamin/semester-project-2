@@ -27,8 +27,8 @@ export const printProfile = async (user) => {
   // Components
   const topSection = Profile(profileResult);
   const bidSection =
-    bidResults.length === 0 ? noBids : Bids(bidResults, 0, true);
-  const moreBids = Bids(bidResults, 4, false);
+    bidResults.length === 0 ? noBids : Bids(bidResults, 0, true, true);
+  const moreBids = Bids(bidResults, 4, false, true);
   printListings(listingsResult, "#listings");
 
   // Conditional rendering
@@ -65,7 +65,7 @@ export const printProfile = async (user) => {
     open = !open;
     viewMore.innerText = !open
       ? `View more (${bidResults.length - 4})`
-      : `Show less results`;
+      : `Show less`;
     viewArrow.classList.toggle(`rotate-180`);
 
     document.querySelector("#more-bids").classList.toggle("hidden");

@@ -4,6 +4,7 @@ import { displayErrors } from "../displayErrors.js";
 import { save } from "../storage/save.js";
 import { checkErrors } from "../checkErrors.js";
 const profile = new URLSearchParams(window.location.search).get("user");
+const listing = new URLSearchParams(window.location.search).get("listing");
 
 export async function login(userData) {
   const options = {
@@ -21,9 +22,14 @@ export async function login(userData) {
       save("token", result.accessToken);
       delete result.accessToken;
       save("profile", result);
-      !profile
-        ? (window.location.href = "index.html")
-        : (window.location.href = `profile.html?user=${profile}`);
+
+      if (profile) {
+        window.location.href = `profile.html?user=${profile}`;
+      } else if (listing) {
+        window.location.href = `listing.html?id=${listing}`;
+      } else {
+        window.location.href = `index.html`;
+      }
     }
   } catch (e) {
     displayErrors(e.message);

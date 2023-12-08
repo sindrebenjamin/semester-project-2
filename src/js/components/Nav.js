@@ -2,12 +2,20 @@ import { load } from "../api/storage/load.js";
 import { NavMenu } from "./NavMenu.js";
 import { checkAvatar } from "../utils/checkAvatar.js";
 const profilePage = new URLSearchParams(window.location.search).get("user");
-const registerLink = !profilePage
-  ? `register.html`
-  : `register.html?user=${profilePage}`;
-const loginLink = !profilePage
-  ? `login.html`
-  : `login.html?user=${profilePage}`;
+const listingPage = new URLSearchParams(window.location.search).get("id");
+
+console.log(listingPage);
+
+const registerLink = listingPage
+  ? `register.html?listing=${listingPage}`
+  : profilePage
+  ? `register.html?user=${profilePage}`
+  : `register.html`;
+const loginLink = listingPage
+  ? `login.html?listing=${listingPage}`
+  : profilePage
+  ? `login.html?user=${profilePage}`
+  : `login.html`;
 const profile = load("profile");
 
 export const Nav = () => {
