@@ -65,7 +65,7 @@ export const printProfile = async (user) => {
     open = !open;
     viewMore.innerText = !open
       ? `View more (${bidResults.length - 4})`
-      : `Show less results`;
+      : `Show less`;
     viewArrow.classList.toggle(`rotate-180`);
 
     document.querySelector("#more-bids").classList.toggle("hidden");

@@ -26,12 +26,12 @@ export const Bids = (bids, int, loopBreak, profilePage) => {
     // Days ago
     const daysAgo = document.createElement("p");
     daysAgo.innerText = dateToDays(bids[i].created, true) + ` ago`;
-    daysAgo.classList.add("text-secondary-100", "text-right", "sm:text-left");
+    daysAgo.className = "text-secondary-100 ml-[-8px]";
 
     // Amount
     const amount = document.createElement("p");
     amount.innerText = "$" + bids[i].amount;
-    amount.classList.add("font-bold", "text-right");
+    amount.className = "font-bold ml-8";
 
     // Append
     const bidContainer = document.createElement("a");
@@ -45,7 +45,8 @@ export const Bids = (bids, int, loopBreak, profilePage) => {
       "grid-cols-4",
       "sm:grid-cols-4",
       "hover:bg-neutral-100",
-      "py-2"
+      "p-2",
+      "rounded"
     );
     bidContainer.appendChild(listingTitle);
     bidContainer.appendChild(daysAgo);

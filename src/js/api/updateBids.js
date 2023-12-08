@@ -44,7 +44,7 @@ export const updateBids = async () => {
     open = !open;
     viewMore.innerText = !open
       ? `View more (${data.bids.length - 4})`
-      : `Show less results`;
+      : `Show less`;
     viewArrow.classList.toggle(`rotate-180`);
 
     document.querySelector("#more-bids").classList.toggle("hidden");
