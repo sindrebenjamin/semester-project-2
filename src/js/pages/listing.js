@@ -18,7 +18,7 @@ if (!profile) {
   button.disabled = true;
   button.className =
     "flex justify-center rounded w-full text-white text-sm font-bold bg-primary-400 p-4 focus:outline-none focus:ring focus:ring-primary-700 transition-all cursor-standard opacity-50";
-  loginMessage.innerHTML = `You have to
+  loginMessage.innerHTML = `
   <a
     id="login-link"
     class="text-primary-300 hover:opacity-50 transition-all underline focus:outline-none focus:ring focus:ring-primary-700"
@@ -32,7 +32,7 @@ if (!profile) {
     href="register.html?listing=${id}"
     >create new user</a
   >
-  to place a bid on this listing.`;
+  to place a bid on this listing`;
 }
 
 async function getData() {

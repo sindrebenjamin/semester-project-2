@@ -23,23 +23,32 @@ export const updateBids = async () => {
   // Bid history
   const reversedBids = sortedBids.reverse();
 
-  const bids = Bids(reversedBids, 0, true, false);
+  const bids =
+    data.bids.length > 0
+      ? Bids(reversedBids, 0, true, false)
+      : "This listing has no bids yet";
   document.querySelector("#bids").innerHTML = bids;
   const moreBids = Bids(reversedBids, 4, false, false);
-  document.querySelector("#more-bids").innerHTML = moreBids;
+  const moreBidsContainer = document.querySelector("#more-bids");
+  moreBidsContainer.innerHTML = moreBids;
 
   // Show view more if 5 or more bids
   const viewMoreBtn = document.querySelector("#view-more-btn");
   const viewMore = document.querySelector("#view-more");
   const viewArrow = document.querySelector("#view-arrow");
+  const moreBidsIsVisible = moreBidsContainer.classList.contains("hidden")
+    ? false
+    : true;
 
-  viewMore.innerText = `View more (${data.bids.length - 4})`;
+  viewMore.innerText = !moreBidsIsVisible
+    ? `View more (${data.bids.length - 4})`
+    : `Show less`;
   if (data.bids.length > 4) {
     viewMoreBtn.classList.remove("hidden");
   }
 
   // Toggle more results
-  let open = false;
+  let open = moreBidsIsVisible ? true : false;
   viewMoreBtn.onclick = () => {
     open = !open;
     viewMore.innerText = !open

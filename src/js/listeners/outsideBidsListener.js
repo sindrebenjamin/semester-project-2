@@ -6,8 +6,6 @@ const id = new URLSearchParams(window.location.search).get("id");
 const data = await getSingleListing(id);
 let bidsLength = data.bids.length;
 
-//getData();
-
 async function lookForBids() {
   const dataCheck = await getSingleListing(id);
   let checkedLength = dataCheck.bids.length;
@@ -22,6 +20,7 @@ async function lookForBids() {
 let interval = setInterval(lookForBids, 5000);
 
 export const updateBidsLength = (updatedLength) => {
-  //clearInterval(interval);
   bidsLength = updatedLength;
 };
+
+let forceUpdate = setInterval(updateBids, 60000);

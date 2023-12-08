@@ -33,6 +33,7 @@ export async function bidOnListing(data, id) {
       const newLength = await updateBids();
       updateBidsLength(newLength);
       animateListing();
+      document.querySelector(".error-element").innerText = "";
     }
   } catch (e) {
     displayErrors(e.message);
