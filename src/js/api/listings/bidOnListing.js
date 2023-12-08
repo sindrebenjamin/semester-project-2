@@ -2,9 +2,7 @@ import { headers } from "../headers.js";
 import { apiURL } from "../constants.js";
 import { displayErrors } from "../displayErrors.js";
 import { checkErrors } from "../checkErrors.js";
-import { load } from "../storage/load.js";
-
-//const profile = load("profile").name;
+import { updateBids } from "../updateBids.js";
 
 export async function bidOnListing(data, id) {
   const options = {
@@ -23,8 +21,12 @@ export async function bidOnListing(data, id) {
     checkErrors(result);
 
     if (response.ok) {
-      //window.location.href = `profile.html?user=${profile}`;
-      console.log(result);
+      await updateBids();
+      const bidItems = document.querySelectorAll(".bid-item");
+      bidItems[0].classList.add("bg-primary-100");
+      setTimeout(() => {
+        bidItems[0].classList.remove("bg-primary-100");
+      }, 1000);
     }
   } catch (e) {
     displayErrors(e.message);
