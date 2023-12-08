@@ -1,5 +1,5 @@
 export function displayErrors(errorMessage) {
-  const errorElement = document.querySelector("#error-element");
+  const errorElement = document.querySelector(".error-element");
   const errors = errorMessage.split("^ ");
   errorElement.innerText = "";
   if (errors.length < 2) {
