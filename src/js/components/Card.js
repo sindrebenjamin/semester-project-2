@@ -16,7 +16,7 @@ export const Card = async (listing) => {
   bid.classList.add("font-bold");
 
   const title = document.createElement("h3");
-  title.innerText = checkTitle(listing.title);
+  title.innerText = checkTitle(listing.title, 19);
   title.classList.add("text-secondary-800", "text-xl", "font-bold");
 
   const edit = document.createElement("a");

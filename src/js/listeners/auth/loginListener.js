@@ -1,5 +1,6 @@
 import { login } from "../../api/auth/login.js";
 const profile = new URLSearchParams(window.location.search).get("user");
+const listing = new URLSearchParams(window.location.search).get("listing");
 
 function loginListener(event) {
   event.preventDefault();
@@ -15,7 +16,13 @@ function loginListener(event) {
 const loginForm = document.querySelector("#login-form");
 loginForm.addEventListener("submit", loginListener);
 
+// Direct user according to where they clicked login or register from
 const registerLink = document.querySelector("#register-link");
-registerLink.href = !profile
-  ? `register.html`
-  : `register.html?user=${profile}`;
+
+if (profile) {
+  registerLink.href = `register.html?user=${profile}`;
+} else if (listing) {
+  registerLink.href = `register.html?listing=${listing}`;
+} else {
+  registerLink.href = `register.html`;
+}

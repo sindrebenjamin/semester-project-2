@@ -18,9 +18,9 @@ export const Bids = (bids, int, loopBreak, profilePage) => {
     // Title
     const listingTitle = document.createElement("p");
     listingTitle.innerText = profilePage
-      ? checkTitle(bids[i].listing.title)
-      : checkTitle(bids[i].bidderName);
-    listingTitle.classList.add("whitespace-nowrap", "col-span-2");
+      ? checkTitle(bids[i].listing.title, 10)
+      : checkTitle(bids[i].bidderName, 10);
+    listingTitle.className = "whitespace-nowrap col-span-2 ";
 
     // Days ago
     const daysAgo = document.createElement("p");
@@ -30,7 +30,7 @@ export const Bids = (bids, int, loopBreak, profilePage) => {
     // Amount
     const amount = document.createElement("p");
     amount.innerText = "$" + bids[i].amount;
-    amount.className = "font-bold ml-8";
+    amount.className = "font-bold text-right";
 
     // Append
     const bidContainer = document.createElement("a");

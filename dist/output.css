@@ -787,6 +787,13 @@ video {
   margin-left: -32px;
 }
 
+.line-clamp-1{
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+
 .flex{
   display: flex;
 }
