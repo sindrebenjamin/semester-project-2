@@ -880,6 +880,14 @@ video {
   width: 100%;
 }
 
+.w-\[132px\]{
+  width: 132px;
+}
+
+.w-\[136px\]{
+  width: 136px;
+}
+
 .min-w-\[200px\]{
   min-width: 200px;
 }

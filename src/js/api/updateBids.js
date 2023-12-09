@@ -20,8 +20,9 @@ export const updateBids = async () => {
   document.querySelector("#bid-input").value = "$" + minimumBid;
 
   inputBidListener(highestBid);
-  const topSection = HighestBidEndsIn(data, highestBid);
-  document.querySelector(".important-info").innerHTML = topSection;
+
+  // Topsection
+  HighestBidEndsIn(data, highestBid);
 
   // Bid history
   const reversedBids = sortedBids.reverse();
@@ -60,11 +61,6 @@ export const updateBids = async () => {
     viewArrow.classList.toggle(`rotate-180`);
 
     document.querySelector("#more-bids").classList.toggle("hidden");
-  };
-
-  const returnData = {
-    length: data.bids.length,
-    highest: highestBid,
   };
 
   return data.bids.length;
