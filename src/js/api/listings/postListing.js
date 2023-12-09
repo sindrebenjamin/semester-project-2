@@ -24,7 +24,7 @@ export async function postListing(data, requestType, id) {
     checkErrors(result);
 
     if (response.ok) {
-      window.location.href = `profile.html?user=${profile}`;
+      window.location.href = `listing.html?id=${result.id}`;
     }
   } catch (e) {
     displayErrors(e.message);

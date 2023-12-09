@@ -124,7 +124,7 @@ function createImage(url) {
   // image
   const image = document.createElement("img");
   image.className =
-    "inner-img aspect-square object-cover w-full hover:opacity-90 transition-all";
+    "rounded inner-img aspect-square object-cover w-full hover:opacity-90 transition-all";
   image.src = url;
   imageItem.appendChild(image);
 

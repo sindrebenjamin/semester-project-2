@@ -3,7 +3,7 @@ import { setError } from "./setError.js";
 export const inputBidListener = (highestBid) => {
   const input = document.querySelector("#bid-input");
   const label = document.querySelector("#bid-input-label");
-  const hint = document.querySelector("#bid-input-hint");
+  const hint = document.querySelector("#error-element");
 
   input.onkeyup = () => {
     const parsedNum = input.value.includes("$")
@@ -11,13 +11,9 @@ export const inputBidListener = (highestBid) => {
       : parseInt(input.value);
 
     const test = parsedNum > highestBid ? true : false;
-    setError(
-      test,
-      input,
-      hint,
-      label,
-      "Amount must be higher than currently highest bid",
-      ""
-    );
+    hint.innerText = test
+      ? ""
+      : "Amount must be higher than currently highest bid";
+    setError(test, input, "", label, "", "");
   };
 };

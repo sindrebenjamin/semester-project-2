@@ -48,7 +48,7 @@ export const DesktopSlider = (checkedPhotos) => {
         "top-0 left-0 slide transition-all w-full h-[350px] absolute";
 
       const img = document.createElement("img");
-      img.className = "object-cover w-full h-full";
+      img.className = "object-cover w-full h-[450px]";
       img.src = "./public/nomedia.png";
       // Append slide
       slide.appendChild(img);

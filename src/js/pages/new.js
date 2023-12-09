@@ -34,6 +34,7 @@ async function setEdit() {
   document.querySelector("#end-date").value = formatDate(listingData.endsAt);
   loadImages(listingData.media);
   loadTags(listingData.tags);
+  editId && descriptionInput();
 }
 
 listingForm.addEventListener("submit", function (e) {

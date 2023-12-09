@@ -1,6 +1,7 @@
 import { getSingleListing } from "./listings/getSingleListing.js";
 import { Bids } from "../components/Bids.js";
 import { inputBidListener } from "../listeners/forms/inputBid.js";
+import { HighestBidEndsIn } from "../components/HighestBidEndsIn.js";
 const id = new URLSearchParams(window.location.search).get("id");
 
 export const updateBids = async () => {
@@ -20,13 +21,16 @@ export const updateBids = async () => {
 
   inputBidListener(highestBid);
 
+  // Topsection
+  HighestBidEndsIn(data, highestBid);
+
   // Bid history
   const reversedBids = sortedBids.reverse();
 
   const bids =
     data.bids.length > 0
       ? Bids(reversedBids, 0, true, false)
-      : "This listing has no bids yet";
+      : "This listing has no bids yet.";
   document.querySelector("#bids").innerHTML = bids;
   const moreBids = Bids(reversedBids, 4, false, false);
   const moreBidsContainer = document.querySelector("#more-bids");

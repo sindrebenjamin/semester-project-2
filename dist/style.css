@@ -8,6 +8,21 @@
   text-align: center;
 }
 
+.spinner.big {
+  width: 40px;
+  height: 40px;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* For IE, Edge and Firefox */
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
 @keyframes spin {
   0% {
     transform: rotate(0deg);
