@@ -1,8 +1,7 @@
 export const descriptionInput = () => {
   const descriptionTextArea = document.querySelector("#description");
 
-  descriptionTextArea.classList.add("overflow-hidden");
-  descriptionTextArea.addEventListener("input", function () {
+  function setHeight() {
     // Calculate the new height based on scrollHeight and lineHeight
     if (descriptionTextArea.scrollHeight > 50) {
       descriptionTextArea.style.height = "auto";
@@ -15,5 +14,12 @@ export const descriptionInput = () => {
     }
     descriptionTextArea.value === "" &&
       (descriptionTextArea.style.height = "44px");
+  }
+
+  setHeight();
+
+  descriptionTextArea.classList.add("overflow-hidden");
+  descriptionTextArea.addEventListener("input", function () {
+    setHeight();
   });
 };
