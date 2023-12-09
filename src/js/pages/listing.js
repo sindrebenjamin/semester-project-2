@@ -67,6 +67,8 @@ async function getData() {
     DesktopSlider(checkedPhotos);
   } catch (error) {
     console.error(error);
+  } finally {
+    document.querySelector("#big-spinner").classList.add("hidden");
   }
 }
 

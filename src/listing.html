@@ -8,10 +8,16 @@
     <script src="./js/pages/listing.js" type="module"></script>
     <script src="./js/listeners/outsideBidsListener.js" type="module"></script>
     <link rel="stylesheet" href="../dist/output.css" />
-    <link rel="stylesheet" href="../dist/spinner.css" />
+    <link rel="stylesheet" href="../dist/style.css" />
     <title></title>
   </head>
   <body class="text-secondary-400 antialiased">
+    <div
+      id="big-spinner"
+      class="spinner-container flex justify-center items-center h-screen w-full absolute bg-white z-30"
+    >
+      <div class="spinner big"></div>
+    </div>
     <main>
       <!-- Title -->
       <div class="px-4 md:px-6 pt-[64px] md:pt-[128px]">
@@ -30,7 +36,7 @@
 
         <!-- Mobile slider -->
         <div
-          class="mobile-slider w-full snap-x snap-mandatory overflow-x-scroll flex lg:hidden"
+          class="scrollbar-hide mobile-slider w-full snap-x snap-mandatory overflow-x-scroll flex lg:hidden"
         ></div>
       </div>
       <!-- Time left and highest bid -->
@@ -57,10 +63,10 @@
           <!-- Desktop slider, topsection, listed by, description wrapper-->
           <div class="wrapper flex-1 order-2 sm:order-1">
             <!-- Slider + Topsection -->
-            <div class="overflow-hidden rounded">
+            <div class="overflow-hidden rounded max-w-[800px]">
               <!-- Desktop slider -->
               <div
-                class="slider overflow-hidden w-full h-[450px] relative hidden lg:block"
+                class="scrollbar-hide slider overflow-hidden w-full h-[450px] relative hidden lg:block"
               >
                 <!-- Slide Indicators for desktop -->
                 <div

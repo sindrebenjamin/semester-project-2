@@ -9,7 +9,7 @@ export const timeTicker = (time) => {
 
     if (difference <= 0) {
       clearInterval(countdownInterval);
-      document.querySelector("#countdown").innerText = "Auction ended";
+      document.querySelector(".countdown").innerText = "Auction ended";
     }
 
     return difference;
