@@ -4,11 +4,11 @@ import { DesktopSlider } from "../components/DesktopSlider.js";
 import { checkMedia } from "../utils/checkMedia.js";
 import { updateBids } from "../api/updateBids.js";
 import { load } from "../api/storage/load.js";
+import { HighestBidEndsIn } from "../components/HighestBidEndsIn.js";
 const id = new URLSearchParams(window.location.search).get("id");
 const profile = load("profile");
 
-console.log(profile ? "logged in" : "not logged in");
-
+// Disable bidding if not logged in
 if (!profile) {
   const input = document.querySelector("#bid-input");
   const button = document.querySelector("#submit");
@@ -23,7 +23,7 @@ if (!profile) {
     id="login-link"
     class="text-primary-300 hover:opacity-50 transition-all underline focus:outline-none focus:ring focus:ring-primary-700"
     href="login.html?listing=${id}"
-    >log in</a
+    >Log in</a
   >
   or
   <a
@@ -36,7 +36,7 @@ if (!profile) {
 }
 
 async function getData() {
-  // Check media
+  // Check all photos before putting them in the sliders
   const checkAllPhotos = async (data) => {
     const promises = data.media.map(async (photo) => {
       return checkMedia(photo);
@@ -47,10 +47,8 @@ async function getData() {
   try {
     // Fetch data
     const data = await getSingleListing(id);
-    console.log(data);
     document.querySelector("title").innerText = `Bidnet | ${data.title}`;
-
-    updateBids();
+    await updateBids();
 
     // Sliders
     const checkedPhotos = await checkAllPhotos(data);

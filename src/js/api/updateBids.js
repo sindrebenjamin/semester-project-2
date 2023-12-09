@@ -1,6 +1,7 @@
 import { getSingleListing } from "./listings/getSingleListing.js";
 import { Bids } from "../components/Bids.js";
 import { inputBidListener } from "../listeners/forms/inputBid.js";
+import { HighestBidEndsIn } from "../components/HighestBidEndsIn.js";
 const id = new URLSearchParams(window.location.search).get("id");
 
 export const updateBids = async () => {
@@ -19,6 +20,8 @@ export const updateBids = async () => {
   document.querySelector("#bid-input").value = "$" + minimumBid;
 
   inputBidListener(highestBid);
+  const topSection = HighestBidEndsIn(data, highestBid);
+  document.querySelector(".important-info").innerHTML = topSection;
 
   // Bid history
   const reversedBids = sortedBids.reverse();
@@ -26,7 +29,7 @@ export const updateBids = async () => {
   const bids =
     data.bids.length > 0
       ? Bids(reversedBids, 0, true, false)
-      : "This listing has no bids yet";
+      : "This listing has no bids yet.";
   document.querySelector("#bids").innerHTML = bids;
   const moreBids = Bids(reversedBids, 4, false, false);
   const moreBidsContainer = document.querySelector("#more-bids");
@@ -57,6 +60,11 @@ export const updateBids = async () => {
     viewArrow.classList.toggle(`rotate-180`);
 
     document.querySelector("#more-bids").classList.toggle("hidden");
+  };
+
+  const returnData = {
+    length: data.bids.length,
+    highest: highestBid,
   };
 
   return data.bids.length;

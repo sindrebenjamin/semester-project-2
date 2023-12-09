@@ -4,8 +4,6 @@ import { checkAvatar } from "../utils/checkAvatar.js";
 const profilePage = new URLSearchParams(window.location.search).get("user");
 const listingPage = new URLSearchParams(window.location.search).get("id");
 
-console.log(listingPage);
-
 const registerLink = listingPage
   ? `register.html?listing=${listingPage}`
   : profilePage
