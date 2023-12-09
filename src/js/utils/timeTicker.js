@@ -31,8 +31,11 @@ export const timeTicker = (time) => {
       seconds
     ).padStart(2, "0")}s`;
 
-    difference > 0 &&
-      (document.querySelector("#countdown").innerText = formattedTime);
+    if (difference > 0) {
+      document.querySelectorAll(".countdown").forEach((countdown) => {
+        countdown.innerText = formattedTime;
+      });
+    }
   }
 
   updateCountdown();

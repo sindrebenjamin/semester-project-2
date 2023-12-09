@@ -1,7 +1,6 @@
 import { checkAvatar } from "../utils/checkAvatar.js";
 
 export const ListedBy = async (data) => {
-  console.log(data);
   const profile = document.createElement("a");
   profile.className = "flex items-center gap-2 transition-all hover:opacity-50";
   profile.href = `profile.html?user=${data.seller.name}`;

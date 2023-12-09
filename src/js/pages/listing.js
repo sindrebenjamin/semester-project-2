@@ -32,7 +32,7 @@ if (!profile) {
     href="register.html?listing=${id}"
     >create new user</a
   >
-  to place a bid on this listing`;
+  to place bid`;
 }
 
 async function getData() {
