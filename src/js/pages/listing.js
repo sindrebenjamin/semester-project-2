@@ -62,6 +62,7 @@ async function getData() {
 
     // Sliders
     const checkedPhotos = await checkAllPhotos(data);
+    console.log(checkedPhotos);
     MobileSlider(checkedPhotos);
     DesktopSlider(checkedPhotos);
   } catch (error) {

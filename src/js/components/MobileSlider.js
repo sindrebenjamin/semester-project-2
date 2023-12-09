@@ -8,7 +8,8 @@ export const MobileSlider = async (checkedPhotos) => {
     images.forEach((image) => {
       // Slide
       const slide = document.createElement("div");
-      slide.className = "mobile-slide w-full snap-start flex-none h-[400px]";
+      slide.className =
+        "mobile-slide w-full snap-start flex-none h-[400px] md:h-[500px] lg:h-[400px]";
 
       // Image
       const img = document.createElement("img");
@@ -36,7 +37,7 @@ export const MobileSlider = async (checkedPhotos) => {
       slide.className = "mobile-slide w-full snap-start flex-none";
 
       const img = document.createElement("img");
-      img.className = "object-cover w-full h-full";
+      img.className = "object-cover w-full h-[400px] md:h-[500px] lg:h-[400px]";
       img.src = "./public/nomedia.png";
       // Append slide
       slide.appendChild(img);
