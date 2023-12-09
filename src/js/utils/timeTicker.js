@@ -1,4 +1,6 @@
-export const timeTicker = (time, callBack) => {
+let countdownInterval;
+
+export const timeTicker = (time) => {
   const endDate = new Date(time);
 
   function calculateTimeDifference() {
@@ -29,10 +31,11 @@ export const timeTicker = (time, callBack) => {
       seconds
     ).padStart(2, "0")}s`;
 
-    document.querySelector("#countdown").innerText = formattedTime;
+    difference > 0 &&
+      (document.querySelector("#countdown").innerText = formattedTime);
   }
 
   updateCountdown();
 
-  const countdownInterval = setInterval(updateCountdown, 1000);
+  countdownInterval = setInterval(updateCountdown, 1000);
 };

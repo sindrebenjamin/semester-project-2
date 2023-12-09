@@ -4,7 +4,7 @@ import { DesktopSlider } from "../components/DesktopSlider.js";
 import { checkMedia } from "../utils/checkMedia.js";
 import { updateBids } from "../api/updateBids.js";
 import { load } from "../api/storage/load.js";
-import { HighestBidEndsIn } from "../components/HighestBidEndsIn.js";
+import { ListedBy } from "../components/ListedBy.js";
 const id = new URLSearchParams(window.location.search).get("id");
 const profile = load("profile");
 
@@ -49,6 +49,16 @@ async function getData() {
     const data = await getSingleListing(id);
     document.querySelector("title").innerText = `Bidnet | ${data.title}`;
     await updateBids();
+    console.log(data);
+
+    // Title and description
+    document.querySelector("h1").innerText = data.title;
+    document.querySelector("#description").innerText = data.description
+      ? data.description
+      : "No description.";
+
+    // Listed by
+    ListedBy(data);
 
     // Sliders
     const checkedPhotos = await checkAllPhotos(data);
