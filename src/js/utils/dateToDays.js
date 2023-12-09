@@ -9,10 +9,45 @@ export const dateToDays = (date, past) => {
   const currentDate = new Date();
   if (!past) {
     const timeDifference = targetDate - currentDate;
-    const daysRemaining = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
-    return daysRemaining <= 0
-      ? `Auction ended`
-      : `Ends in ${daysRemaining} ` + (daysRemaining > 1 ? `days` : `day`);
+    const millisecondsInMinute = 1000 * 60;
+    const millisecondsInHour = millisecondsInMinute * 60;
+    const millisecondsInDay = millisecondsInHour * 24;
+    const millisecondsInWeek = millisecondsInDay * 7;
+    const millisecondsInMonth = millisecondsInDay * 30;
+    const millisecondsInYear = millisecondsInDay * 365;
+
+    const yearsRemaining = Math.floor(timeDifference / millisecondsInYear);
+    const monthsRemaining = Math.floor(timeDifference / millisecondsInMonth);
+    const weeksRemaining = Math.floor(timeDifference / millisecondsInWeek);
+    const daysRemaining = Math.floor(timeDifference / millisecondsInDay);
+    const hoursRemaining = Math.floor(timeDifference / millisecondsInHour);
+    const minutesRemaining = Math.floor(timeDifference / millisecondsInMinute);
+
+    if (yearsRemaining > 0) {
+      return `Ends in ${yearsRemaining} ${
+        yearsRemaining > 1 ? "years" : "year"
+      }`;
+    } else if (monthsRemaining > 0) {
+      return `Ends in ${monthsRemaining} ${
+        monthsRemaining > 1 ? "months" : "month"
+      }`;
+    } else if (weeksRemaining > 0) {
+      return `Ends in ${weeksRemaining} ${
+        weeksRemaining > 1 ? "weeks" : "week"
+      }`;
+    } else if (daysRemaining > 0) {
+      return `Ends in ${daysRemaining} ${daysRemaining > 1 ? "days" : "day"}`;
+    } else if (hoursRemaining > 0) {
+      return `Ends in ${hoursRemaining} ${
+        hoursRemaining > 1 ? "hours" : "hour"
+      }`;
+    } else if (minutesRemaining > 0) {
+      return `Ends in ${minutesRemaining} ${
+        minutesRemaining > 1 ? "minutes" : "minute"
+      }`;
+    } else {
+      return "Auction ended";
+    }
   } else {
     const timeDifference = currentDate - targetDate;
 
@@ -55,6 +90,9 @@ export const dateToDays = (date, past) => {
 
     const minutesAgo = getTimeUnit(timeDifference, 1000 * 60, "minute");
     if (minutesAgo) return minutesAgo;
+
+    const secondsAgo = getTimeUnit(timeDifference, 1000, "second");
+    if (secondsAgo) return secondsAgo;
 
     return "Now";
   }
