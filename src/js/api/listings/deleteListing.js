@@ -7,6 +7,11 @@ import { load } from "../storage/load.js";
 const profile = load("profile").name;
 
 export async function deleteListing(id) {
+  // Spinner
+  const deleteBtn = document.querySelector("#yes-delete");
+  deleteBtn.innerHTML = `
+    <div class="spinner red"></div>
+  `;
   const options = {
     method: "DELETE",
     headers: headers("application/json"),
@@ -16,8 +21,10 @@ export async function deleteListing(id) {
     const response = await fetch(`${apiURL}/auction/listings/${id}`, options);
     window.location.href = `profile.html?user=${profile}`;
     const result = await response.json();
-    setTimeout(checkErrors(result), 2000);
+    checkErrors(result);
   } catch (e) {
-    displayErrors(e.message);
+    //setTimeout(displayErrors(e.message), 2000);
+  } finally {
+    deleteBtn.innerHTML = `Yes`;
   }
 }

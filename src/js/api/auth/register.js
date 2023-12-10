@@ -5,6 +5,11 @@ import { checkErrors } from "../checkErrors.js";
 import { login } from "./login.js";
 
 export async function register(userData) {
+  // Spinner
+  const submitBtn = document.querySelector("#submit");
+  submitBtn.innerHTML = `
+   <div class="spinner"></div>
+ `;
   const options = {
     method: "POST",
     headers: headers("application/json"),
@@ -21,9 +26,13 @@ export async function register(userData) {
         email: userData.email,
         password: userData.password,
       };
-      login(registeredData);
+      login(registeredData, true);
     }
   } catch (e) {
     displayErrors(e.message);
+  } finally {
+    submitBtn.innerHTML = `
+    Create Account
+  `;
   }
 }

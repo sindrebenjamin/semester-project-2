@@ -13,6 +13,10 @@
   height: 40px;
 }
 
+.spinner.red {
+  border-top: 2px solid #b80000;
+}
+
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }

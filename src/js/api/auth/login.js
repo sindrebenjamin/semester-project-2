@@ -6,7 +6,12 @@ import { checkErrors } from "../checkErrors.js";
 const profile = new URLSearchParams(window.location.search).get("user");
 const listing = new URLSearchParams(window.location.search).get("listing");
 
-export async function login(userData) {
+export async function login(userData, fromRegistration) {
+  // Spinner
+  const submitBtn = document.querySelector("#submit");
+  submitBtn.innerHTML = `
+    <div class="spinner"></div>
+  `;
   const options = {
     method: "POST",
     headers: headers("application/json"),
@@ -33,5 +38,11 @@ export async function login(userData) {
     }
   } catch (e) {
     displayErrors(e.message);
+  } finally {
+    submitBtn.innerHTML = !fromRegistration
+      ? `
+    Login
+  `
+      : `Create Account`;
   }
 }
