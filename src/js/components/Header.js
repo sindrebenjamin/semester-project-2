@@ -22,6 +22,7 @@ export const setHeader = () => {
   headerElement.classList.add("bg-white", "py-3", "px-4", "md:px-6");
 
   document.body.prepend(headerElement);
+  document.querySelector(".header-placeholder").classList.add("hidden");
 
   // Toggle NavMenu visibility
 

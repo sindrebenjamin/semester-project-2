@@ -7,10 +7,6 @@ export const timeTicker = (time) => {
     const now = new Date();
     const difference = endDate - now;
 
-    if (difference === 0) {
-      location.reload();
-    }
-
     if (difference <= 0) {
       clearInterval(countdownInterval);
       document.querySelectorAll(".countdown").forEach((countdown) => {
