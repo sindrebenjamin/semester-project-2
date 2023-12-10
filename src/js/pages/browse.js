@@ -6,23 +6,36 @@ let sortString = `&sort=endsAt&sortOrder=asc`;
 let tags = "";
 
 // Check if searching or not
-
 const querySearch = new URLSearchParams(window.location.search).get("search");
 querySearch && (tags = `&_tag=${querySearch}`);
 
 // Set URL
-
 const updateURL = () => `${sortString}&limit=25&offset=${offset}${tags}`;
 let URL = updateURL();
 
 // Initial fetch of listings
-getListings("#browse-listings", URL);
+async function browseListings() {
+  document.querySelector("body").classList.add("overflow-hidden");
+  const noResults = await getListings("#browse-listings", URL);
+  document.querySelector("#big-spinner").classList.add("hidden");
+  document.querySelector("body").classList.remove("overflow-hidden");
+  noResults &&
+    (document.querySelector(
+      "#browse-listings"
+    ).innerHTML = `<div class="mt-[80px] text-xl col-span-4">No results</div>`);
+}
+browseListings();
 
 // Infinite scrolling
 let fetching = false;
 const bottomSpinner = document.querySelector("#bottom-spinner");
 window.onscroll = async () => {
-  if (fetching) {
+  if (
+    fetching ||
+    document
+      .querySelector("body")
+      .innerHTML.includes("You have reached the end")
+  ) {
     return;
   }
   if (window.scrollY + window.innerHeight >= document.body.offsetHeight - 100) {

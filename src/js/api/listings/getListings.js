@@ -18,26 +18,25 @@ export async function getListings(contentHolder, queryString) {
       options
     );
     const result = await response.json();
-    console.log(result);
 
     checkErrors(result);
     if (response.ok) {
       await printListings(result, contentHolder);
 
-      if (search && result.length === 0) {
-        document.querySelector(contentHolder).innerHTML = "No results";
-      } else if (result.length === 0 && !endReached) {
+      // Check if "bottom" is reached
+      if (result.length === 0 && !endReached) {
         endReached = true;
         document.querySelector(
           contentHolder
         ).innerHTML += `<div class="text-center mt-[80px] text-xl col-span-4">You have reached the end</div>`;
       }
+
+      // Search returned no result
+      if (search && result.length === 0) {
+        return true;
+      }
     }
   } catch (e) {
     displayErrors(e.message);
-  } finally {
-    // Hide spinner if browse page
-    queryString.includes("offset") &&
-      document.querySelector("#big-spinner").classList.add("hidden");
   }
 }
