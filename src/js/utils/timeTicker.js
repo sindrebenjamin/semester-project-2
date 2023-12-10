@@ -14,6 +14,10 @@ export const timeTicker = (time) => {
       });
     }
 
+    if (difference === 0) {
+      location.reload();
+    }
+
     return difference;
   }
 

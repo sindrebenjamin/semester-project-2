@@ -12,8 +12,5 @@ export function checkIfAuctionEnded(date) {
   const now = new Date();
   const auctionEnd = new Date(date);
 
-  console.log(now);
-  console.log(auctionEnd);
-
   return now > auctionEnd ? true : false;
 }

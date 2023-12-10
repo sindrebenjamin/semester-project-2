@@ -11,7 +11,6 @@ export const DesktopSlider = (checkedPhotos) => {
     // Hide arrow buttons if no photos
     if (images.length === 1 || images.length < 1) {
       arrowBtns.forEach((btn) => {
-        console.log("ekrje");
         btn.classList.add("hidden");
       });
     }
