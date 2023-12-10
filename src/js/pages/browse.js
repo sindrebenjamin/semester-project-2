@@ -15,14 +15,18 @@ querySearch && (tags = `&_tag=${querySearch}`);
 const updateURL = () => `${sortString}&limit=50&offset=${offset}${tags}`;
 let URL = updateURL();
 
-// Fetch listings
+// Initial fetch of listings
+async function browseListings() {
+  await getListings("#browse-listings", URL);
+  document.querySelector("#big-spinner").classList.add("hidden");
+}
 
-getListings("#browse-listings", URL);
+browseListings();
 
 // Infinite scrolling
 
 window.onscroll = () => {
-  if (window.scrollY + window.innerHeight >= document.body.offsetHeight) {
+  if (window.scrollY + window.innerHeight >= document.body.offsetHeight - 100) {
     console.log("hei");
     offset = offset + 50;
     URL = updateURL();
