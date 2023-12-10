@@ -5,14 +5,6 @@ export const Profile = (user) => {
   // Change avatar
   const localProfile = load("profile");
 
-  /*
-  const changeAvatar =
-    localProfile.name === user.name
-      ? `<a id="change-avatar" class="cursor-pointer text-primary-300 hover:opacity-50 transition-all underline focus:outline-none focus:ring focus:ring-primary-700">Change avatar</a>`
-      : "";
-
-      */
-
   const changeAvatar =
     localProfile.name === user.name
       ? `<button id="change-avatar" class="active:scale-90 shadow hover:shadow-md hover:bg-primary-200 absolute bottom-0 right-0 cursor-pointer bg-primary-100 rounded-full w-[44px] h-[44px] flex justify-center items-center transition-all underline focus:outline-none focus:ring focus:ring-primary-700"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

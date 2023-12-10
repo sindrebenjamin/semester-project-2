@@ -17,6 +17,15 @@
   border-top: 2px solid #b80000;
 }
 
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
@@ -27,11 +36,28 @@
   scrollbar-width: none; /* Firefox */
 }
 
-@keyframes spin {
+/* Skeleton loader */
+.loader {
+  background: linear-gradient(
+    90deg,
+    rgba(182, 182, 182, 1) 0%,
+    rgb(207, 207, 207) 50%,
+    rgb(236, 236, 236) 100%
+  );
+  background-size: 200%;
+  animation: skeleton-loader 1s infinite;
+}
+
+@keyframes skeleton-loader {
   0% {
-    transform: rotate(0deg);
+    background-position: 0%;
   }
+
+  50% {
+    background-position: 100%;
+  }
+
   100% {
-    transform: rotate(360deg);
+    background-position: 0%;
   }
 }
