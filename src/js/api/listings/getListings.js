@@ -22,6 +22,7 @@ export async function getListings(contentHolder, queryString) {
     checkErrors(result);
     if (response.ok) {
       printListings(result, contentHolder);
+
       if (search && result.length === 0) {
         document.querySelector(contentHolder).innerHTML = "No results";
       } else if (result.length === 0 && !endReached) {
@@ -33,5 +34,7 @@ export async function getListings(contentHolder, queryString) {
     }
   } catch (e) {
     displayErrors(e.message);
+  } finally {
+    document.querySelector("#big-spinner").classList.add("hidden");
   }
 }

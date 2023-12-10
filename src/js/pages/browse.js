@@ -12,7 +12,7 @@ querySearch && (tags = `&_tag=${querySearch}`);
 
 // Set URL
 
-const updateURL = () => `${sortString}&limit=100&offset=${offset}${tags}`;
+const updateURL = () => `${sortString}&limit=50&offset=${offset}${tags}`;
 let URL = updateURL();
 
 // Fetch listings
@@ -23,7 +23,8 @@ getListings("#browse-listings", URL);
 
 window.onscroll = () => {
   if (window.scrollY + window.innerHeight >= document.body.offsetHeight) {
-    offset = offset + 100;
+    console.log("hei");
+    offset = offset + 50;
     URL = updateURL();
     getListings("#browse-listings", URL);
   }

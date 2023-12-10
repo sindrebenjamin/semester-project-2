@@ -8,8 +8,17 @@
     <script src="./js/components/index.js" type="module"></script>
     <script defer src="./js/pages/browse.js" type="module"></script>
     <link rel="stylesheet" href="../dist/output.css" />
+    <link rel="stylesheet" href="../dist/style.css" />
   </head>
   <body class="text-secondary-400 antialiased">
+    <div
+      id="big-spinner"
+      class="spinner-container h-full w-full absolute bg-white z-[1000]"
+    >
+      <div class="h-screen flex justify-center items-center">
+        <div class="spinner big"></div>
+      </div>
+    </div>
     <div class="header-placeholder h-[68px]"></div>
     <main>
       <div id="browse-container" class="px-4 md:px-6 py-[64px] md:py-[128px]">

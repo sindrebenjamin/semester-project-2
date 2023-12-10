@@ -12,9 +12,9 @@ export const CardLoader = () => {
   endsInLoader.className = "loader h-[24px]";
 
   return `<div class="flex flex-col gap-4">
-  ${imageLoader}
-  ${titleLoader}
-  ${currentBidLoader}
-  ${endsInLoader}
+  ${imageLoader.outerHTML}
+  ${titleLoader.outerHTML}
+  ${currentBidLoader.outerHTML}
+  ${endsInLoader.outerHTML}
   </div>`;
 };
