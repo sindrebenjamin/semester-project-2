@@ -18,6 +18,7 @@ export async function getListings(contentHolder, queryString) {
       options
     );
     const result = await response.json();
+    console.log(result);
 
     checkErrors(result);
     if (response.ok) {
@@ -34,5 +35,9 @@ export async function getListings(contentHolder, queryString) {
     }
   } catch (e) {
     displayErrors(e.message);
+  } finally {
+    // Hide spinner if browse page
+    queryString.includes("offset") &&
+      document.querySelector("#big-spinner").classList.add("hidden");
   }
 }

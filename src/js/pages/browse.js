@@ -12,25 +12,33 @@ querySearch && (tags = `&_tag=${querySearch}`);
 
 // Set URL
 
-const updateURL = () => `${sortString}&limit=50&offset=${offset}${tags}`;
+const updateURL = () => `${sortString}&limit=25&offset=${offset}${tags}`;
 let URL = updateURL();
 
 // Initial fetch of listings
-async function browseListings() {
-  await getListings("#browse-listings", URL);
-  document.querySelector("#big-spinner").classList.add("hidden");
-}
-
-browseListings();
+getListings("#browse-listings", URL);
 
 // Infinite scrolling
-
-window.onscroll = () => {
+let fetching = false;
+const bottomSpinner = document.querySelector("#bottom-spinner");
+window.onscroll = async () => {
+  if (fetching) {
+    return;
+  }
   if (window.scrollY + window.innerHeight >= document.body.offsetHeight - 100) {
-    console.log("hei");
-    offset = offset + 50;
+    fetching = true;
+    bottomSpinner.classList.remove("hidden");
+    offset = offset + 25;
     URL = updateURL();
-    getListings("#browse-listings", URL);
+
+    try {
+      await getListings("#browse-listings", URL);
+    } catch (e) {
+      console.log(e);
+    } finally {
+      fetching = false;
+      bottomSpinner.classList.add("hidden");
+    }
   }
 };
 

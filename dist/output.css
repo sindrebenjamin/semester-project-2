@@ -1295,6 +1295,21 @@ video {
   padding-bottom: 64px;
 }
 
+.py-8{
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.py-\[36px\]{
+  padding-top: 36px;
+  padding-bottom: 36px;
+}
+
+.py-\[160px\]{
+  padding-top: 160px;
+  padding-bottom: 160px;
+}
+
 .pb-1{
   padding-bottom: 0.25rem;
 }
@@ -1313,6 +1328,18 @@ video {
 
 .pt-\[64px\]{
   padding-top: 64px;
+}
+
+.pt-\[40px\]{
+  padding-top: 40px;
+}
+
+.pt-\[200px\]{
+  padding-top: 200px;
+}
+
+.pt-\[160px\]{
+  padding-top: 160px;
 }
 
 .text-center{
