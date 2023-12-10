@@ -1,3 +1,5 @@
+import { disableBidForm } from "./disableBidForm.js";
+
 let countdownInterval;
 
 export const timeTicker = (time) => {
@@ -12,6 +14,7 @@ export const timeTicker = (time) => {
       document.querySelectorAll(".countdown").forEach((countdown) => {
         countdown.innerText = "Auction ended";
       });
+      disableBidForm();
     }
 
     return difference;

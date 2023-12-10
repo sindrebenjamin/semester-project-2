@@ -6,6 +6,7 @@ import { updateBids } from "../api/updateBids.js";
 import { load } from "../api/storage/load.js";
 import { ListedBy } from "../components/ListedBy.js";
 import { checkIfAuctionEnded } from "../utils/formatDate.js";
+import { disableBidForm } from "../utils/disableBidForm.js";
 
 const id = new URLSearchParams(window.location.search).get("id");
 const profile = load("profile");
@@ -30,14 +31,10 @@ async function getData() {
 
     // Disable bidding if not logged in
     if (!profile || auctionEnded) {
-      const input = document.querySelector("#bid-input");
-      const button = document.querySelector("#submit");
+      disableBidForm();
       const loginMessage = document.querySelector("#login-before-bid");
       !profile && loginMessage.classList.remove("hidden");
-      input.disabled = true;
-      button.disabled = true;
-      button.className =
-        "flex justify-center rounded w-full text-white text-sm font-bold bg-primary-400 p-4 focus:outline-none focus:ring focus:ring-primary-700 transition-all cursor-standard opacity-50";
+
       loginMessage.innerHTML = `
   <a
     id="login-link"

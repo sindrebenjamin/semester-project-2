@@ -23,6 +23,7 @@ const editId = new URLSearchParams(window.location.search).get("edit");
 
 if (editId) {
   setEdit();
+  document.querySelector("#big-spinner").classList.remove("hidden");
 }
 
 async function setEdit() {
@@ -35,6 +36,7 @@ async function setEdit() {
   loadImages(listingData.media);
   loadTags(listingData.tags);
   editId && descriptionInput();
+  document.querySelector("#big-spinner").classList.add("hidden");
 }
 
 listingForm.addEventListener("submit", function (e) {
