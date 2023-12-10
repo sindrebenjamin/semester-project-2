@@ -67,6 +67,18 @@ async function getData() {
         </svg>
         `;
         document.querySelector("body").append(fabLink);
+
+        // Hide FAB if scrolled to bottom on mobile devices
+        window.onscroll = () => {
+          if (
+            window.scrollY + window.innerHeight >=
+            document.body.offsetHeight
+          ) {
+            window.innerWidth < 640 && fabLink.classList.add("opacity-10");
+          } else {
+            fabLink.classList.remove("opacity-10");
+          }
+        };
       }
     }
 
