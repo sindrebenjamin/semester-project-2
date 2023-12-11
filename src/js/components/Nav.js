@@ -4,6 +4,7 @@ import { checkAvatar } from "../utils/checkAvatar.js";
 const profilePage = new URLSearchParams(window.location.search).get("user");
 const listingPage = new URLSearchParams(window.location.search).get("id");
 
+// Register and login links
 const registerLink = listingPage
   ? `register.html?listing=${listingPage}`
   : profilePage
@@ -14,12 +15,22 @@ const loginLink = listingPage
   : profilePage
   ? `login.html?user=${profilePage}`
   : `login.html`;
+
 const profile = load("profile");
 
 export const Nav = () => {
   if (profile) {
     const avatar = checkAvatar(profile.avatar);
-    return `<nav class="ml-4 md:ml-6 relative">
+    return `<nav class="ml-4 md:ml-6 relative flex items-center gap-4">
+
+    <div>
+    <p class="text-secondary-100 text-xs">Balance</p>
+    <p id="my-balance" class="text-primary-400 font-bold text-sm">$${
+      profile.credits
+    }</p>
+    </div>
+
+
     <div class=" w-[44px] h-[44px] hover:opacity-50 transition-all cursor-pointer" id="header-profile">
     <img class="w-[44px] h-[44px] rounded-full object-cover" src="${avatar}" alt="" />
     <svg

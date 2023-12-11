@@ -1,4 +1,7 @@
 import { getListings } from "../api/listings/getListings.js";
 
-getListings("#ending-soon", "&sort=endsAt&sortOrder=asc&limit=4");
-getListings("#newest", "&sort=created&sortOrder=desc&limit=4");
+async function indexListings() {
+  await getListings("#ending-soon", "&sort=endsAt&sortOrder=asc&limit=4");
+  await getListings("#newest", "&sort=created&sortOrder=desc&limit=4");
+}
+indexListings();

@@ -2,11 +2,14 @@ import { headers } from "../headers.js";
 import { apiURL } from "../constants.js";
 import { displayErrors } from "../displayErrors.js";
 import { checkErrors } from "../checkErrors.js";
-import { load } from "../storage/load.js";
-
-const profile = load("profile").name;
 
 export async function postListing(data, requestType, id) {
+  // Spinner
+  const submitBtn = document.querySelector("#submit");
+  submitBtn.innerHTML = `
+    <div class="spinner"></div>
+  `;
+
   const editId = id ? "/" + id : "";
   const options = {
     method: requestType,
@@ -28,5 +31,12 @@ export async function postListing(data, requestType, id) {
     }
   } catch (e) {
     displayErrors(e.message);
+  } finally {
+    submitBtn.innerHTML =
+      requestType === "POST"
+        ? `
+    Create Listing
+  `
+        : "Update Listing";
   }
 }

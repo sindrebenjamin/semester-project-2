@@ -5,6 +5,7 @@ import { putAvatar } from "../api/profile/putAvatar.js";
 import { setError } from "./forms/setError.js";
 
 const profile = load("profile");
+
 const profileAvatar = checkAvatar(profile.avatar);
 const currentAvatar = document.querySelector("#current-avatar");
 const settingsForm = document.querySelector("#settings-form");
@@ -12,6 +13,7 @@ const inputField = document.querySelector("#avatar");
 const discardBtn = document.querySelector("#discard-btn");
 const settingsWrapper = document.querySelector("#settings-wrapper");
 const profileSection = document.querySelector("#profile");
+const settingsModal = document.querySelector(".settings-modal");
 
 currentAvatar.src = profileAvatar;
 profile.avatar && (inputField.value = profileAvatar);
@@ -82,7 +84,7 @@ document.addEventListener("click", (e) => {
       e.target.closest("#change-avatar") ||
       e.target === "avatar-img" ||
       e.target.closest("#avatar-img") ||
-      settingsWrapper.contains(e.target)
+      settingsModal.contains(e.target)
     )
   ) {
     discard();

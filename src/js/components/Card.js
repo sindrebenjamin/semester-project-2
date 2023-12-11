@@ -27,7 +27,7 @@ export const Card = async (listing) => {
 
   !currentUser && edit.classList.add("hidden");
 
-  return `<div class="flex flex-col gap-2"><a class="hover:opacity-50 transition-all flex flex-col gap-4" href="listing.html?id=${listing.id}">
+  return `<div class="flex flex-col gap-2"><a class="overflow-hidden hover:opacity-50 transition-all flex flex-col gap-4" href="listing.html?id=${listing.id}">
   <img
     class="object-cover w-full h-full aspect-square rounded"
     src="${media}"

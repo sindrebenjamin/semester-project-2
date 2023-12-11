@@ -6,26 +6,49 @@ let sortString = `&sort=endsAt&sortOrder=asc`;
 let tags = "";
 
 // Check if searching or not
-
 const querySearch = new URLSearchParams(window.location.search).get("search");
 querySearch && (tags = `&_tag=${querySearch}`);
 
 // Set URL
-
-const updateURL = () => `${sortString}&limit=100&offset=${offset}${tags}`;
+const updateURL = () => `${sortString}&limit=25&offset=${offset}${tags}`;
 let URL = updateURL();
 
-// Fetch listings
-
-getListings("#browse-listings", URL);
+// Initial fetch of listings
+async function browseListings() {
+  const noResults = await getListings("#browse-listings", URL);
+  noResults &&
+    (document.querySelector(
+      "#browse-listings"
+    ).innerHTML = `<div class="mt-[80px] text-xl col-span-4">No results</div>`);
+}
+browseListings();
 
 // Infinite scrolling
-
-window.onscroll = () => {
-  if (window.scrollY + window.innerHeight >= document.body.offsetHeight) {
-    offset = offset + 100;
+let fetching = false;
+const bottomSpinner = document.querySelector("#bottom-spinner");
+window.onscroll = async () => {
+  if (
+    fetching ||
+    document
+      .querySelector("body")
+      .innerHTML.includes("You have reached the end")
+  ) {
+    return;
+  }
+  if (window.scrollY + window.innerHeight >= document.body.offsetHeight - 100) {
+    fetching = true;
+    bottomSpinner.classList.remove("hidden");
+    offset = offset + 25;
     URL = updateURL();
-    getListings("#browse-listings", URL);
+
+    try {
+      await getListings("#browse-listings", URL);
+    } catch (e) {
+      console.log(e);
+    } finally {
+      fetching = false;
+      bottomSpinner.classList.add("hidden");
+    }
   }
 };
 

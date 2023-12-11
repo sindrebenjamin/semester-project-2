@@ -8,19 +8,24 @@
     <script src="./js/components/index.js" type="module"></script>
     <script defer src="./js/pages/browse.js" type="module"></script>
     <link rel="stylesheet" href="../dist/output.css" />
+    <link rel="stylesheet" href="../dist/style.css" />
   </head>
   <body class="text-secondary-400 antialiased">
+    <div class="header-placeholder h-[68px]"></div>
+
     <main>
       <div id="browse-container" class="px-4 md:px-6 py-[64px] md:py-[128px]">
         <div class="max-w-[1200px] m-auto">
           <h1
-            class="mb-6 md:mb-12 font-bold text-4xl md:text-5xl text-secondary-800"
+            class="mb-2 md:mb-8 font-bold text-4xl md:text-5xl text-secondary-800"
           >
             Browse Listings
           </h1>
 
           <!-- Sorting -->
-          <div class="w-full flex flex-col cursor-pointer relative text-sm">
+          <div
+            class="pt-4 w-full flex flex-col cursor-pointer sticky top-[68px] text-sm bg-white z-[500]"
+          >
             <div class="flex items-center mb-4 gap-6">
               <div
                 id="sort-select"
@@ -70,11 +75,76 @@
               </div>
             </div>
           </div>
+
           <div class="text-red error-element"></div>
           <div
             id="browse-listings"
             class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6"
-          ></div>
+          >
+            <!-- Loader -->
+            <div class="loader-item flex flex-col gap-4">
+              <div class="loader aspect-square rounded"></div>
+              <div class="loader h-[28px]"></div>
+              <div class="loader h-[48px]"></div>
+              <div class="loader h-[24px]"></div>
+            </div>
+            <!-- Loader -->
+            <div class="loader-item flex flex-col gap-4">
+              <div class="loader aspect-square rounded"></div>
+              <div class="loader h-[28px]"></div>
+              <div class="loader h-[48px]"></div>
+              <div class="loader h-[24px]"></div>
+            </div>
+            <!-- Loader -->
+            <div class="loader-item flex flex-col gap-4">
+              <div class="loader aspect-square rounded"></div>
+              <div class="loader h-[28px]"></div>
+              <div class="loader h-[48px]"></div>
+              <div class="loader h-[24px]"></div>
+            </div>
+            <!-- Loader -->
+            <div class="loader-item flex flex-col gap-4">
+              <div class="loader aspect-square rounded"></div>
+              <div class="loader h-[28px]"></div>
+              <div class="loader h-[48px]"></div>
+              <div class="loader h-[24px]"></div>
+            </div>
+            <!-- Loader -->
+            <div class="loader-item flex flex-col gap-4">
+              <div class="loader aspect-square rounded"></div>
+              <div class="loader h-[28px]"></div>
+              <div class="loader h-[48px]"></div>
+              <div class="loader h-[24px]"></div>
+            </div>
+            <!-- Loader -->
+            <div class="loader-item flex flex-col gap-4">
+              <div class="loader aspect-square rounded"></div>
+              <div class="loader h-[28px]"></div>
+              <div class="loader h-[48px]"></div>
+              <div class="loader h-[24px]"></div>
+            </div>
+            <!-- Loader -->
+            <div class="loader-item flex flex-col gap-4">
+              <div class="loader aspect-square rounded"></div>
+              <div class="loader h-[28px]"></div>
+              <div class="loader h-[48px]"></div>
+              <div class="loader h-[24px]"></div>
+            </div>
+            <!-- Loader -->
+            <div class="loader-item flex flex-col gap-4">
+              <div class="loader aspect-square rounded"></div>
+              <div class="loader h-[28px]"></div>
+              <div class="loader h-[48px]"></div>
+              <div class="loader h-[24px]"></div>
+            </div>
+          </div>
+
+          <div
+            id="bottom-spinner"
+            class="hidden flex justify-center pt-[200px]"
+          >
+            <div class="spinner big"></div>
+          </div>
         </div>
       </div>
     </main>

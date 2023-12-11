@@ -35,6 +35,6 @@ yesDelete.onclick = (e) => {
 };
 
 function modalVisiblity() {
-  document.querySelector("body").classList.toggle("overflow-hidden");
+  //document.querySelector("body").classList.toggle("overflow-hidden");
   deleteModal.classList.toggle("hidden");
 }

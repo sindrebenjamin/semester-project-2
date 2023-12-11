@@ -28,13 +28,14 @@ if (editId) {
 async function setEdit() {
   const listingData = await getSingleListing(editId);
   document.querySelector("h1").innerText = "Edit Listing";
-  document.querySelector("#submit").value = "Update Listing";
+  document.querySelector("#submit").innerText = "Update Listing";
   document.querySelector("#title").value = listingData.title;
   document.querySelector("#description").value = listingData.description;
   document.querySelector("#end-date").value = formatDate(listingData.endsAt);
   loadImages(listingData.media);
   loadTags(listingData.tags);
   editId && descriptionInput();
+  document.querySelector("#big-spinner").classList.add("hidden");
 }
 
 listingForm.addEventListener("submit", function (e) {

@@ -3,6 +3,7 @@ import { apiURL } from "../constants.js";
 import { printListings } from "./printListings.js";
 import { checkErrors } from "../checkErrors.js";
 import { displayErrors } from "../displayErrors.js";
+
 const search = new URLSearchParams(window.location.search).get("search");
 let endReached = false;
 
@@ -21,14 +22,20 @@ export async function getListings(contentHolder, queryString) {
 
     checkErrors(result);
     if (response.ok) {
-      printListings(result, contentHolder);
-      if (search && result.length === 0) {
-        document.querySelector(contentHolder).innerHTML = "No results";
-      } else if (result.length === 0 && !endReached) {
+      //document.querySelector(contentHolder).innerHTML = ``;
+      await printListings(result, contentHolder);
+
+      // Check if "bottom" is reached
+      if (result.length === 0 && !endReached) {
         endReached = true;
         document.querySelector(
           contentHolder
         ).innerHTML += `<div class="text-center mt-[80px] text-xl col-span-4">You have reached the end</div>`;
+      }
+
+      // Search returned no result
+      if (search && result.length === 0) {
+        return true;
       }
     }
   } catch (e) {

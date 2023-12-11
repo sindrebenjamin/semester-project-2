@@ -4,13 +4,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bidnet | New Listing</title>
-    <script src="./js/components/index.js" type="module"></script>
-    <script src="./js/pages/new.js" type="module"></script>
+   
     <script src="./js/listeners/forms/deleteModal.js" type="module"></script>
     <link rel="stylesheet" href="../dist/output.css" />
+    <link rel="stylesheet" href="../dist/style.css" />
+    <script src="./js/pages/new.js" type="module"></script>
+    <script src="./js/components/index.js" type="module"></script>
+
   </head>
   <body class="text-secondary-400 antialiased relative">
-    <main class="flex flex-col justify-center py-[64px] md:py-[128px]">
+    <div class="header-placeholder h-[68px]"></div>
+
+    
+    <main>
+      <div class="flex flex-col justify-center py-[64px] md:py-[128px]">
       <form
         id="listing-form"
         class="self-center flex flex-col gap-12 w-full p-4 max-w-[500px]"
@@ -119,7 +126,7 @@
               <input
                 id="end-date"
                 name="end-date"
-                type="date"
+                type="datetime-local"
                 class="peer h-full w-full border-b border-secondary-50 bg-transparent pt-4 pb-1.5 text-sm font-normal outline outline-0 transition-all placeholder-shown:border-secondary-50 focus:border-primary-100 focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
                 placeholder=" "
               />
@@ -160,13 +167,13 @@
               <span id="tag-counter"></span> tags remaining
             </p>
           </div>
-          <input
-            class="rounded w-full max-w-[500px] text-white text-sm font-bold bg-primary-400 p-4 hover:bg-primary-300 focus:outline-none focus:ring focus:ring-primary-700 transition-all cursor-pointer"
+          <button
+            class="flex justify-center rounded w-full max-w-[500px] text-white text-sm font-bold bg-primary-400 p-4 hover:bg-primary-300 focus:outline-none focus:ring focus:ring-primary-700 transition-all cursor-pointer"
             type="submit"
-            value="Create Listing"
+            
             name="submit"
             id="submit"
-          />
+          />Create Listing</button>
           <input
             class="hidden rounded mt-[-12px] w-full max-w-[500px] text-white text-sm font-bold bg-red p-4 hover:opacity-80 focus:outline-none focus:ring focus:ring-black transition-all cursor-pointer"
             type="submit"
@@ -220,7 +227,7 @@
               </button>
               <button
                 id="yes-delete"
-                class="inner-modal bg-red px-6 py-2 text-white hover:opacity-80 transition-all rounded"
+                class="flex justify-center inner-modal w-[70px] bg-red px-6 py-2 text-white hover:opacity-80 transition-all rounded"
               >
                 Yes
               </button>
@@ -229,6 +236,7 @@
         </div>
         <div class="text-red error-element"></div>
       </form>
+      </div>
     </main>
   </body>
 </html>

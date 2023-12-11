@@ -7,7 +7,11 @@ import { save } from "../storage/save.js";
 const profile = load("profile");
 
 export async function putAvatar(avatar) {
-  console.log(profile);
+  // Spinner
+  const submitBtn = document.querySelector("#submit");
+  submitBtn.innerHTML = `
+     <div class="spinner"></div>
+   `;
 
   const options = {
     method: "PUT",
@@ -30,5 +34,9 @@ export async function putAvatar(avatar) {
     }
   } catch (e) {
     displayErrors(e.message);
+  } finally {
+    submitBtn.innerHTML = `
+    Save
+  `;
   }
 }
