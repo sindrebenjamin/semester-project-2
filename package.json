@@ -11,6 +11,6 @@
   "author": "Sindre Skoglund-Hansen",
   "license": "ISC",
   "dependencies": {
-    "tailwind": "^4.0.0"
+    "tailwindcss": "^4.0.0"
   }
 }
