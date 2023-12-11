@@ -6,7 +6,7 @@
   "scripts": {
     "test": "test",
     "watch": "npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch",
-    "build": "tailwind -i ./src/css/input.css -o ./dist/output.css"
+    "build": "npx tailwindcss -i ./src/input.css -o ./dist/output.css"
   },
   "author": "Sindre Skoglund-Hansen",
   "license": "ISC",
