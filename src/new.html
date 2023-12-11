@@ -13,6 +13,8 @@
 
   </head>
   <body class="text-secondary-400 antialiased relative">
+    <div class="header-placeholder h-[68px]"></div>
+
     <div
       id="big-spinner"
       class="hidden spinner-container h-full w-full absolute bg-white z-[1000]"
@@ -20,8 +22,8 @@
     <div class="h-screen flex justify-center items-center"><div class="spinner big"></div></div>
       
     </div>
-    <div class="header-placeholder h-[68px]"></div>
-    <main class="flex flex-col justify-center py-[64px] md:py-[128px]">
+    <main>
+      <div class="flex flex-col justify-center py-[64px] md:py-[128px]">
       <form
         id="listing-form"
         class="self-center flex flex-col gap-12 w-full p-4 max-w-[500px]"
@@ -240,6 +242,7 @@
         </div>
         <div class="text-red error-element"></div>
       </form>
+      </div>
     </main>
   </body>
 </html>

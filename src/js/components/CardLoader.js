@@ -1,6 +1,6 @@
 export const CardLoader = () => {
   const imageLoader = document.createElement("div");
-  imageLoader.className = "loader w-full h-full aspect-square rounded";
+  imageLoader.className = "loader aspect-square rounded";
 
   const titleLoader = document.createElement("div");
   titleLoader.className = "loader h-[28px]";

@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="../dist/style.css" />
   </head>
   <body class="text-secondary-400 antialiased">
+    <div class="header-placeholder h-[68px]"></div>
+
     <div
       id="big-spinner"
       class="spinner-container h-full w-full absolute bg-white z-[1000]"
@@ -19,18 +21,19 @@
         <div class="spinner big"></div>
       </div>
     </div>
-    <div class="header-placeholder h-[68px]"></div>
     <main>
       <div id="browse-container" class="px-4 md:px-6 py-[64px] md:py-[128px]">
         <div class="max-w-[1200px] m-auto">
           <h1
-            class="mb-6 md:mb-12 font-bold text-4xl md:text-5xl text-secondary-800"
+            class="mb-2 md:mb-8 font-bold text-4xl md:text-5xl text-secondary-800"
           >
             Browse Listings
           </h1>
 
           <!-- Sorting -->
-          <div class="w-full flex flex-col cursor-pointer relative text-sm">
+          <div
+            class="pt-4 w-full flex flex-col cursor-pointer sticky top-[68px] text-sm bg-white z-[500]"
+          >
             <div class="flex items-center mb-4 gap-6">
               <div
                 id="sort-select"
@@ -80,6 +83,7 @@
               </div>
             </div>
           </div>
+
           <div class="text-red error-element"></div>
           <div
             id="browse-listings"

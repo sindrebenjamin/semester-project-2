@@ -590,6 +590,10 @@ video {
   position: relative;
 }
 
+.sticky{
+  position: sticky;
+}
+
 .-top-1{
   top: -0.25rem;
 }
@@ -662,6 +666,22 @@ video {
   top: 8px;
 }
 
+.top-20{
+  top: 5rem;
+}
+
+.top-\[68px\]{
+  top: 68px;
+}
+
+.top-\[72px\]{
+  top: 72px;
+}
+
+.top-\[70px\]{
+  top: 70px;
+}
+
 .z-10{
   z-index: 10;
 }
@@ -688,6 +708,14 @@ video {
 
 .z-\[9999\]{
   z-index: 9999;
+}
+
+.z-\[99999\]{
+  z-index: 99999;
+}
+
+.z-\[500\]{
+  z-index: 500;
 }
 
 .order-1{
