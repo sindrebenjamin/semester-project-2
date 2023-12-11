@@ -40,6 +40,10 @@ export const Profile = (user) => {
   email.innerText = user.email;
   email.classList.add("text-secondary-200", "text-sm");
 
+  // Name & email for settings
+  document.querySelector("#settings-name").innerText = user.name;
+  document.querySelector("#settings-email").innerText = user.email;
+
   // Return component
   return `
   <div class="flex flex-col items-center gap-3">

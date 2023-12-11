@@ -28,7 +28,13 @@
             <!-- Profile & Bid History wrapper -->
             <div class="">
               <!-- Profile -->
-              <div id="profile" class="md:w-[360px]"></div>
+              <div id="profile" class="md:w-[360px]">
+                    <!-- Profile loader -->
+                <div class="flex flex-col items-center gap-3">
+                 <div class="rounded-full loader h-[160px] w-[160px]"></div>
+                <div class="h-[56px] md:h-[60px] loader w-[200px]"></div>
+                </div>
+              </div>
               <!-- Avatar settings -->
               <div
                 id="settings-wrapper"
@@ -36,17 +42,22 @@
               >
                 <form
                   id="settings-form"
-                  class="items-center flex flex-col gap-6 w-full max-w-[360px]"
+                  class="items-center flex flex-col w-full max-w-[360px] relative"
                   action=""
                 >
                   <img
                     id="current-avatar"
                     src=""
                     alt=""
-                    class="rounded-full object-cover h-[160px] w-[160px]"
+                    class="rounded-full object-cover h-[160px] w-[160px] mb-3"
                   />
+                  <div class="flex flex-col items-center">
+                   <p id="settings-name" class="font-bold text-3xl md:text-4xl text-secondary-800"></p>
+                   <p id="settings-email" class="text-secondary-200 text-sm"></p>
+                    </div>
+                  <div class="settings-modal absolute bg-white shadow rounded p-4 bottom-[-80px]">
                   <!-- Input Wrapper -->
-                  <div class="input-wrapper flex flex-col w-[200px]">
+                  <div class="input-wrapper flex-col ">
                     <!-- New Input -->
                     <div class="h-[72px] flex flex-col gap-1 w-full">
                       <div class="relative h-11 w-full min-w-[200px]">
@@ -86,6 +97,7 @@
                       </button>
                     </div>
                   </div>
+                </div>
 
                   <div class="text-red error-element"></div>
                 </form>
