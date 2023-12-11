@@ -19,7 +19,7 @@ const Header = () => {
 export const setHeader = () => {
   const headerElement = document.createElement("header");
   headerElement.innerHTML = Header();
-  headerElement.classList.add("bg-white", "py-3", "px-4", "md:px-6");
+  headerElement.className = "fixed bg-white py-3 px-4 md:px-6 z-[9999] w-full";
 
   document.body.prepend(headerElement);
   document.querySelector(".header-placeholder").classList.add("hidden");
