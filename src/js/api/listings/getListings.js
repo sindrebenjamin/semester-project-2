@@ -22,20 +22,7 @@ export async function getListings(contentHolder, queryString) {
 
     checkErrors(result);
     if (response.ok) {
-      /*
-      if (contentHolder === "#ending-soon") {
-        document.querySelectorAll(".ending-loader").forEach((loader) => {
-          loader.remove();
-        });
-      }
-      if (contentHolder === "#newest") {
-        document.querySelectorAll(".newest-loader").forEach((loader) => {
-          loader.remove();
-        });
-      }
-
-      */
-      document.querySelector(contentHolder).innerHTML = ``;
+      //document.querySelector(contentHolder).innerHTML = ``;
       await printListings(result, contentHolder);
 
       // Check if "bottom" is reached

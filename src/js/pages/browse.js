@@ -15,10 +15,7 @@ let URL = updateURL();
 
 // Initial fetch of listings
 async function browseListings() {
-  document.querySelector("body").classList.add("overflow-hidden");
   const noResults = await getListings("#browse-listings", URL);
-  document.querySelector("#big-spinner").classList.add("hidden");
-  document.querySelector("body").classList.remove("overflow-hidden");
   noResults &&
     (document.querySelector(
       "#browse-listings"

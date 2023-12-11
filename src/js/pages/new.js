@@ -23,7 +23,6 @@ const editId = new URLSearchParams(window.location.search).get("edit");
 
 if (editId) {
   setEdit();
-  document.querySelector("#big-spinner").classList.remove("hidden");
 }
 
 async function setEdit() {
