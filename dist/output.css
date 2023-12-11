@@ -779,6 +779,14 @@ video {
   margin-top: 80px;
 }
 
+.mt-\[68px\]{
+  margin-top: 68px;
+}
+
+.mb-\[68px\]{
+  margin-bottom: 68px;
+}
+
 .flex{
   display: flex;
 }
@@ -1304,6 +1312,10 @@ video {
 
 .pt-\[64px\]{
   padding-top: 64px;
+}
+
+.pt-\[68px\]{
+  padding-top: 68px;
 }
 
 .text-center{
