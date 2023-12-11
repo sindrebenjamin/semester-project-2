@@ -6,7 +6,6 @@ export const printListings = async (listings, contentHolder) => {
   let child = 0;
 
   for (const listing of listings) {
-    console.log("hei");
     const card = document.createElement("div");
     card.innerHTML = await Card(listing);
 

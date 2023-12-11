@@ -74,6 +74,9 @@ export const printProfile = async (user) => {
   } catch (e) {
     console.log(e);
   } finally {
-    document.querySelector("#big-spinner").classList.add("hidden");
+    const loadItems = document.querySelectorAll(".loader-item");
+    loadItems.forEach((loadItem) => {
+      loadItem.remove();
+    });
   }
 };
