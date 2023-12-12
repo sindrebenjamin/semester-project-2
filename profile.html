@@ -1,25 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bidnet | Profile</title>
-   <script defer src="./js/pages/profile.js" type="module"></script>
-    <script src="./js/components/index.js" type="module"></script>
-    <script src="./js/listeners/avatarListener.js" type="module"></script>
-    <link rel="stylesheet" href="../dist/output.css" />
-    <link rel="stylesheet" href="../dist/style.css" />
+   <script defer src="./src/js/pages/profile.js" type="module"></script>
+    <script src="./src/js/components/index.js" type="module"></script>
+    <script src="./src/js/listeners/avatarListener.js" type="module"></script>
+    <link rel="stylesheet" href="./dist/output.css" />
+    <link rel="stylesheet" href="./dist/style.css" />
   </head>
   <body class="text-secondary-400 antialiased ">
     <div class="header-placeholder h-[68px]"></div>
 
-    <!-- <div
-      id="big-spinner"
-      class="spinner-container flex justify-center items-center h-[94%] w-full absolute bg-white z-50"
-    >
-      <div class="spinner big"></div>
-    </div> -->
     <main>
       <div class="px-4 md:px-6 py-[64px] md:py-[128px]">
         <div class="max-w-[1200px] m-auto">
@@ -141,15 +142,16 @@
             ></div>
             <!-- Listings -->
             <div class="w-full">
+              
               <h2
                 class="mb-6 md:mb-8 font-bold text-2xl md:text-3xl"
                 id="listings-heading"
               ></h2>
+            
               <div
                 id="listings"
                 class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-2 lg:grid-cols-3 gap-6 md:max-w-[600px] "
               >
-          
           
                   <!-- Loader -->
                   <div class="loader-item flex flex-col gap-4">
