@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bidnet | Browse</title>
+    <script src="./src/js/components/index.js" type="module"></script>
+    <script defer src="./src/js/pages/browse.js" type="module"></script>
+    <link rel="stylesheet" href="./dist/output.css" />
+    <link rel="stylesheet" href="./dist/style.css" />
+  </head>
+  <body class="text-secondary-400 antialiased">
+    <div class="header-placeholder h-[68px]"></div>
+
+    <main>
+      <div id="browse-container" class="px-4 md:px-6 py-[64px] md:py-[128px]">
+        <div class="max-w-[1200px] m-auto">
+          <h1
+            class="mb-2 md:mb-8 font-bold text-4xl md:text-5xl text-secondary-800"
+          >
+            Browse Listings
+          </h1>
+
+          <!-- Sorting -->
+          <div
+            class="pt-4 w-full flex flex-col cursor-pointer sticky top-[68px] text-sm bg-white z-[500]"
+          >
+            <div class="flex items-center mb-4 gap-6">
+              <div
+                id="sort-select"
+                class="flex gap-2 hover:opacity-50 transition-all whitespace-nowrap"
+              >
+                <p class="text-secondary-200">Sort by:</p>
+
+                <div class="flex gap-1 items-center">
+                  <p id="sort-current" class="text-secondary-800 font-bold">
+                    Ending soon
+                  </p>
+                  <svg
+                    width="16"
+                    height="17"
+                    viewBox="0 0 16 17"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M11.3327 7.16667L7.99935 10.5L4.66602 7.16667"
+                      stroke="#020D1D"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <!-- <div class="h-[1px] bg-neutral-200 w-full"></div> -->
+            </div>
+
+            <div
+              id="sort-menu"
+              class="rounded hidden shadow-md absolute bg-white z-20 top-11 left-0 w-[200px] overflow-hidden"
+            >
+              <div
+                id="sort-ending"
+                class="transition-all hover:bg-neutral-100 border-l-4 border-primary-200 p-2"
+              >
+                Ending soon
+              </div>
+              <div
+                id="sort-newest"
+                class="transition-all hover:bg-neutral-100 border-l-4 border-neutral-200 p-2"
+              >
+                Newest
+              </div>
+            </div>
+          </div>
+
+          <div class="text-red error-element"></div>
+          <div
+            id="browse-listings"
+            class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6"
+          >
+            <!-- Loader -->
+            <div class="loader-item flex flex-col gap-4">
+              <div class="loader aspect-square rounded"></div>
+              <div class="loader h-[28px]"></div>
+              <div class="loader h-[48px]"></div>
+              <div class="loader h-[24px]"></div>
+            </div>
+            <!-- Loader -->
+            <div class="loader-item flex flex-col gap-4">
+              <div class="loader aspect-square rounded"></div>
+              <div class="loader h-[28px]"></div>
+              <div class="loader h-[48px]"></div>
+              <div class="loader h-[24px]"></div>
+            </div>
+            <!-- Loader -->
+            <div class="loader-item flex flex-col gap-4">
+              <div class="loader aspect-square rounded"></div>
+              <div class="loader h-[28px]"></div>
+              <div class="loader h-[48px]"></div>
+              <div class="loader h-[24px]"></div>
+            </div>
+            <!-- Loader -->
+            <div class="loader-item flex flex-col gap-4">
+              <div class="loader aspect-square rounded"></div>
+              <div class="loader h-[28px]"></div>
+              <div class="loader h-[48px]"></div>
+              <div class="loader h-[24px]"></div>
+            </div>
+            <!-- Loader -->
+            <div class="loader-item flex flex-col gap-4">
+              <div class="loader aspect-square rounded"></div>
+              <div class="loader h-[28px]"></div>
+              <div class="loader h-[48px]"></div>
+              <div class="loader h-[24px]"></div>
+            </div>
+            <!-- Loader -->
+            <div class="loader-item flex flex-col gap-4">
+              <div class="loader aspect-square rounded"></div>
+              <div class="loader h-[28px]"></div>
+              <div class="loader h-[48px]"></div>
+              <div class="loader h-[24px]"></div>
+            </div>
+            <!-- Loader -->
+            <div class="loader-item flex flex-col gap-4">
+              <div class="loader aspect-square rounded"></div>
+              <div class="loader h-[28px]"></div>
+              <div class="loader h-[48px]"></div>
+              <div class="loader h-[24px]"></div>
+            </div>
+            <!-- Loader -->
+            <div class="loader-item flex flex-col gap-4">
+              <div class="loader aspect-square rounded"></div>
+              <div class="loader h-[28px]"></div>
+              <div class="loader h-[48px]"></div>
+              <div class="loader h-[24px]"></div>
+            </div>
+          </div>
+
+          <div
+            id="bottom-spinner"
+            class="hidden flex justify-center pt-[200px]"
+          >
+            <div class="spinner big"></div>
+          </div>
+          <div class="text-center mt-[80px] text-xl" id="bottom-message"></div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
