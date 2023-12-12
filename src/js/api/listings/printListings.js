@@ -1,14 +1,14 @@
 import { Card } from "../../components/Card.js";
 
+let child = 0;
+
 export const printListings = async (listings, contentHolder) => {
   const container = document.querySelector(contentHolder);
-
-  let child = 0;
 
   for (const listing of listings) {
     const card = document.createElement("div");
     card.innerHTML = await Card(listing);
-
+    console.log(child);
     if (child < 9) {
       container.insertBefore(card, container.children[child]);
     } else {

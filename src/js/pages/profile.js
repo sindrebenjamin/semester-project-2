@@ -4,8 +4,6 @@ import { load } from "../api/storage/load.js";
 const user = new URLSearchParams(window.location.search).get("user");
 const token = load("token");
 
-!token && document.querySelector("#big-spinner").classList.add("hidden");
-
 token
   ? printProfile(user)
   : (document.querySelector(
