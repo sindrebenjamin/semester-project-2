@@ -654,8 +654,8 @@ video {
   top: 1rem;
 }
 
-.top-6{
-  top: 1.5rem;
+.top-8{
+  top: 2rem;
 }
 
 .top-\[45\%\]{
@@ -672,6 +672,18 @@ video {
 
 .top-\[8px\]{
   top: 8px;
+}
+
+.top-10{
+  top: 2.5rem;
+}
+
+.top-12{
+  top: 3rem;
+}
+
+.top-11{
+  top: 2.75rem;
 }
 
 .z-10{
