@@ -1,13 +1,13 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.{html,js}"],
+  content: ["./src/**/*.{html,js}", "./*.html"],
   theme: {
     fontFamily: {
-      "sans": ["DM Sans", "sans-serif"]
+      sans: ["DM Sans", "sans-serif"],
     },
     extend: {
       colors: {
-        "primary": {
+        primary: {
           100: "#7CE1BD",
           200: "#42B088",
           300: "#1F8862",
@@ -17,7 +17,7 @@ module.exports = {
           700: "#043020",
           800: "#001A11",
         },
-        "secondary": {
+        secondary: {
           50: "#CCD1D9",
           100: "#7E8C9F",
           200: "#4C5E79",
@@ -28,7 +28,7 @@ module.exports = {
           700: "#0C1727",
           800: "#020D1D",
         },
-        "neutral": {
+        neutral: {
           50: "#FFFFFF",
           100: "#F6F6F6",
           200: "#DEDEDE",
@@ -39,10 +39,9 @@ module.exports = {
           700: "#242424",
           800: "#101010",
         },
-        "red": "#B80000",
-      }
+        red: "#B80000",
+      },
     },
   },
   plugins: [],
-}
-
+};

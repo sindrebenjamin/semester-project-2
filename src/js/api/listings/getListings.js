@@ -22,15 +22,18 @@ export async function getListings(contentHolder, queryString) {
 
     checkErrors(result);
     if (response.ok) {
-      //document.querySelector(contentHolder).innerHTML = ``;
       await printListings(result, contentHolder);
 
       // Check if "bottom" is reached
-      if (result.length === 0 && !endReached) {
+      if (
+        result.length === 0 &&
+        !endReached &&
+        contentHolder === "#browse-listings"
+      ) {
         endReached = true;
         document.querySelector(
-          contentHolder
-        ).innerHTML += `<div class="text-center mt-[80px] text-xl col-span-4">You have reached the end</div>`;
+          "#bottom-message"
+        ).innerHTML += `You have reached the end`;
       }
 
       // Search returned no result
