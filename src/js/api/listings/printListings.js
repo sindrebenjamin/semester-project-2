@@ -9,7 +9,11 @@ export const printListings = async (listings, contentHolder) => {
     const card = document.createElement("div");
     card.innerHTML = await Card(listing);
 
-    container.insertBefore(card, container.children[child]);
+    if (child < 9) {
+      container.insertBefore(card, container.children[child]);
+    } else {
+      container.append(card);
+    }
 
     const loadItems = container.querySelectorAll(".loader-item");
     loadItems.length > 0 && loadItems[0].remove();
