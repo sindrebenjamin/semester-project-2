@@ -9,7 +9,7 @@ export const MobileSlider = async (checkedPhotos) => {
       // Slide
       const slide = document.createElement("div");
       slide.className =
-        "mobile-slide w-full snap-start flex-none h-[400px] md:h-[500px] lg:h-[400px]";
+        "mobile-slide w-full snap-start grow-0 shrink-0 basis-full h-[400px] md:h-[500px] lg:h-[400px]";
 
       // Image
       const img = document.createElement("img");
