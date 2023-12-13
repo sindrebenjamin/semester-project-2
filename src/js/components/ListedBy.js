@@ -8,6 +8,7 @@ export const ListedBy = async (data) => {
   const avatar = document.createElement("img");
   avatar.className = "rounded-full object-cover h-[40px] w-[40px]";
   avatar.src = await checkAvatar(data.seller.avatar);
+  avatar.alt = "Profile avatar";
 
   const name = document.createElement("p");
   name.innerText = data.seller.name;

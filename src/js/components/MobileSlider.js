@@ -15,6 +15,7 @@ export const MobileSlider = async (checkedPhotos) => {
       const img = document.createElement("img");
       img.className = "object-cover w-full h-full";
       img.src = image;
+      img.alt = "Listing slide";
 
       // Append slide
       slide.appendChild(img);
