@@ -1,4 +1,10 @@
 import { setError } from "./setError.js";
+const input = document.querySelector("#avatar");
+const currentAvatar = document.querySelector("#current-avatar");
+
+currentAvatar.onclick = () => {
+  input.focus();
+};
 
 /**
  *
@@ -6,7 +12,6 @@ import { setError } from "./setError.js";
  * Takes default hint for input as argument
  */
 export const inputAvatarListener = (def) => {
-  const input = document.querySelector("#avatar");
   const label = document.querySelector("#avatar-label");
   const hint = document.querySelector("#avatar-hint");
 
@@ -17,7 +22,6 @@ export const inputAvatarListener = (def) => {
 };
 
 function checkUrl(url) {
-  const currentAvatar = document.querySelector("#current-avatar");
   if (url === "") {
     currentAvatar.src = "./public/noavatar.png";
     return true;
