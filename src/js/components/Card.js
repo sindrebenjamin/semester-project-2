@@ -1,6 +1,6 @@
 import { checkMedia } from "../utils/checkMedia.js";
 import { dateToDays } from "../utils/dateToDays.js";
-import { currentBid } from "../utils/currentBid.js";
+import { currentBid } from "../functions/currentBid.js";
 import { checkTitle } from "../utils/checkTitle.js";
 import { load } from "../api/storage/load.js";
 

@@ -6,7 +6,7 @@ import { updateBids } from "../api/updateBids.js";
 import { load } from "../api/storage/load.js";
 import { ListedBy } from "../components/ListedBy.js";
 import { checkIfAuctionEnded } from "../utils/formatDate.js";
-import { disableBidForm } from "../utils/disableBidForm.js";
+import { disableBidForm } from "../functions/disableBidForm.js";
 
 const id = new URLSearchParams(window.location.search).get("id");
 const profile = load("profile");

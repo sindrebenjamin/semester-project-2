@@ -1,8 +1,8 @@
 /**
- * Add and remove classes of given element
+ * Add and remove classes of passed element
  * @param {array} classesToAdd Array of classes to add
  * @param {array} classesToRemove Array of classes to remove
- * @param {*} element Element to add and remove classes on
+ * @param {*} element Element to add and remove classes to or from
  *
  */
 export const addRemove = (classesToAdd, classesToRemove, element) => {
