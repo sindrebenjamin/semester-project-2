@@ -3,7 +3,13 @@ import { Profile } from "../../components/Profile.js";
 import { Bids } from "../../components/Bids.js";
 import { printListings } from "../listings/printListings.js";
 import { load } from "../storage/load.js";
+import { viewMore } from "../../functions/ViewMore.js";
 
+/**
+ *
+ * @param {string} user Username
+ * Make essential GET requests and conditionally render profile page
+ */
 export const printProfile = async (user) => {
   try {
     // Requests
@@ -22,8 +28,6 @@ export const printProfile = async (user) => {
     const noBids = currentProfile
       ? `<p>You haven't made any bids yet. <a href="browse.html" class="text-primary-300 hover:opacity-50 transition-all underline focus:outline-none focus:ring focus:ring-primary-700">Browse listings here</a></p>`
       : `This user haven't made any bids yet.`;
-    const viewMoreBtn = document.querySelector("#view-more-btn");
-    const viewArrow = document.querySelector("#view-arrow");
 
     // Components
     const topSection = Profile(profileResult);
@@ -46,11 +50,8 @@ export const printProfile = async (user) => {
     }
 
     // Print content
-    const viewMore = document.querySelector("#view-more");
-    viewMore.innerText = `View more (${bidResults.length - 4})`;
-    if (bidResults.length > 4) {
-      viewMoreBtn.classList.remove("hidden");
-    }
+    viewMore(bidResults);
+
     document.querySelector("#profile").innerHTML = topSection;
     document.querySelector("#bids").innerHTML =
       `<h2 class="mb-6 md:mb-8 font-bold text-2xl md:text-3xl">Bid History</h2>` +
@@ -59,23 +60,10 @@ export const printProfile = async (user) => {
     document.querySelector("#listings-heading").innerText = currentProfile
       ? `Your Listings`
       : `Listings Offered by ${user}`;
-
-    // Toggle more results
-    let open = false;
-    viewMoreBtn.onclick = () => {
-      open = !open;
-      viewMore.innerText = !open
-        ? `View more (${bidResults.length - 4})`
-        : `Show less`;
-      viewArrow.classList.toggle(`rotate-180`);
-
-      document.querySelector("#more-bids").classList.toggle("hidden");
-    };
   } catch (e) {
     console.log(e);
   } finally {
-    const loadItems = document.querySelectorAll(".loader-item");
-    loadItems.forEach((loadItem) => {
+    document.querySelectorAll(".loader-item").forEach((loadItem) => {
       loadItem.remove();
     });
   }

@@ -7,7 +7,7 @@ import { load } from "../storage/load.js";
 const profile = load("profile").name;
 
 export async function deleteListing(id) {
-  // Spinner
+  // Button loader
   const deleteBtn = document.querySelector("#yes-delete");
   deleteBtn.innerHTML = `
     <div class="spinner red"></div>

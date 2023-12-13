@@ -4,12 +4,17 @@ let child = 0;
 
 /**
  *
- * @param {number} number Set child variable to number
+ * @param {number} number Set child variable to number passed as argument
  */
 export const setPrintListingsChild = (number) => {
   child = number;
 };
 
+/**
+ * Create cards from listing array and add them to the DOM element passed as contentHolder
+ * @param {array} listings Array of listings
+ * @param {string} contentHolder ID or classname for container listings will be added
+ */
 export const printListings = async (listings, contentHolder) => {
   const container = document.querySelector(contentHolder);
 

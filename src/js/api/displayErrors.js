@@ -1,3 +1,7 @@
+/**
+ * Split errorMessage string and creates a list of errors
+ * @param {string} errorMessage Concatenated error message from checkErrors
+ */
 export function displayErrors(errorMessage) {
   const errorElements = document.querySelectorAll(".error-element");
   const errors = errorMessage.split("^ ");

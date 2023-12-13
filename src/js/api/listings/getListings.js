@@ -36,7 +36,7 @@ export async function getListings(contentHolder, queryString) {
         ).innerHTML += `You have reached the end`;
       }
 
-      // Search returned no result
+      // Search returned no result - Used for initial fetch on browse page
       if (search && result.length === 0) {
         return true;
       }

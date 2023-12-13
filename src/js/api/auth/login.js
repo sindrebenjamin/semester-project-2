@@ -7,7 +7,7 @@ const profile = new URLSearchParams(window.location.search).get("user");
 const listing = new URLSearchParams(window.location.search).get("listing");
 
 export async function login(userData, fromRegistration) {
-  // Spinner
+  // Button loader
   const submitBtn = document.querySelector("#submit");
   submitBtn.innerHTML = `
     <div class="spinner"></div>

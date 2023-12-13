@@ -4,11 +4,11 @@ import { displayErrors } from "../displayErrors.js";
 import { checkErrors } from "../checkErrors.js";
 import { updateBids } from "../updateBids.js";
 import { updateBidsLength } from "../../listeners/outsideBidsListener.js";
-import { animateListing } from "../animateListing.js";
+import { animateBid } from "../animateBid.js";
 import { updateCredits } from "../updateCredits.js";
 
 export async function bidOnListing(data, id) {
-  // Spinner
+  // Button loader
   const submitBtn = document.querySelector("#submit");
   submitBtn.innerHTML = `
   <div class="spinner"></div>
@@ -32,7 +32,7 @@ export async function bidOnListing(data, id) {
       updateCredits(data.amount);
       const newLength = await updateBids();
       updateBidsLength(newLength);
-      animateListing();
+      animateBid();
       document.querySelector(".error-element").innerText = "";
     }
   } catch (e) {

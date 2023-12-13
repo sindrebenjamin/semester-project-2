@@ -1,6 +1,6 @@
 import { updateBids } from "../api/updateBids.js";
 import { getSingleListing } from "../api/listings/getSingleListing.js";
-import { animateListing } from "../api/animateListing.js";
+import { animateBid } from "../api/animateBid.js";
 const id = new URLSearchParams(window.location.search).get("id");
 
 const data = await getSingleListing(id);
@@ -12,7 +12,7 @@ async function lookForBids() {
 
   if (checkedLength > bidsLength) {
     await updateBids();
-    animateListing();
+    animateBid();
     bidsLength = checkedLength;
   }
 }

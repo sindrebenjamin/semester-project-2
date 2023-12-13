@@ -1,4 +1,7 @@
-export const animateListing = () => {
+/**
+ * Use a combination of setTimeout and Tailwind classes to smoothly animate bids as they are added in real time
+ */
+export const animateBid = () => {
   const bidItems = document.querySelectorAll(".bid-item");
 
   // Fade in opacity

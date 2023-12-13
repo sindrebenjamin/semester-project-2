@@ -8,9 +8,10 @@ let sortString = `&sort=endsAt&sortOrder=asc`;
 let tags = "";
 
 // Check if searching or not
-const querySearch = new URLSearchParams(window.location.search)
-  .get("search")
-  .toLowerCase();
+const querySearchPre = new URLSearchParams(window.location.search).get(
+  "search"
+);
+const querySearch = querySearchPre && querySearchPre.toLowerCase();
 querySearch && (tags = `&_tag=${querySearch}`);
 
 // Set URL
