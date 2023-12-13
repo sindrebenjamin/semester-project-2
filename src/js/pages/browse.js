@@ -22,9 +22,7 @@ let URL = updateURL();
 async function browseListings() {
   const noResults = await getListings("#browse-listings", URL);
   noResults &&
-    (document.querySelector(
-      "#browse-listings"
-    ).innerHTML = `<div class="mt-[80px] text-xl col-span-4">No results</div>`);
+    (document.querySelector("#bottom-message").innerHTML = `<p>No results</p>`);
 
   // Remove remaining loaders
   document.querySelectorAll(".loader-item").forEach((loader) => {
@@ -63,7 +61,6 @@ window.onscroll = async () => {
 };
 
 // Set styling and handle logic for sorting
-
 const sortSelect = document.querySelector("#sort-select");
 const sortMenu = document.querySelector("#sort-menu");
 const sortEnding = document.querySelector("#sort-ending");
@@ -111,7 +108,6 @@ sortEnding.onclick = () => {
 };
 
 // Toggles visibility for sortmenu
-
 sortSelect.onclick = () => {
   sortMenu.classList.toggle("hidden");
 };
@@ -123,7 +119,6 @@ document.addEventListener("click", function (event) {
 });
 
 // Change fetch endpoint based on what link user clicks on from homepage
-
 const queryOrder = new URLSearchParams(window.location.search).get("order");
 if (queryOrder === "newest") {
   setNewest();

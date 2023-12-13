@@ -53,7 +53,7 @@ async function getData() {
         : `This auction has ended`;
     }
 
-    // Hide bid form if your own listing and show FAB
+    // Hide bid form if it's logged in user's listing and show FAB
     if (profile) {
       if (data.seller.name === profile.name) {
         document.querySelector("#bid-form").classList.add("hidden");

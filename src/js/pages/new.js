@@ -41,8 +41,8 @@ async function setEdit() {
 listingForm.addEventListener("submit", function (e) {
   e.preventDefault();
   const data = new FormData(e.target);
-  const dateTest = testDate();
-  const titleTest = testTitle();
+  const dateTest = runTest("end-date", "Please choose an end date");
+  const titleTest = runTest("title", "Title must be included");
 
   const body = {
     title: data.get("title"),
@@ -53,28 +53,16 @@ listingForm.addEventListener("submit", function (e) {
   };
 
   if (dateTest && titleTest) {
-    document.querySelector("#submit").value = editId
-      ? "Updating..."
-      : "Creating...";
     postListing(body, editId ? "PUT" : "POST", editId);
   }
 });
 
 // Check if required information is missing
-const testDate = () => {
-  const input = document.querySelector("#end-date");
-  const label = document.querySelector("#end-date-label");
-  const hint = document.querySelector("#end-date-hint");
+const runTest = (type, message) => {
+  const input = document.querySelector(`#${type}`);
+  const label = document.querySelector(`#${type}-label`);
+  const hint = document.querySelector(`#${type}-hint`);
   const test = !input.value ? false : true;
-  setError(test, input, hint, label, "Please choose an end date");
-  return test;
-};
-
-const testTitle = () => {
-  const input = document.querySelector("#title");
-  const label = document.querySelector("#title-label");
-  const hint = document.querySelector("#title-hint");
-  const test = !input.value ? false : true;
-  setError(test, input, hint, label, "Title must be included");
+  setError(test, input, hint, label, message);
   return test;
 };
