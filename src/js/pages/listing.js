@@ -25,17 +25,17 @@ async function getData() {
     const data = await getSingleListing(id);
     document.querySelector("title").innerText = `Bidnet | ${data.title}`;
     await updateBids();
-    console.log(data);
 
     const auctionEnded = checkIfAuctionEnded(data.endsAt);
 
-    // Disable bidding if not logged in
+    // Disable bidding if not logged in or auction ended
     if (!profile || auctionEnded) {
       disableBidForm();
       const loginMessage = document.querySelector("#login-before-bid");
-      !profile && loginMessage.classList.remove("hidden");
+      loginMessage.classList.remove("hidden");
 
-      loginMessage.innerHTML = `
+      loginMessage.innerHTML = !auctionEnded
+        ? `
   <a
     id="login-link"
     class="text-primary-300 hover:opacity-50 transition-all underline focus:outline-none focus:ring focus:ring-primary-700"
@@ -49,7 +49,8 @@ async function getData() {
     href="register.html?listing=${id}"
     >create new user</a
   >
-  to place bid`;
+  to place bid`
+        : `This auction has ended`;
     }
 
     // Hide bid form if your own listing and show FAB
