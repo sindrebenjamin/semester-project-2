@@ -2,6 +2,14 @@ import { Card } from "../../components/Card.js";
 
 let child = 0;
 
+/**
+ *
+ * @param {number} number Set child variable to number
+ */
+export const setPrintListingsChild = (number) => {
+  child = number;
+};
+
 export const printListings = async (listings, contentHolder) => {
   const container = document.querySelector(contentHolder);
 
@@ -10,8 +18,10 @@ export const printListings = async (listings, contentHolder) => {
     card.innerHTML = await Card(listing);
 
     if (contentHolder === "#listings" && child < 3) {
+      // Profile page listings
       container.insertBefore(card, container.children[child]);
     } else if (child < 8) {
+      // Browser page listings
       container.insertBefore(card, container.children[child]);
     } else {
       container.append(card);

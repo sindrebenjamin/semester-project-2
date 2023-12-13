@@ -1,5 +1,7 @@
 import { getListings } from "../api/listings/getListings.js";
 import { addRemove } from "../utils/addRemove.js";
+import { CardLoaders } from "../components/CardLoaders.js";
+import { setPrintListingsChild } from "../api/listings/printListings.js";
 
 let offset = 0;
 let sortString = `&sort=endsAt&sortOrder=asc`;
@@ -74,7 +76,8 @@ const setNewest = () => {
     current.innerText = currentText;
     addRemove(["border-neutral-200"], ["border-primary-200"], sortEnding);
     addRemove(["border-primary-200"], ["border-neutral-200"], sortNewest);
-    listingsContainer.innerHTML = "";
+    listingsContainer.innerHTML = CardLoaders(8);
+    setPrintListingsChild(0);
     sortString = `&sort=created&sortOrder=desc`;
     URL = updateURL();
     getListings("#browse-listings", URL);
@@ -88,7 +91,8 @@ const setEnding = () => {
     current.innerText = currentText;
     addRemove(["border-neutral-200"], ["border-primary-200"], sortNewest);
     addRemove(["border-primary-200"], ["border-neutral-200"], sortEnding);
-    listingsContainer.innerHTML = "";
+    listingsContainer.innerHTML = CardLoaders(8);
+    setPrintListingsChild(0);
     sortString = `&sort=endsAt&sortOrder=asc`;
     URL = updateURL();
     getListings("#browse-listings", URL);
