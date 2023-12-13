@@ -5,7 +5,7 @@ import { checkErrors } from "../checkErrors.js";
 import { login } from "./login.js";
 
 export async function register(userData) {
-  // Spinner
+  // Button loader
   const submitBtn = document.querySelector("#submit");
   submitBtn.innerHTML = `
    <div class="spinner"></div>

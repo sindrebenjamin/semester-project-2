@@ -7,13 +7,15 @@ export const DesktopSlider = (checkedPhotos) => {
   );
   const arrowBtns = document.querySelectorAll(".arrow-btn");
 
+  // Create slide for each image
   function createSlides(images) {
     // Hide arrow buttons if no photos
-    if (images.length === 1 || images.length < 1) {
+    if (images.length <= 1) {
       arrowBtns.forEach((btn) => {
         btn.classList.add("hidden");
       });
     }
+
     images.forEach((image) => {
       // Slide
       const slide = document.createElement("div");
@@ -24,6 +26,7 @@ export const DesktopSlider = (checkedPhotos) => {
       const img = document.createElement("img");
       img.className = "object-cover w-full h-full";
       img.src = image;
+      img.alt = "Listing slide";
 
       // Append slide
       slide.appendChild(img);
@@ -40,7 +43,7 @@ export const DesktopSlider = (checkedPhotos) => {
       }
     });
 
-    // If no photos
+    // Set placeholder image if there are no photos
     if (images.length < 1) {
       const slide = document.createElement("div");
       slide.className =
@@ -49,6 +52,7 @@ export const DesktopSlider = (checkedPhotos) => {
       const img = document.createElement("img");
       img.className = "object-cover w-full h-[450px]";
       img.src = "./public/nomedia.png";
+      img.alt = "No image";
       // Append slide
       slide.appendChild(img);
       slider.appendChild(slide);

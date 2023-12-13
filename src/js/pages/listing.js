@@ -6,7 +6,7 @@ import { updateBids } from "../api/updateBids.js";
 import { load } from "../api/storage/load.js";
 import { ListedBy } from "../components/ListedBy.js";
 import { checkIfAuctionEnded } from "../utils/formatDate.js";
-import { disableBidForm } from "../utils/disableBidForm.js";
+import { disableBidForm } from "../functions/disableBidForm.js";
 
 const id = new URLSearchParams(window.location.search).get("id");
 const profile = load("profile");
@@ -25,17 +25,17 @@ async function getData() {
     const data = await getSingleListing(id);
     document.querySelector("title").innerText = `Bidnet | ${data.title}`;
     await updateBids();
-    console.log(data);
 
     const auctionEnded = checkIfAuctionEnded(data.endsAt);
 
-    // Disable bidding if not logged in
+    // Disable bidding if not logged in or auction ended
     if (!profile || auctionEnded) {
       disableBidForm();
       const loginMessage = document.querySelector("#login-before-bid");
-      !profile && loginMessage.classList.remove("hidden");
+      loginMessage.classList.remove("hidden");
 
-      loginMessage.innerHTML = `
+      loginMessage.innerHTML = !auctionEnded
+        ? `
   <a
     id="login-link"
     class="text-primary-300 hover:opacity-50 transition-all underline focus:outline-none focus:ring focus:ring-primary-700"
@@ -49,10 +49,11 @@ async function getData() {
     href="register.html?listing=${id}"
     >create new user</a
   >
-  to place bid`;
+  to place bid`
+        : `This auction has ended`;
     }
 
-    // Hide bid form if your own listing and show FAB
+    // Hide bid form if it's logged in user's listing and show FAB
     if (profile) {
       if (data.seller.name === profile.name) {
         document.querySelector("#bid-form").classList.add("hidden");

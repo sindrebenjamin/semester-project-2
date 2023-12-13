@@ -25,7 +25,7 @@ export const loadTags = (loadingTags) => {
  */
 export const inputTags = (def) => {
   input.onkeydown = (e) => {
-    const tagPre = input.value.replace(/\s+/g, " ").trim();
+    const tagPre = input.value.replace(/\s+/g, " ").trim().toLowerCase();
     handleKeyDown(e, tagPre, def);
   };
 };
@@ -47,7 +47,6 @@ function updateCounter() {
 // Handle what happens when user press enter
 function handleKeyDown(e, tagPre, def) {
   if (e.key === "Enter" || e.keyCode === 13) {
-    console.log(tags.length);
     e.preventDefault();
     if (tags.length === 8) {
       setError(false, input, hint, label, "0 tags remaining", def);

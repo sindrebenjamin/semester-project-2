@@ -9,12 +9,13 @@ export const MobileSlider = async (checkedPhotos) => {
       // Slide
       const slide = document.createElement("div");
       slide.className =
-        "mobile-slide w-full snap-start flex-none h-[400px] md:h-[500px] lg:h-[400px]";
+        "mobile-slide w-full snap-start grow-0 shrink-0 basis-full h-[400px] md:h-[500px] lg:h-[400px]";
 
       // Image
       const img = document.createElement("img");
       img.className = "object-cover w-full h-full";
       img.src = image;
+      img.alt = "Listing slide";
 
       // Append slide
       slide.appendChild(img);
@@ -39,6 +40,7 @@ export const MobileSlider = async (checkedPhotos) => {
       const img = document.createElement("img");
       img.className = "object-cover w-full h-[400px] md:h-[500px] lg:h-[400px]";
       img.src = "./public/nomedia.png";
+      img.alt = "No image";
       // Append slide
       slide.appendChild(img);
       mobileSlider.appendChild(slide);

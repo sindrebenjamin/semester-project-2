@@ -4,7 +4,7 @@ import { displayErrors } from "../displayErrors.js";
 import { checkErrors } from "../checkErrors.js";
 
 export async function postListing(data, requestType, id) {
-  // Spinner
+  // Button loader
   const submitBtn = document.querySelector("#submit");
   submitBtn.innerHTML = `
     <div class="spinner"></div>

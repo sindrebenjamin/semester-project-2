@@ -1,4 +1,4 @@
-import { timeTicker } from "../utils/timeTicker.js";
+import { timeTicker } from "../functions/timeTicker.js";
 
 export const HighestBidEndsIn = (data, highestBid) => {
   timeTicker(data.endsAt);

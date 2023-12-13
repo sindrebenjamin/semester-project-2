@@ -7,7 +7,7 @@ import { save } from "../storage/save.js";
 const profile = load("profile");
 
 export async function putAvatar(avatar) {
-  // Spinner
+  // Button loader
   const submitBtn = document.querySelector("#submit");
   submitBtn.innerHTML = `
      <div class="spinner"></div>

@@ -4,18 +4,17 @@ import { dateToDays } from "../utils/dateToDays.js";
 /**
  *
  * @param {*} bids Array containing bids
- * @param {*} int Index for loop
+ * @param {*} int Int for loop
  * @param {*} loopBreak Set to true to break loop at 3
  * @param {*} profilePage Set to true if profilePage
  * @returns
  */
-
 export const Bids = (bids, int, loopBreak, profilePage) => {
   const allBids = document.createElement("div");
   allBids.classList.add("text-xs", "flex", "flex-col");
 
   for (let i = int; i < bids.length; i++) {
-    // Title
+    // Title - Either username or listing name
     const listingTitle = document.createElement("p");
     listingTitle.innerText = profilePage
       ? checkTitle(bids[i].listing.title, 10)

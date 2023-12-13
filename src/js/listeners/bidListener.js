@@ -3,9 +3,6 @@ import { bidOnListing } from "../api/listings/bidOnListing.js";
 const form = document.querySelector("#bid-form");
 const input = document.querySelector("#bid-input");
 const postId = new URLSearchParams(window.location.search).get("id");
-const button = document.querySelector("#submit");
-
-//button.onclick = () => {};
 
 // Add $ symbol for flavor
 input.onblur = () => {

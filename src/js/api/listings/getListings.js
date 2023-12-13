@@ -33,10 +33,10 @@ export async function getListings(contentHolder, queryString) {
         endReached = true;
         document.querySelector(
           "#bottom-message"
-        ).innerHTML += `You have reached the end`;
+        ).innerHTML += `<p class="text-center">You have reached the end</p>`;
       }
 
-      // Search returned no result
+      // Search returned no result - Used for initial fetch on browse page
       if (search && result.length === 0) {
         return true;
       }

@@ -24,7 +24,6 @@ export const setHeader = () => {
   document.body.prepend(headerElement);
 
   // Toggle NavMenu visibility
-
   const headerProfile = document.querySelector("#header-profile");
   const navMenu = document.querySelector("#nav-menu");
 
@@ -47,13 +46,11 @@ export const setHeader = () => {
     });
 
     // Logout
-
     const logoutBtn = document.querySelector("#logout-btn");
     logoutBtn.onclick = () => logout();
   }
 
   // Toggle searchbar visibility
-
   const searchForm = document.querySelector("#search-form");
   const searchBtn = document.querySelector("#search-btn");
   const searchBar = document.querySelector("#search");

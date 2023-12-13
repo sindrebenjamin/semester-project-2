@@ -1,12 +1,17 @@
 import { getListings } from "../api/listings/getListings.js";
 import { addRemove } from "../utils/addRemove.js";
+import { CardLoaders } from "../components/CardLoaders.js";
+import { setPrintListingsChild } from "../api/listings/printListings.js";
 
 let offset = 0;
 let sortString = `&sort=endsAt&sortOrder=asc`;
 let tags = "";
 
 // Check if searching or not
-const querySearch = new URLSearchParams(window.location.search).get("search");
+const querySearchPre = new URLSearchParams(window.location.search).get(
+  "search"
+);
+const querySearch = querySearchPre && querySearchPre.toLowerCase();
 querySearch && (tags = `&_tag=${querySearch}`);
 
 // Set URL
@@ -17,9 +22,12 @@ let URL = updateURL();
 async function browseListings() {
   const noResults = await getListings("#browse-listings", URL);
   noResults &&
-    (document.querySelector(
-      "#browse-listings"
-    ).innerHTML = `<div class="mt-[80px] text-xl col-span-4">No results</div>`);
+    (document.querySelector("#bottom-message").innerHTML = `<p>No results</p>`);
+
+  // Remove remaining loaders
+  document.querySelectorAll(".loader-item").forEach((loader) => {
+    loader.remove();
+  });
 }
 browseListings();
 
@@ -53,7 +61,6 @@ window.onscroll = async () => {
 };
 
 // Set styling and handle logic for sorting
-
 const sortSelect = document.querySelector("#sort-select");
 const sortMenu = document.querySelector("#sort-menu");
 const sortEnding = document.querySelector("#sort-ending");
@@ -69,7 +76,8 @@ const setNewest = () => {
     current.innerText = currentText;
     addRemove(["border-neutral-200"], ["border-primary-200"], sortEnding);
     addRemove(["border-primary-200"], ["border-neutral-200"], sortNewest);
-    listingsContainer.innerHTML = "";
+    listingsContainer.innerHTML = CardLoaders(8);
+    setPrintListingsChild(0);
     sortString = `&sort=created&sortOrder=desc`;
     URL = updateURL();
     getListings("#browse-listings", URL);
@@ -83,7 +91,8 @@ const setEnding = () => {
     current.innerText = currentText;
     addRemove(["border-neutral-200"], ["border-primary-200"], sortNewest);
     addRemove(["border-primary-200"], ["border-neutral-200"], sortEnding);
-    listingsContainer.innerHTML = "";
+    listingsContainer.innerHTML = CardLoaders(8);
+    setPrintListingsChild(0);
     sortString = `&sort=endsAt&sortOrder=asc`;
     URL = updateURL();
     getListings("#browse-listings", URL);
@@ -99,7 +108,6 @@ sortEnding.onclick = () => {
 };
 
 // Toggles visibility for sortmenu
-
 sortSelect.onclick = () => {
   sortMenu.classList.toggle("hidden");
 };
@@ -111,7 +119,6 @@ document.addEventListener("click", function (event) {
 });
 
 // Change fetch endpoint based on what link user clicks on from homepage
-
 const queryOrder = new URLSearchParams(window.location.search).get("order");
 if (queryOrder === "newest") {
   setNewest();
