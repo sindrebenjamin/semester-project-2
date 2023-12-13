@@ -31,7 +31,7 @@ export const Card = async (listing) => {
   <img
     class="object-cover w-full h-full aspect-square rounded"
     src="${media}"
-    alt=""
+    alt="Listing thumbnail"
   />
 
 ${title.outerHTML}

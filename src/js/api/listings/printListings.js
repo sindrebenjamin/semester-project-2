@@ -19,7 +19,7 @@ export const printListings = async (listings, contentHolder) => {
   const container = document.querySelector(contentHolder);
 
   for (const listing of listings) {
-    const card = document.createElement("div");
+    const card = document.createElement("article");
     card.innerHTML = await Card(listing);
 
     if (contentHolder === "#listings" && child < 3) {

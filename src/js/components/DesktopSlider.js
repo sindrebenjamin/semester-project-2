@@ -52,6 +52,7 @@ export const DesktopSlider = (checkedPhotos) => {
       const img = document.createElement("img");
       img.className = "object-cover w-full h-[450px]";
       img.src = "./public/nomedia.png";
+      img.alt = "No image";
       // Append slide
       slide.appendChild(img);
       slider.appendChild(slide);
