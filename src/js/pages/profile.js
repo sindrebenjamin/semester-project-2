@@ -3,6 +3,13 @@ import { load } from "../api/storage/load.js";
 
 const user = new URLSearchParams(window.location.search).get("user");
 const token = load("token");
+document.querySelector("title").innerText = `Bidnet | ${user}`;
+
+if (!token) {
+  document.querySelectorAll(".loader-item").forEach((loader) => {
+    loader.remove();
+  });
+}
 
 token
   ? printProfile(user)
