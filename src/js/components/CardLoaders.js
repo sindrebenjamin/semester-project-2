@@ -1,7 +1,7 @@
 /**
  *
  * @param {number} amount Amount of cards
- * @returns Card components equal to amount
+ * @returns Loader components equal to passed amount
  */
 export const CardLoaders = (amount) => {
   let loaders = "";

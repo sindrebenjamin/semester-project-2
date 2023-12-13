@@ -5,6 +5,10 @@ import { HighestBidEndsIn } from "../components/HighestBidEndsIn.js";
 import { viewMore } from "../functions/ViewMore.js";
 const id = new URLSearchParams(window.location.search).get("id");
 
+/**
+ * Update everything related to bids and bid history
+ * @returns Length of bid array after its updated
+ */
 export const updateBids = async () => {
   // Fetch data
   const data = await getSingleListing(id);

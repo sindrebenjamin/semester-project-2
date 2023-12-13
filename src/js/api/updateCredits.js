@@ -1,6 +1,10 @@
 import { load } from "./storage/load.js";
 import { save } from "./storage/save.js";
 
+/**
+ * Update credits owned by profile when placing bids
+ * @param {number} amount
+ */
 export const updateCredits = (amount) => {
   const profile = load("profile");
 
