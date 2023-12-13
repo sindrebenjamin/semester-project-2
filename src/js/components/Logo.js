@@ -1,5 +1,5 @@
 export const Logo = (color) => {
-  return `<a href="index.html"><svg
+  return `<a aria-label="home" href="index.html"><svg
     class="${color} hover:opacity-50 transition-all"
     width="48"
     height="44"
