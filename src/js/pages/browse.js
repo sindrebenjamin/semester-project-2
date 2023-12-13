@@ -20,6 +20,11 @@ async function browseListings() {
     (document.querySelector(
       "#browse-listings"
     ).innerHTML = `<div class="mt-[80px] text-xl col-span-4">No results</div>`);
+
+  // Remove remaining loaders
+  document.querySelectorAll(".loader-item").forEach((loader) => {
+    loader.remove();
+  });
 }
 browseListings();
 
