@@ -35,7 +35,6 @@ async function setEdit() {
   loadImages(listingData.media);
   loadTags(listingData.tags);
   editId && descriptionInput();
-  document.querySelector("#big-spinner").classList.add("hidden");
 }
 
 listingForm.addEventListener("submit", function (e) {
