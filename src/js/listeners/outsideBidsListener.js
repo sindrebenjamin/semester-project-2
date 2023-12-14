@@ -1,7 +1,7 @@
-import { updateBids } from "../api/updateBids.js";
-import { getSingleListing } from "../api/listings/getSingleListing.js";
-import { animateBid } from "../api/animateBid.js";
-const id = new URLSearchParams(window.location.search).get("id");
+import { updateBids } from '../api/updateBids.js';
+import { getSingleListing } from '../api/listings/getSingleListing.js';
+import { animateBid } from '../api/animateBid.js';
+const id = new URLSearchParams(window.location.search).get('id');
 
 const data = await getSingleListing(id);
 let bidsLength = data.bids.length;
@@ -17,10 +17,10 @@ async function lookForBids() {
   }
 }
 
-let interval = setInterval(lookForBids, 5000);
+setInterval(lookForBids, 5000);
 
 export const updateBidsLength = (updatedLength) => {
   bidsLength = updatedLength;
 };
 
-let forceUpdate = setInterval(updateBids, 60000);
+setInterval(updateBids, 60000);

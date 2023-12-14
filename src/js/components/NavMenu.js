@@ -1,4 +1,4 @@
-export const NavMenu = (name, credits) => {
+export const NavMenu = (name) => {
   return `<div id="nav-menu" class="rounded overflow-hidden text-sm hidden bg-white absolute top-[60px] right-0 w-[200px] shadow-md z-50">
 
 

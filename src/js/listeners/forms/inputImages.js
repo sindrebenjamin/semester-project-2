@@ -1,27 +1,27 @@
-import { setError } from "./setError.js";
+import { setError } from './setError.js';
 import {
   addOpacityToOtherItems,
   removeOpacityFromAllItems,
   handleDragAndDrop,
   deleteImg,
   checkMaxPhotos,
-} from "./inputImagesHelpers.js";
+} from './inputImagesHelpers.js';
 
-import { addRemove } from "../../utils/addRemove.js";
+import { addRemove } from '../../utils/addRemove.js';
 
 let imageArray = [];
 
-const imgContainer = document.querySelector("#img-container");
-const input = document.querySelector("#image-input");
-const label = document.querySelector("#image-input-label");
-const hint = document.querySelector("#image-input-hint");
+const imgContainer = document.querySelector('#img-container');
+const input = document.querySelector('#image-input');
+const label = document.querySelector('#image-input-label');
+const hint = document.querySelector('#image-input-hint');
 
 // Load images if editing
 export const loadImages = (images) => {
   images.forEach((image) => {
     createImage(image);
     placeholderVisiblity();
-    imageArray.length > 1 && placeHolderMain.classList.add("hidden");
+    imageArray.length > 1 && placeHolderMain.classList.add('hidden');
     hint.innerText = checkMaxPhotos(imageArray);
   });
 };
@@ -38,23 +38,23 @@ export const inputImages = (def) => {
       setError(false, input, hint, label, hintMsg, def);
       return;
     }
-    hint.innerText = "Loading...";
+    hint.innerText = 'Loading...';
     const test = await checkUrl(input.value);
-    setError(test, input, hint, label, "Must be a valid image URL", def);
+    setError(test, input, hint, label, 'Must be a valid image URL', def);
   };
 };
 
 function checkUrl(url) {
-  if (url === "") {
+  if (url === '') {
     return true;
   }
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     let img = new Image();
 
     img.onload = function () {
       resolve(true);
       createImage(url);
-      input.value = "";
+      input.value = '';
     };
 
     img.onerror = function () {
@@ -66,14 +66,14 @@ function checkUrl(url) {
 }
 
 // Counter
-const counterNumber = document.querySelector("#counter-number");
+const counterNumber = document.querySelector('#counter-number');
 counterNumber.innerText = imageArray.length;
 
 // Placeholder visiblity
-const placeHolderHalf = document.querySelector("#placeholder-half");
-const placeHolderMain = document.querySelector("#placeholder-main");
-const placeholders = document.querySelectorAll(".placeholder");
-const firstPhotoMsg = document.querySelector("#first-photo-msg");
+const placeHolderHalf = document.querySelector('#placeholder-half');
+const placeHolderMain = document.querySelector('#placeholder-main');
+const placeholders = document.querySelectorAll('.placeholder');
+const firstPhotoMsg = document.querySelector('#first-photo-msg');
 
 placeholders.forEach((placeholder) => {
   placeholder.onclick = () => input.focus();
@@ -81,29 +81,29 @@ placeholders.forEach((placeholder) => {
 
 export function placeholderVisiblity() {
   if (imageArray.length > 0) {
-    placeHolderHalf.classList.add("hidden");
-    firstPhotoMsg.classList.add("hidden");
+    placeHolderHalf.classList.add('hidden');
+    firstPhotoMsg.classList.add('hidden');
     //placeHolderMain.classList.add("hidden");
   } else {
-    placeHolderHalf.classList.remove("hidden");
-    placeHolderMain.classList.remove("hidden");
-    firstPhotoMsg.classList.remove("hidden");
+    placeHolderHalf.classList.remove('hidden');
+    placeHolderMain.classList.remove('hidden');
+    firstPhotoMsg.classList.remove('hidden');
   }
 }
 
 input.onfocus = () => {
   if (imageArray.length < 8) {
     addRemove(
-      ["border-primary-100"],
-      ["border-neutral-200", "hidden"],
-      placeholders[0]
+      ['border-primary-100'],
+      ['border-neutral-200', 'hidden'],
+      placeholders[0],
     );
   }
 };
 
 input.onblur = () => {
-  addRemove(["border-neutral-200"], ["border-primary-100"], placeholders[0]);
-  imageArray.length > 0 && placeHolderMain.classList.add("hidden");
+  addRemove(['border-neutral-200'], ['border-primary-100'], placeholders[0]);
+  imageArray.length > 0 && placeHolderMain.classList.add('hidden');
 };
 
 // Create imageItem when onload is successful
@@ -117,31 +117,31 @@ function createImage(url) {
 
   imageArray.length < 8 && imageArray.push(url);
   // imageItem
-  const imageItem = document.createElement("div");
-  imageItem.className = "img-item cursor-grab relative";
+  const imageItem = document.createElement('div');
+  imageItem.className = 'img-item cursor-grab relative';
   imageItem.draggable = true;
 
   // image
-  const image = document.createElement("img");
+  const image = document.createElement('img');
   image.className =
-    "rounded inner-img aspect-square object-cover w-full hover:opacity-90 transition-all";
+    'rounded inner-img aspect-square object-cover w-full hover:opacity-90 transition-all';
   image.src = url;
   imageItem.appendChild(image);
 
   // number
-  const numHolder = document.createElement("div");
+  const numHolder = document.createElement('div');
   numHolder.className =
-    "absolute z-20 bg-white top-4 right-4 p-4 rounded-full flex justify-center items-center w-12 h-12";
-  const num = document.createElement("p");
-  num.className = "num";
+    'absolute z-20 bg-white top-4 right-4 p-4 rounded-full flex justify-center items-center w-12 h-12';
+  const num = document.createElement('p');
+  num.className = 'num';
   numHolder.appendChild(num);
   imageItem.appendChild(numHolder);
 
   // remove button
-  const removeBtn = document.createElement("div");
-  removeBtn.innerText = "Remove";
+  const removeBtn = document.createElement('div');
+  removeBtn.innerText = 'Remove';
   removeBtn.className =
-    "remove-btn py-4 cursor-pointer hover:opacity-50 transition-all text-center";
+    'remove-btn py-4 cursor-pointer hover:opacity-50 transition-all text-center';
   imageItem.appendChild(removeBtn);
 
   // Append
@@ -158,24 +158,24 @@ function createImage(url) {
 let draggedItem = null;
 
 // Desktop EventListeners
-imgContainer.addEventListener("dragstart", handleDragStart);
-imgContainer.addEventListener("dragover", handleDragOver);
-imgContainer.addEventListener("dragend", handleDragEnd);
+imgContainer.addEventListener('dragstart', handleDragStart);
+imgContainer.addEventListener('dragover', handleDragOver);
+imgContainer.addEventListener('dragend', handleDragEnd);
 
 // Mobile EventListeners
-imgContainer.addEventListener("touchstart", handleTouchStart, {
+imgContainer.addEventListener('touchstart', handleTouchStart, {
   passive: false,
 });
 
-imgContainer.addEventListener("touchmove", handleTouchMove, { passive: false });
-imgContainer.addEventListener("touchend", handleTouchEnd);
+imgContainer.addEventListener('touchmove', handleTouchMove, { passive: false });
+imgContainer.addEventListener('touchend', handleTouchEnd);
 
 // Drag start
 function handleDragStart(e) {
-  draggedItem = e.target.closest(".img-item");
+  draggedItem = e.target.closest('.img-item');
   if (draggedItem) {
-    e.dataTransfer.setData("text/plain", ""); // Required for Firefox to allow drag
-    draggedItem.classList.add("cursor-grabbing");
+    e.dataTransfer.setData('text/plain', ''); // Required for Firefox to allow drag
+    draggedItem.classList.add('cursor-grabbing');
     addOpacityToOtherItems(draggedItem);
   }
 }
@@ -184,18 +184,18 @@ function handleTouchStart(e) {
   e.preventDefault();
   const touchedElement = document.elementFromPoint(
     e.touches[0].clientX,
-    e.touches[0].clientY
+    e.touches[0].clientY,
   );
-  const removeBtn = touchedElement.closest(".remove-btn");
+  const removeBtn = touchedElement.closest('.remove-btn');
   if (removeBtn) {
     child--;
     deleteImg(removeBtn);
-    setError(true, input, hint, label, "");
-    input.value = "";
+    setError(true, input, hint, label, '');
+    input.value = '';
   }
 
   if (!removeBtn) {
-    draggedItem = e.touches[0].target.closest(".img-item");
+    draggedItem = e.touches[0].target.closest('.img-item');
     if (draggedItem) {
       addOpacityToOtherItems(draggedItem);
     }
@@ -206,7 +206,7 @@ function handleTouchStart(e) {
 function handleDragOver(e) {
   e.preventDefault();
   const mouseY = e.clientY;
-  const targetItem = e.target.closest(".img-item");
+  const targetItem = e.target.closest('.img-item');
   updateNumbers();
   handleDragAndDrop(targetItem, mouseY, draggedItem);
 }
@@ -216,19 +216,19 @@ function handleTouchMove(e) {
   const touch = e.touches[0];
   const targetItem = document
     .elementFromPoint(touch.clientX, touch.clientY)
-    .closest(".img-item");
+    .closest('.img-item');
   updateNumbers();
   handleDragAndDrop(targetItem, touch.clientY, draggedItem);
 }
 
 // Drag end
-function handleDragEnd(e) {
-  draggedItem.classList.remove("cursor-grabbing");
+function handleDragEnd() {
+  draggedItem.classList.remove('cursor-grabbing');
   draggedItem.null;
 
-  const imgItems = document.querySelectorAll(".img-item");
+  const imgItems = document.querySelectorAll('.img-item');
   imgItems.forEach((imgItem) => {
-    imgItem.classList.remove("opacity-50");
+    imgItem.classList.remove('opacity-50');
   });
   updateArray();
 }
@@ -244,20 +244,20 @@ function handleTouchEnd() {
 // Helper Functions
 
 // Remove
-imgContainer.addEventListener("click", function (e) {
-  const removeBtn = e.target.closest(".remove-btn");
+imgContainer.addEventListener('click', function (e) {
+  const removeBtn = e.target.closest('.remove-btn');
   if (removeBtn) {
     child--;
     deleteImg(removeBtn);
-    setError(true, input, hint, label, "");
-    input.value = "";
+    setError(true, input, hint, label, '');
+    input.value = '';
   }
 });
 
 // Update
 export function updateArray() {
   imageArray = [];
-  const images = document.querySelectorAll(".inner-img");
+  const images = document.querySelectorAll('.inner-img');
   images.forEach((image) => {
     imageArray.push(image.src);
   });
@@ -266,26 +266,8 @@ export function updateArray() {
   counterNumber.innerText = imageArray.length;
 }
 
-/*
-function inputVisibility() {
-  const maxImg = document.querySelector("#max-img");
-  if (imageArray.length === 8) {
-    input.classList.add("hidden");
-    label.classList.add("hidden");
-    hint.classList.add("hidden");
-    maxImg.classList.remove("hidden");
-  } else {
-    input.classList.remove("hidden");
-    label.classList.remove("hidden");
-    hint.classList.remove("hidden");
-    maxImg.classList.add("hidden");
-  }
-}
-
-*/
-
 function updateNumbers() {
-  const numbers = document.querySelectorAll(".num");
+  const numbers = document.querySelectorAll('.num');
   for (let i = 0; i < numbers.length; i++) {
     numbers[i].innerText = i + 1;
   }

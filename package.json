@@ -7,12 +7,28 @@
   "scripts": {
     "test": "test",
     "watch": "npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch",
-    "build": "npx tailwindcss -i ./src/input.css -o ./dist/output.css"
+    "build": "npx tailwindcss -i ./src/input.css -o ./dist/output.css",
+    "lint": "eslint src/**/*.js",
+    "prepare": "husky install"
   },
   "author": "Sindre Skoglund-Hansen",
   "license": "ISC",
   "dependencies": {
     "prettier": "^3.1.1",
     "tailwind": "^4.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.55.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.2.0"
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "*.html": [
+      "prettier --write"
+    ]
   }
 }
