@@ -10,6 +10,7 @@ describe('post listing', () => {
       'val',
       'http://t3.gstatic.com/licensed-image?q=tbn:ANd9GcSE3zNnbeADg_Mk-hQ_A-cKTuUtXqdxfeAYYFOP7bGqkbXfp5fNMVVJcWwi7fRDLXg7xkmTSGGk2HqrsOQ8EYg',
     );
+
     cy.get('#end-date').invoke('val', '2024-12-14T12:00:00').invoke('change');
     cy.get('#tags').invoke('val', 'test tag').type('{enter}');
     cy.get('#submit').click();
