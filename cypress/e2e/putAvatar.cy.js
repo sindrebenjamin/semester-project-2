@@ -4,6 +4,7 @@ describe('update profile media', () => {
     cy.wait(1000);
     cy.get('#header-profile').click();
     cy.contains('knallis').click();
+    cy.wait(1000);
     cy.get('#change-avatar').click();
     cy.get('#avatar').invoke(
       'val',
