@@ -1,8 +1,14 @@
-import { setError } from "./setError.js";
-import { dateToISO } from "../../utils/dateToIso.js";
+import { setError } from './setError.js';
+import { dateToISO } from '../../utils/dateToIso.js';
+import { oneWeekTo } from '../../utils/formatDate.js';
 
-document.querySelector("#end-date").onfocus = () =>
-  document.querySelector("#end-date").showPicker();
+const edit = new URLSearchParams(window.location.search).get('edit');
+const dateInput = document.querySelector('#end-date');
+
+// Sets date to one week from today
+!edit && (dateInput.value = oneWeekTo());
+
+dateInput.onfocus = () => dateInput.showPicker();
 
 /**
  *
@@ -10,9 +16,9 @@ document.querySelector("#end-date").onfocus = () =>
  * Takes default hint for input as argument
  */
 export const inputDate = (def) => {
-  const input = document.querySelector("#end-date");
-  const label = document.querySelector("#end-date-label");
-  const hint = document.querySelector("#end-date-hint");
+  const input = dateInput;
+  const label = document.querySelector('#end-date-label');
+  const hint = document.querySelector('#end-date-hint');
 
   input.onchange = () => {
     const test = testDate(input.value);
@@ -21,8 +27,8 @@ export const inputDate = (def) => {
       input,
       hint,
       label,
-      "Cannot be past date or more than one year from now",
-      def
+      'Cannot be past date or more than one year from now',
+      def,
     );
   };
 };
