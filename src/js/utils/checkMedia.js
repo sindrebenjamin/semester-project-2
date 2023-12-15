@@ -4,7 +4,7 @@
  * @returns Promise
  */
 export const checkMedia = (url) => {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     let img = new Image();
 
     img.onload = function () {
@@ -12,7 +12,7 @@ export const checkMedia = (url) => {
     };
 
     img.onerror = function () {
-      resolve("./public/nomedia.png");
+      resolve('./public/nomedia.png');
     };
 
     img.src = url;

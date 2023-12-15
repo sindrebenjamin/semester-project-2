@@ -1,20 +1,20 @@
-import { headers } from "../headers.js";
-import { apiURL } from "../constants.js";
-import { displayErrors } from "../displayErrors.js";
-import { save } from "../storage/save.js";
-import { checkErrors } from "../checkErrors.js";
-const profile = new URLSearchParams(window.location.search).get("user");
-const listing = new URLSearchParams(window.location.search).get("listing");
+import { headers } from '../headers.js';
+import { apiURL } from '../constants.js';
+import { displayErrors } from '../displayErrors.js';
+import { save } from '../storage/save.js';
+import { checkErrors } from '../checkErrors.js';
+const profile = new URLSearchParams(window.location.search).get('user');
+const listing = new URLSearchParams(window.location.search).get('listing');
 
 export async function login(userData, fromRegistration) {
   // Button loader
-  const submitBtn = document.querySelector("#submit");
+  const submitBtn = document.querySelector('#submit');
   submitBtn.innerHTML = `
     <div class="spinner"></div>
   `;
   const options = {
-    method: "POST",
-    headers: headers("application/json"),
+    method: 'POST',
+    headers: headers('application/json'),
     body: JSON.stringify(userData),
   };
 
@@ -24,9 +24,9 @@ export async function login(userData, fromRegistration) {
 
     checkErrors(result);
     if (response.ok) {
-      save("token", result.accessToken);
+      save('token', result.accessToken);
       delete result.accessToken;
-      save("profile", result);
+      save('profile', result);
 
       if (profile) {
         window.location.href = `profile.html?user=${profile}`;

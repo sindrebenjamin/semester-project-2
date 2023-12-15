@@ -1,39 +1,41 @@
-import { headers } from "../headers.js";
-import { apiURL } from "../constants.js";
-import { displayErrors } from "../displayErrors.js";
-import { checkErrors } from "../checkErrors.js";
-import { load } from "../storage/load.js";
-import { save } from "../storage/save.js";
-const profile = load("profile");
+import { headers } from '../headers.js';
+import { apiURL } from '../constants.js';
+import { displayErrors } from '../displayErrors.js';
+import { checkErrors } from '../checkErrors.js';
+import { load } from '../storage/load.js';
+import { save } from '../storage/save.js';
+const profile = load('profile');
 
 export async function putAvatar(avatar) {
   // Button loader
-  const submitBtn = document.querySelector("#submit");
+  const submitBtn = document.querySelector('#submit');
   submitBtn.innerHTML = `
      <div class="spinner"></div>
    `;
 
   const options = {
-    method: "PUT",
-    headers: headers("application/json"),
+    method: 'PUT',
+    headers: headers('application/json'),
     body: JSON.stringify(avatar),
   };
 
   try {
     const response = await fetch(
       `${apiURL}/auction/profiles/${profile.name}/media`,
-      options
+      options,
     );
+
     const result = await response.json();
 
     checkErrors(result);
     if (response.ok) {
       profile.avatar = result.avatar;
-      save("profile", profile);
+      save('profile', profile);
       window.location.href = `profile.html?user=${profile.name}`;
     }
   } catch (e) {
     displayErrors(e.message);
+    console.log(e);
   } finally {
     submitBtn.innerHTML = `
     Save
