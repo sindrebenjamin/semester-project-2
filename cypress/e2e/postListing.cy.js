@@ -14,6 +14,7 @@ describe('post listing', () => {
     cy.get('#end-date').invoke('val', '2024-12-14T12:00:00').invoke('change');
     cy.get('#tags').invoke('val', 'test tag').type('{enter}');
     cy.get('#submit').click();
+    cy.wait(1000);
     cy.url().should('include', 'listing');
   });
 });
