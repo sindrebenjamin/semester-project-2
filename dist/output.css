@@ -698,12 +698,12 @@ video {
   z-index: 500;
 }
 
-.z-\[9999\]{
-  z-index: 9999;
-}
-
 .z-\[99999\]{
   z-index: 99999;
+}
+
+.z-\[9999\]{
+  z-index: 9999;
 }
 
 .order-1{
@@ -976,6 +976,10 @@ video {
   max-width: 800px;
 }
 
+.max-w-\[600px\]{
+  max-width: 600px;
+}
+
 .flex-1{
   flex: 1 1 0%;
 }
@@ -1106,6 +1110,10 @@ video {
 
 .gap-\[64px\]{
   gap: 64px;
+}
+
+.gap-\[300px\]{
+  gap: 300px;
 }
 
 .space-x-2 > :not([hidden]) ~ :not([hidden]){
@@ -1478,12 +1486,6 @@ video {
 
 .opacity-80{
   opacity: 0.8;
-}
-
-.shadow{
-  --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-  --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
 .shadow-lg{
