@@ -4,6 +4,9 @@
 [![Automated Unit Testing](https://github.com/sindrebenjamin/semester-project-2/actions/workflows/unit-test.yml/badge.svg)](https://github.com/sindrebenjamin/semester-project-2/actions/workflows/unit-test.yml)
 [![Automated E2E Testing](https://github.com/sindrebenjamin/semester-project-2/actions/workflows/e2e-test.yml/badge.svg)](https://github.com/sindrebenjamin/semester-project-2/actions/workflows/e2e-test.yml)
 
+## Description
+This is a fictional auction app. You can create a user by making up a @stud.noroff.no email and filling out the other required fields. Once you have a user, you can create listings and bid on other users' listings. 
+
 ## Assignment Brief
 An auction site is looking to launch a website where users can add items to be bid on and bid on items other users have put up for auction. When a new user joins the website, they are given 1000 credits to use on the site. They can get credits by selling items and use credit by buying items. Non-registered users can search through the listings, but only registered users can make bids on listings.
 
@@ -11,6 +14,10 @@ An auction site is looking to launch a website where users can add items to be b
 ### Installation
 ```
 npm i
+```
+## Live Server
+```
+npm run start
 ```
 ### Testing
 Run unit tests
