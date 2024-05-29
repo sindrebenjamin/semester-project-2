@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700;9..40,800;9..40,900&display=swap');
 
 /*
-! tailwindcss v3.3.5 | MIT License | https://tailwindcss.com
+! tailwindcss v3.4.3 | MIT License | https://tailwindcss.com
 */
 
 /*
@@ -34,9 +34,11 @@
 4. Use the user's configured `sans` font-family by default.
 5. Use the user's configured `sans` font-feature-settings by default.
 6. Use the user's configured `sans` font-variation-settings by default.
+7. Disable tap highlights on iOS
 */
 
-html {
+html,
+:host {
   line-height: 1.5;
   /* 1 */
   -webkit-text-size-adjust: 100%;
@@ -52,6 +54,8 @@ html {
   /* 5 */
   font-variation-settings: normal;
   /* 6 */
+  -webkit-tap-highlight-color: transparent;
+  /* 7 */
 }
 
 /*
@@ -123,8 +127,10 @@ strong {
 }
 
 /*
-1. Use the user's configured `mono` font family by default.
-2. Correct the odd `em` font sizing in all browsers.
+1. Use the user's configured `mono` font-family by default.
+2. Use the user's configured `mono` font-feature-settings by default.
+3. Use the user's configured `mono` font-variation-settings by default.
+4. Correct the odd `em` font sizing in all browsers.
 */
 
 code,
@@ -133,8 +139,12 @@ samp,
 pre {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   /* 1 */
-  font-size: 1em;
+  font-feature-settings: normal;
   /* 2 */
+  font-variation-settings: normal;
+  /* 3 */
+  font-size: 1em;
+  /* 4 */
 }
 
 /*
@@ -203,6 +213,8 @@ textarea {
   /* 1 */
   line-height: inherit;
   /* 1 */
+  letter-spacing: inherit;
+  /* 1 */
   color: inherit;
   /* 1 */
   margin: 0;
@@ -226,9 +238,9 @@ select {
 */
 
 button,
-[type='button'],
-[type='reset'],
-[type='submit'] {
+input:where([type='button']),
+input:where([type='reset']),
+input:where([type='submit']) {
   -webkit-appearance: button;
   /* 1 */
   background-color: transparent;
@@ -484,6 +496,10 @@ video {
   --tw-backdrop-opacity:  ;
   --tw-backdrop-saturate:  ;
   --tw-backdrop-sepia:  ;
+  --tw-contain-size:  ;
+  --tw-contain-layout:  ;
+  --tw-contain-paint:  ;
+  --tw-contain-style:  ;
 }
 
 ::backdrop{
@@ -534,6 +550,10 @@ video {
   --tw-backdrop-opacity:  ;
   --tw-backdrop-saturate:  ;
   --tw-backdrop-sepia:  ;
+  --tw-contain-size:  ;
+  --tw-contain-layout:  ;
+  --tw-contain-paint:  ;
+  --tw-contain-style:  ;
 }
 
 .container{
@@ -731,6 +751,11 @@ video {
   margin-bottom: 36px;
 }
 
+.my-\[64px\]{
+  margin-top: 64px;
+  margin-bottom: 64px;
+}
+
 .mb-10{
   margin-bottom: 2.5rem;
 }
@@ -793,6 +818,22 @@ video {
 
 .mt-\[80px\]{
   margin-top: 80px;
+}
+
+.mt-\[68px\]{
+  margin-top: 68px;
+}
+
+.mt-10{
+  margin-top: 2.5rem;
+}
+
+.mt-\[60px\]{
+  margin-top: 60px;
+}
+
+.mt-\[600px\]{
+  margin-top: 600px;
 }
 
 .flex{
@@ -972,12 +1013,12 @@ video {
   max-width: 500px;
 }
 
-.max-w-\[800px\]{
-  max-width: 800px;
-}
-
 .max-w-\[600px\]{
   max-width: 600px;
+}
+
+.max-w-\[800px\]{
+  max-width: 800px;
 }
 
 .flex-1{
@@ -1110,10 +1151,6 @@ video {
 
 .gap-\[64px\]{
   gap: 64px;
-}
-
-.gap-\[300px\]{
-  gap: 300px;
 }
 
 .space-x-2 > :not([hidden]) ~ :not([hidden]){
@@ -1781,6 +1818,11 @@ video {
     margin: 0px;
   }
 
+  .md\:my-\[128px\]{
+    margin-top: 128px;
+    margin-bottom: 128px;
+  }
+
   .md\:mb-8{
     margin-bottom: 2rem;
   }
@@ -1815,6 +1857,10 @@ video {
 
   .md\:h-\[60px\]{
     height: 60px;
+  }
+
+  .md\:h-screen{
+    height: 100vh;
   }
 
   .md\:w-\[360px\]{
@@ -1907,6 +1953,10 @@ video {
 
   .lg\:h-\[400px\]{
     height: 400px;
+  }
+
+  .lg\:h-screen{
+    height: 100vh;
   }
 
   .lg\:max-w-\[2000px\]{
